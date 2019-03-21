@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DisplayOffers from './DisplayOffers';
+
 class Search extends Component {
     state = {  }
     render() { 

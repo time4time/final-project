@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Search from './Search'
 import DisplayMap from './DisplayMap'
-import { Link } from 'react-router-dom'
 
 
 //first page(render map, search, this component it's public)
@@ -14,11 +14,10 @@ class Main extends Component {
             <>
             <h1>Main page</h1>
             <Link>
-            <button class="button is-success">Publish offer!</button>
+                <button className="button is-success">Publish offer!</button>
             </Link>
             <Search/>
             <DisplayMap />
-          
             </>
          );
     }
