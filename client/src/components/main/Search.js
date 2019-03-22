@@ -31,13 +31,6 @@ class Search extends Component {
         this.setState(generalSearch)
         
     }
-    // //choose a search category
-    // handleCheck = (event) =>{
-    //     this.setState({
-    //         house: event.target.type === 'checkbox' ? event.target.name : event.target.value
-    //     })
-    // }
-
 
     //submit button
     handleSubmit = (event) =>{
@@ -113,7 +106,13 @@ class Search extends Component {
             </form>
            
         
-            <DisplayOffers/>
+            <DisplayOffers filteredOffers={this.state.databaseResponse}
+            
+            
+            
+            
+            />
+            
             </>
 
          );

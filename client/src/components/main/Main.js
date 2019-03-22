@@ -13,7 +13,7 @@ class Main extends Component {
         return ( 
             <>
             <h1>Main page</h1>
-            <Link>
+            <Link to='/publish-offer'>
                 <button className="button is-success">Publish offer!</button>
             </Link>
             <Search/>
