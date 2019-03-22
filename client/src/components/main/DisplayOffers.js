@@ -13,14 +13,14 @@ class DisplayOffers extends Component {
         super(props);
         this.toggle = this.toggle.bind(this)
         this.state={
-            toggle: true,
+            toggle: false,
             listOfOffers: []
         }
     }
     
-    toggle(event){
-        this.setState((prevState) =>({
-            toggle: !prevState.toggle
+    toggle(offerId){
+        this.setState(() =>({
+            toggle: offerId
         }));
     }
 
@@ -37,9 +37,9 @@ class DisplayOffers extends Component {
         })
       }
     
-      componentDidMount() {
+    componentDidMount() {
         this.getAllOffers();
-      }
+    }
 
     render() { 
             return ( 
@@ -51,14 +51,20 @@ class DisplayOffers extends Component {
                                     <div key={offer._id}>
                                         <div className="tile is-ancestor">
                                             <div className="tile is-child box">
-                                                <h3>{offer.title}</h3>
-                                                <h4>{offer.author}</h4>
-                                                <p>{offer.description}</p>
-                                                <p>{offer.category}</p>
-                                                <Link className='btn' onClick={this.toggle}>{this.state.toggle ? 'Close Offer' : 'Open offer'}</Link>
+                                                    <h3>{offer.title}</h3>
+                                                    <h4>{offer.author}</h4>
+                                                    <p>{offer.description}</p>
+                                                    <p>{offer.category}</p>
+                                                <Link className='btn' onClick={()=> {this.toggle(offer._id)}}> Open offer</Link>
                                             </div>
                                         </div>
-                                        <OfferModal toggle={this.state.toggle} title={offer.title} author={offer.author} description={offer.description} category={offer.category}/>
+                                        <OfferModal close={this.toggle} 
+                                            toggle={this.state.toggle === offer._id} 
+                                            title={offer.title} 
+                                            author={offer.author} 
+                                            description={offer.description} 
+                                            category={offer.category}
+                                        />
                                     </div>
                                 )})
                             }
