@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import config from '../../config.json'
+import axios from 'axios';
 
 const display = {
     display: 'block'
@@ -10,7 +12,16 @@ const hide = {
 }
 
 class OfferModal extends Component {
-    state = {  }
+    state = { 
+        title: '',
+        author: '',
+        description: '',
+        category: '',
+
+    }
+
+
+
     render() { 
         return (
                 <div className="modal" style={this.props.toggle ? display : hide}>
@@ -19,7 +30,7 @@ class OfferModal extends Component {
                         <header className="modal-card-head">
                             <p className="modal-card-title">{this.props.title}</p>
                             <Link>
-                                <button className="delete" onClick={this.toggle} aria-label="close"></button>
+                                <button className="delete" onClick={this.props.close} aria-label="close"></button>
                             </Link>
                         </header>
                         <section className="modal-card-body">
@@ -45,7 +56,7 @@ class OfferModal extends Component {
                             <p>2 hours</p>
                         </section>
                         <footer className="modal-card-foot">
-                        {/* <button className="button is-success"> Close</button> */}
+                        {/* <button className="button is-success"> Close</button>  */}
                             <Link>
                                 <button className="button is-success">Apply </button>
                             </Link>
