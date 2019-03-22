@@ -1,19 +1,65 @@
 import React, { Component } from 'react';
+import axios from 'axios'
+import config from '../../config.json'
 
 //redirigirle a su dashboard cuando publique la oferta
 
 //private router
 class PublishOffer extends Component {
-    state = {  }
+
+    constructor(props){
+        super(props)
+        this.state = { 
+            title:          '',
+            description:    '',
+            date:           '',
+            duration:       '',
+            category:       '',
+        }
+    }
+
+    //input postal code
+    handleInput = (event)=> {
+        let publish = {} //empty object
+        publish[event.target.name] = event.target.value
+        this.setState(publish)
+        
+    }
+
+    //submit button
+    handleSubmit = (event) =>{
+        event.preventDefault();
+      
+        let newOffer = this.state
+        console.log(this.state)
+  
+        axios({
+        method: 'post',
+          url: `${config.api}/search`,
+          data: newOffer,
+          withCredentials : true,
+          
+          }).then(databaseResponse => {
+  
+            this.setState({databaseResponse})
+            // this.props.loggedIn(true,this.state.username)
+            // this.props.history.push('/profile')
+          }).catch(err => {
+          
+        //   this.props.history.push('/')
+          })
+    }
+ 
     render() { 
         return ( 
             <>
-                <h1>You can publish an offer!</h1>
+            <form onSubmit={this.handleSubmit}>
+               
                 <div className="field">
                     <label className="label">Title</label>
                     <div className="control has-icons-left has-icons-right">
                     <div className="control">
-                    <input className="input" type="text" placeholder="Title"/>
+                    <input onChange={this.handleInput} name='title' className="input" type="text" placeholder="Title" value={this.state.title}/>
                     </div>
                     </div>
                 </div>
@@ -21,30 +67,33 @@ class PublishOffer extends Component {
                     <label className="label">Description</label>
                     <div className="control has-icons-left has-icons-right">
                     <div className="control">
-                        <textarea className="textarea" placeholder="Description"></textarea>
+                        <textarea onChange={this.handleInput} name='description 'className="textarea" placeholder="Description" value={this.state.description}></textarea>
                     </div>
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Date</label>
                     <div className="control">
-                        <input className="input" type="date" placeholder="Date"/>
+                        <input onChange={this.handleInput} name='date 'className="input" type="date" placeholder="Date" value={this.state.date}/>
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Duration</label>
                     <div className="control">
-                        <input className="input" type="number" placeholder="Duration"/>
+                        <input onChange={this.handleInput} name='duration' className="input" type="number" placeholder="Duration" value={this.state.duration}/>
                     </div>
                 </div>
                 <div className="field">
-                    <label className="label">Category</label>
+                    <label  className="label">Category</label>
                     <div className="control">
                         <div className="select">
-                        <select>
-                            <option>House</option>
-                            <option>Fix computer</option>
-                            <option>Music</option>
+                        <select name='category' value={this.state.category} onChange={this.handleInput}>
+                            <option value='house'>House</option>
+                            <option value='technology'>Technology</option>
+                            <option value="music">Music</option>
+                            <option value="repair">Repair</option>
+                            <option value="languages">Languages</option>
+                            <option value="cooking">Cooking</option>
                         </select>
                         </div>
                     </div>
@@ -57,6 +106,7 @@ class PublishOffer extends Component {
                         <button className="button is-text">Cancel</button>
                     </div>
                 </div>
+                </form>
             </>
          );
     }
