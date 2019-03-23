@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import 'bulma/css/bulma.css'
+import 'font-awesome/css/font-awesome.min.css';
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import '@fortawesome/fontawesome-free-webfonts/css/fontawesome.css';
