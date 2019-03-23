@@ -9,7 +9,7 @@ import config from '../config.json'
 export const UnauthNav = class UnauthNav extends Component {
     logMeOut = ()=> {
         axios({
-            method: "GET",
+            method: "post",
             url: `${config.api}/logout`,
             withCredentials: true,
         })
@@ -57,9 +57,10 @@ export const UnauthNav = class UnauthNav extends Component {
 
 
 export const AuthNav = class AuthNav extends Component {
+
     logMeOut = ()=> {
         axios({
-            method: "GET",
+            method: "post",
             url: `${config.api}/logout`,
             withCredentials: true,
         })

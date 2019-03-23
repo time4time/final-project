@@ -25,15 +25,18 @@ class Login extends Component {
     handleSubmit = (event) =>{
         event.preventDefault();
         let newUser = this.state
+        debugger
         axios({
             method: 'post',
             url: `${config.api}/login`,
             data: newUser,
             withCredentials : true,
             }).then(databaseResponse => {
+                debugger
                 this.props.loggedIn(true,this.state.username)
-                this.props.history.push('/profile')
+                this.props.history.push('/dashboard')
             }).catch(err => {
+                debugger
             this.props.history.push('/login')
             })
     }
