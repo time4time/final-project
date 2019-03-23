@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -8,8 +9,16 @@ const cors = require('cors')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
+const compression = require('compression');
+const helmet = require('helmet');
+const passport = require('passport');
 
 const app = express();
+
+app.use(compression());
+app.use(logger('dev'));
+app.use(helmet());
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -25,9 +34,9 @@ app.use(cors({
 
 
 app.use(session({
-    secret:             'secret',
+    secret:             'verysecret',
     resave:             true,
-    saveUninitialized:  true,
+    saveUninitialized:  false,
     cookie:             {
             maxAge: 1000 * 60 *60 *24 *7
     },
@@ -47,8 +56,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(passport.initialize());  
+app.use(passport.session()); 
+
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));
+app.use('/', require('./routes/authentication/auth-google'))
 app.use('/', require('./routes/authentication/signup'));
 app.use('/', require('./routes/authentication/login'));
 app.use('/', require('./routes/authentication/logout'));
@@ -76,5 +89,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

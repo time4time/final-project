@@ -11,13 +11,14 @@ var Offer = require('../../models/Offer')
 router.post('/publish-offer', function (req,res) {
 
     let addOffer = {
-        author: req.session.user._id,
-        postalCode: req.session.user._id,
-        title : req.body.title,
-        description : req.body.description,
-        date : req.body.date,
-        duration : req.body.duration,
-        category : req.body.category
+        author:         req.session.user._id,
+        postalCode:     req.body.postalcode,
+        title :         req.body.title,
+        description :   req.body.description,
+        date :          req.body.date,
+        duration :      req.body.duration,
+        category :      req.body.category,
+        status:         'open'
 
     }
 

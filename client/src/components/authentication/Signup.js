@@ -12,7 +12,9 @@ class SignUp extends Component {
         lastname:'',
         email: '',
         birth: '',
-        postalCode: ''
+        postalCode: '',
+        error: '',
+        
      }
     //take an input and update status
     handleInput = (event)=> {
@@ -30,12 +32,14 @@ class SignUp extends Component {
             url: `${config.api}/signup`,
             data: newUser,
             withCredentials : true,
-          }).then(databaseResponse => {
+        }).then(databaseResponse => {
             this.props.loggedIn(true)
-            this.props.history.push('/profile')
-          }).catch(err => {
-            this.props.history.push('/signup')
-          })
+            this.props.history.push('/dashboard')
+            
+        }).catch(err => {
+            this.setState({error: 'Username or email already taken'})
+            // this.props.history.push('/signup')
+        })
     }
 
     render() { 
@@ -44,8 +48,8 @@ class SignUp extends Component {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="column is-4 is-offset-4">
-                            <h3 className="title has-text-grey">Sign in</h3>
-                            <p className="subtitle has-text-grey">Please sign in to proceed.</p>
+                            <h3 className="title has-text-grey">Sign up</h3>
+                            <p className="subtitle has-text-grey">Please sign up to proceed.</p>
                             <div className="box">
                                 <figure className="avatar">
                                     <img src="lightscape-741984-unsplash.jpg" alt=""/>
@@ -89,11 +93,13 @@ class SignUp extends Component {
                                             </span>
                                         </p>
                                     </div>
+                                    <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                                     <button className="button is-block is-info is-large is-fullwidth" value="submit">Sign up</button>
                                 </form>
                             </div>
                             <p className="has-text-grey">Already got an account?
                                 <Link to="/login"> Login</Link>
+                                <Link to='/auth/google'>TEST GOOGLE</Link>
                             </p>
                         </div>
                     </div>

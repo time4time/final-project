@@ -7,7 +7,7 @@ const offerSchema = new Schema({
     description:        {type: String},
     date:               {type: Date},
     category:           {type: String, list: ['house', 'technology', 'music', 'repair', 'languages', 'cooking']},
-    postalCode:         {type: Schema.Types.ObjectId, ref: 'users'},
+    postalCode:         {type: String},
     status:             {type: String},
 })
 
