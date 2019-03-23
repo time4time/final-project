@@ -69,6 +69,7 @@ class Login extends Component {
                             </div>
                             <p className="has-text-grey"> New to Time4Time?
                                 <Link to="/signup"> Sign Up</Link>
+                                <Link to='/auth/google'>TEST GOOGLE</Link>
                             </p>
                         </div>
                     </div>

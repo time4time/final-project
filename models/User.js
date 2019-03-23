@@ -1,3 +1,4 @@
+const passportLocalMongoose = require('passport-local-mongoose');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -13,9 +14,20 @@ const userSchema = new Schema({
     ratings:            [{type: Schema.Types.ObjectId, ref: 'reviews'}],
     timeWallet:         {type: Number},
     offersCreated:      [{type: Schema.Types.ObjectId, ref: 'offers'}],
-    offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}]
+    offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
+
+    google: {
+        id: String,
+        token: String,
+        name: String,
+        email: String
+      }
+
 });
 
+
+userSchema.plugin(passportLocalMongoose);
 const User = mongoose.model('users', userSchema);
+
 
 module.exports = User;

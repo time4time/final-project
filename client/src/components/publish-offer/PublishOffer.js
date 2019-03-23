@@ -11,6 +11,7 @@ class PublishOffer extends Component {
         super(props)
         this.state = { 
             title:          '',
+            postalcode:     '',
             description:    '',
             date:           '',
             duration:       '',
@@ -35,7 +36,7 @@ class PublishOffer extends Component {
   
         axios({
         method: 'post',
-          url: `${config.api}/search`,
+          url: `${config.api}/publish-offer`,
           data: newOffer,
           withCredentials : true,
           
@@ -43,7 +44,7 @@ class PublishOffer extends Component {
   
             this.setState({databaseResponse})
             // this.props.loggedIn(true,this.state.username)
-            // this.props.history.push('/profile')
+            this.props.history.push('/')
           }).catch(err => {
           
         //   this.props.history.push('/')
@@ -63,18 +64,28 @@ class PublishOffer extends Component {
                     </div>
                     </div>
                 </div>
+
+                <div className="field">
+                    <label className="label">Postal code</label>
+                    <div className="control has-icons-left has-icons-right">
+                    <div className="control">
+                    <input onChange={this.handleInput} name='postalcode' className="input" type="text" placeholder="1077XT" value={this.state.postalcode}/>
+                    </div>
+                    </div>
+                </div>
+
                 <div className="field">
                     <label className="label">Description</label>
                     <div className="control has-icons-left has-icons-right">
                     <div className="control">
-                        <textarea onChange={this.handleInput} name='description 'className="textarea" placeholder="Description" value={this.state.description}></textarea>
+                        <textarea onChange={this.handleInput} name='description'className="textarea" placeholder="Description" value={this.state.description}/>
                     </div>
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Date</label>
                     <div className="control">
-                        <input onChange={this.handleInput} name='date 'className="input" type="date" placeholder="Date" value={this.state.date}/>
+                        <input onChange={this.handleInput} name='date'className="input" type="date" placeholder="Date" value={this.state.date}/>
                     </div>
                 </div>
                 <div className="field">

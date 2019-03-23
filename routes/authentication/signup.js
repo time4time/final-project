@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
+const passport = require('../passport-auth/pauth.js');
 
 
 
@@ -33,9 +34,13 @@ router.post("/signup", (req, res) => {
           User.create(newUser, (err,userCreated) => {
             if (err) res.json('error')
             else {
+
               res.cookie("username", req.body.username);
               req.session.current = userCreated._doc
-              res.json('user created');
+              passport.authenticate('local')(req, res, ()=> {
+                res.json('user created');
+              });
+              
             }
           })
         })

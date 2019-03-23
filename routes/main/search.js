@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Offer = require('../../models/Offer')
+var User = require('../../models/User')
 
 router.post('/search', function(req, res) {
 
@@ -23,11 +24,12 @@ router.post('/search', function(req, res) {
         ])
 
       .then((filteredOffer) => {
-       
-          res.json(filteredOffer)
-      })
+         User.findById(filteredOffer.author)})
+         .then((authorOffer) =>{
+            res.json(authorOffer, filteredOffer)
+         }
+        )
       .catch((err) => {
-       
           res.status(404).json({errorMessage: "Offers not found"})
       })
   });

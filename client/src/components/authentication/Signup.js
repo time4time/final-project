@@ -99,6 +99,7 @@ class SignUp extends Component {
                             </div>
                             <p className="has-text-grey">Already got an account?
                                 <Link to="/login"> Login</Link>
+                                <Link to='/auth/google'>TEST GOOGLE</Link>
                             </p>
                         </div>
                     </div>
