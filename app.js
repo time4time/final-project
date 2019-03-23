@@ -10,6 +10,8 @@ const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
 
 const app = express();
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 mongoose.connect('mongodb://localhost/timefortime', { useNewUrlParser: true }, function(err) {
    if(err) console.log("ERROR")
@@ -21,8 +23,6 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(session({
     secret:             'secret',
@@ -47,14 +47,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', require('./routes/authentication'));
+app.use('/', require('./routes/main/displayOffers'));
+app.use('/', require('./routes/main/search'));
+app.use('/', require('./routes/authentication/signup'));
+app.use('/', require('./routes/authentication/login'));
+app.use('/', require('./routes/authentication/logout'));
+app.use('/', require('./routes/authentication/auth'));
 app.use('/', require('./routes/author-profile/authorProfile'));
 app.use('/', require('./routes/dashboard/allRequests'));
 app.use('/', require('./routes/dashboard/directMessages'));
 app.use('/', require('./routes/dashboard/myPetitions'));
 app.use('/', require('./routes/dashboard/userSettings'));
-app.use('/', require('./routes/main/displayOffers'));
-app.use('/', require('./routes/main/search'));
 app.use('/', require('./routes/publish-offer/publishOffer'));
 
 
