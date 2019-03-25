@@ -1,14 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var Offer = require('../../models/Offer')
-
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+var multer = require("multer")
+var upload = multer({ dest: 'public/images' })
 
 
-// implementar sessions, con la session
-router.post('/publish-offer', function (req,res) {
+router.post('/publish-offer', upload.single('image'), function (req,res) {
     console.log(req.session.user)
     let addOffer = {
         author:         req.session.user._id,
@@ -19,7 +16,8 @@ router.post('/publish-offer', function (req,res) {
         date :          req.body.date,
         duration :      req.body.duration,
         category :      req.body.category,
-        status:         'open'
+        status:         'open',
+        image:          req.file.path
     }
 
     const newOffer = new Offer(addOffer);

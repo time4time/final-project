@@ -11,6 +11,7 @@ const offerSchema = new Schema({
     duration:           {type: Number},
     category:           {type: String, list: ['house', 'technology', 'music', 'repair', 'languages', 'cooking']},
     status:             {type: String},
+    image:              {type: String}
 })
 
 const Offer = mongoose.model('offers', offerSchema);

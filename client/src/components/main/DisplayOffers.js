@@ -5,7 +5,10 @@ import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
 
 
-//author nos va a devolver el _id, no el nombre!!
+// {this.state.users.map((user)=> 
+//     <img src={`${config.baseUrl}/${user.profilePicture}`} alt="profile"/>
+// )}
+
 
 class DisplayOffers extends Component {
 
@@ -84,6 +87,7 @@ class DisplayOffers extends Component {
                                         <div className="tile is-ancestor">
                                             <div className="tile is-child box">
                                                     <h3>{offer.title}</h3>
+                                                    <img src={`${config.api}/${offer.image}`} alt=""/>
                                                     <h4>{offer.authorUsername}</h4>
                                                     <p>{offer.description}</p>
                                                     <p>{offer.category}</p>
@@ -108,7 +112,5 @@ class DisplayOffers extends Component {
     }
 }
 
+
 export default DisplayOffers;
-
-
-
