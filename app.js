@@ -21,16 +21,17 @@ app.use(helmet());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}))
 
 mongoose.connect('mongodb://localhost/timefortime', { useNewUrlParser: true }, function(err) {
    if(err) console.log("ERROR")
    else console.log("connected")
 })
  
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-}))
+
 
 
 app.use(session({
@@ -54,14 +55,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 
 app.use(passport.initialize());  
 app.use(passport.session()); 
 
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));
-app.use('/', require('./routes/authentication/auth-google'))
+// app.use('/', require('./routes/authentication/auth-google'))
 app.use('/', require('./routes/authentication/signup'));
 app.use('/', require('./routes/authentication/login'));
 app.use('/', require('./routes/authentication/logout'));
