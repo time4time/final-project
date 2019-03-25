@@ -7,6 +7,12 @@ import config from '../config.json'
 //Named exports
 
 export const UnauthNav = class UnauthNav extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            dropdownMenu: "navbar-dropdown is-hidden"
+        }
+    }
     logMeOut = ()=> {
         axios({
             method: "post",
@@ -20,6 +26,10 @@ export const UnauthNav = class UnauthNav extends Component {
             console.log(error)
         })
     }
+    toggleDropdownMenu = () => {
+        if( this.state.dropdownMenu === "navbar-dropdown is-hidden") this.setState({dropdownMenu: "navbar-dropdown"})
+        else this.setState({dropdownMenu: "navbar-dropdown is-hidden"})
+    }
     render() { 
         return ( 
             <nav className="navbar is-transparent">
@@ -27,11 +37,22 @@ export const UnauthNav = class UnauthNav extends Component {
                     <NavLink className="navbar-item" to="https://bulma.io">
                         <img src="https://bulma.io/images/bulma-logo.png" alt="" width="112" height="28"></img>
                     </NavLink>
-                    <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <div onClick={this.toggleDropdownMenu} className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
+                </div>
+                <div className={this.state.dropdownMenu}>
+                    <NavLink onClick={this.toggleDropdownMenu} to='/' class="navbar-item">
+                    Home
+                    </NavLink>
+                    <NavLink onClick={this.toggleDropdownMenu} to="/login" className="navbar-item">
+                    Login
+                    </NavLink>
+                    <NavLink onClick={this.toggleDropdownMenu} to="/signup" className="navbar-item">
+                    Sign up
+                    </NavLink>
                 </div>
                 <div id="navbarExampleTransparentExample" className="navbar-menu">
                     <div className="navbar-start">
@@ -57,7 +78,12 @@ export const UnauthNav = class UnauthNav extends Component {
 
 
 export const AuthNav = class AuthNav extends Component {
-
+    constructor(props){
+        super(props)
+        this.state={
+            dropdownMenu: "navbar-dropdown is-hidden"
+        }
+    }
     logMeOut = ()=> {
         axios({
             method: "post",
@@ -71,6 +97,10 @@ export const AuthNav = class AuthNav extends Component {
             console.log(error)
         })
     }
+    toggleDropdownMenu = () => {
+        if( this.state.dropdownMenu === "navbar-dropdown is-hidden") this.setState({dropdownMenu: "navbar-dropdown"})
+        else this.setState({dropdownMenu: "navbar-dropdown is-hidden"})
+    }
     render() { 
         return ( 
             <nav className="navbar is-transparent">
@@ -78,11 +108,25 @@ export const AuthNav = class AuthNav extends Component {
                     <NavLink className="navbar-item" to="https://bulma.io">
                         <img src="https://bulma.io/images/bulma-logo.png" alt="" width="112" height="28"></img>
                     </NavLink>
-                    <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <div onClick={this.toggleDropdownMenu} className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
+                </div>
+                <div className={this.state.dropdownMenu}>
+                    <NavLink onClick={this.toggleDropdownMenu} to='/' class="navbar-item">
+                    Home
+                    </NavLink>
+                    <NavLink onClick={this.toggleDropdownMenu} to="/dashboard" className="navbar-item">
+                    Dashboard
+                    </NavLink>
+                    <NavLink onClick={this.toggleDropdownMenu} to="/publish-offer" className="navbar-item">
+                    Publish new offer
+                    </NavLink>
+                    <NavLink onClick={this.toggleDropdownMenu} to="/login" className="navbar-item">
+                    Logout
+                    </NavLink>
                 </div>
                 <div id="navbarExampleTransparentExample" className="navbar-menu">
                     <div className="navbar-start">

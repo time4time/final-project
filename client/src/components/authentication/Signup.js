@@ -13,8 +13,7 @@ class SignUp extends Component {
         email: '',
         birth: '',
         postalCode: '',
-        error: '',
-        
+        error: ''
      }
     //take an input and update status
     handleInput = (event)=> {

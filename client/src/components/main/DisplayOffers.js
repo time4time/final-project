@@ -5,7 +5,6 @@ import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
 
 
-//author nos va a devolver el _id, no el nombre!!
 
 class DisplayOffers extends Component {
 
@@ -14,9 +13,7 @@ class DisplayOffers extends Component {
         this.toggle = this.toggle.bind(this)
         this.state={
             toggle: false,
-            listOfOffers: [],
-            
-
+            listOfOffers: []
         }
     }
     
@@ -56,7 +53,8 @@ class DisplayOffers extends Component {
                                      <div className="tile is-ancestor">
                                          <div className="tile is-child box">
                                                  <h3>{filteredOffer.title}</h3>
-                                                 <h4>{filteredOffer.author}</h4>
+                                                 <img src={`${config.api}/${filteredOffer.image}`} alt=""/>
+                                                 <h4>{filteredOffer.authorUsername}</h4>
                                                  <p>{filteredOffer.description}</p>
                                                  <p>{filteredOffer.category}</p>
                                              <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
@@ -65,6 +63,7 @@ class DisplayOffers extends Component {
                                      <OfferModal close={this.toggle} 
                                          toggle={this.state.toggle === filteredOffer._id} 
                                          title={filteredOffer.title} 
+                                         image={filteredOffer.image}
                                          author={filteredOffer.author} 
                                          description={filteredOffer.description} 
                                          category={filteredOffer.category}
@@ -86,7 +85,8 @@ class DisplayOffers extends Component {
                                         <div className="tile is-ancestor">
                                             <div className="tile is-child box">
                                                     <h3>{offer.title}</h3>
-                                                    <h4>{offer.author}</h4>
+                                                    <img src={`${config.api}/${offer.image}`} alt=""/>
+                                                    <h4>{offer.authorUsername}</h4>
                                                     <p>{offer.description}</p>
                                                     <p>{offer.category}</p>
                                                 <Link className='btn' onClick={()=> {this.toggle(offer._id)}}> Open offer</Link>
@@ -95,6 +95,7 @@ class DisplayOffers extends Component {
                                         <OfferModal close={this.toggle} 
                                             toggle={this.state.toggle === offer._id} 
                                             title={offer.title} 
+                                            image={offer.image}
                                             author={offer.author} 
                                             description={offer.description} 
                                             category={offer.category}
@@ -110,7 +111,5 @@ class DisplayOffers extends Component {
     }
 }
 
+
 export default DisplayOffers;
-
-
-

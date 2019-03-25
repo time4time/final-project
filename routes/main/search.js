@@ -22,16 +22,11 @@ router.post('/search', function(req, res) {
             ]},
             {status:'open'}
         ])
-
       .then((filteredOffer) => {
-         User.findById(filteredOffer.author)})
-         .then((authorOffer) =>{
-            res.json(authorOffer, filteredOffer)
-         }
-        )
+          res.json(filteredOffer)})
       .catch((err) => {
           res.status(404).json({errorMessage: "Offers not found"})
       })
-  });
+})
 
 module.exports = router;

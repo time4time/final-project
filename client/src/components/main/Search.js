@@ -35,23 +35,17 @@ class Search extends Component {
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
-      
-        let newSearch = this.state
-        console.log(this.state)
-  
+        let newSearch = this.state  
         axios({
         method: 'post',
           url: `${config.api}/search`,
           data: newSearch,
           withCredentials : true,
-          
           }).then(databaseResponse => {
-  
             this.setState({databaseResponse})
-            // this.props.loggedIn(true,this.state.username)
-            // this.props.history.push('/profile')
           }).catch(err => {
-          
+
+            
         //   this.props.history.push('/')
           })
     }

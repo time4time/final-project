@@ -16,7 +16,9 @@ class PublishOffer extends Component {
             date:           '',
             duration:       '',
             category:       '',
+            error:          ''
         }
+        this.form = React.createRef()
     }
 
     //input postal code
@@ -30,23 +32,19 @@ class PublishOffer extends Component {
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
-      
-        let newOffer = this.state
-        console.log(this.state)
-  
+        // let newOffer = this.state  
+        let newOffer = new FormData(this.form.current)
         axios({
         method: 'post',
           url: `${config.api}/publish-offer`,
+          config: {headers: {'Content-Type': 'multipart/form-data'}},
           data: newOffer,
-          withCredentials : true,
-          
+          withCredentials : true
           }).then(databaseResponse => {
-  
             this.setState({databaseResponse})
-            // this.props.loggedIn(true,this.state.username)
             this.props.history.push('/')
           }).catch(err => {
-          
+            this.setState({error: "Something went wrong! Your offer was not published"})
         //   this.props.history.push('/')
           })
     }
@@ -54,7 +52,7 @@ class PublishOffer extends Component {
     render() { 
         return ( 
             <>
-            <form onSubmit={this.handleSubmit}>
+            <form ref={this.form} onSubmit={this.handleSubmit}>
                
                 <div className="field">
                     <label className="label">Title</label>
@@ -109,6 +107,13 @@ class PublishOffer extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="field">
+                    <label className="label">Image</label>
+                    <div className="control">
+                        <input onChange={this.handleInput} name='image' className="input" type="file"/>
+                    </div>
+                </div>
+                <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                 <div className="field is-grouped">
                     <div className="control">
                         <button className="button is-link">Submit</button>
