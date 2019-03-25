@@ -29,6 +29,7 @@ class OfferModal extends Component {
                     <div className="modal-card">
                         <header className="modal-card-head">
                             <p className="modal-card-title">{this.props.title}</p>
+                            <img src={`${config.api}/${this.props.image}`} alt=""/>
                             <Link>
                                 <button className="delete" onClick={this.props.close} aria-label="close"></button>
                             </Link>
@@ -56,7 +57,6 @@ class OfferModal extends Component {
                             <p>2 hours</p>
                         </section>
                         <footer className="modal-card-foot">
-                        {/* <button className="button is-success"> Close</button>  */}
                             <Link>
                                 <button className="button is-success">Apply </button>
                             </Link>

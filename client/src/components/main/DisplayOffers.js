@@ -5,10 +5,6 @@ import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
 
 
-// {this.state.users.map((user)=> 
-//     <img src={`${config.baseUrl}/${user.profilePicture}`} alt="profile"/>
-// )}
-
 
 class DisplayOffers extends Component {
 
@@ -57,6 +53,7 @@ class DisplayOffers extends Component {
                                      <div className="tile is-ancestor">
                                          <div className="tile is-child box">
                                                  <h3>{filteredOffer.title}</h3>
+                                                 <img src={`${config.api}/${filteredOffer.image}`} alt=""/>
                                                  <h4>{filteredOffer.authorUsername}</h4>
                                                  <p>{filteredOffer.description}</p>
                                                  <p>{filteredOffer.category}</p>
@@ -66,6 +63,7 @@ class DisplayOffers extends Component {
                                      <OfferModal close={this.toggle} 
                                          toggle={this.state.toggle === filteredOffer._id} 
                                          title={filteredOffer.title} 
+                                         image={filteredOffer.image}
                                          author={filteredOffer.author} 
                                          description={filteredOffer.description} 
                                          category={filteredOffer.category}
@@ -97,6 +95,7 @@ class DisplayOffers extends Component {
                                         <OfferModal close={this.toggle} 
                                             toggle={this.state.toggle === offer._id} 
                                             title={offer.title} 
+                                            image={offer.image}
                                             author={offer.author} 
                                             description={offer.description} 
                                             category={offer.category}

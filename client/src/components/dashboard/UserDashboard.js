@@ -32,7 +32,7 @@ class UserDashboard extends Component {
                         My petitions
                     </p>
                     <ul className="menu-list">
-                        <li><Link onClick={()=> {this.openSection('my petitions')}}>Pending requests</Link></li>
+                        <li><Link onClick={()=> {this.openSection('my petitions')}}>Pending petitions</Link></li>
                         <li><Link onClick={()=> {this.openSection('my petitions')}}>History</Link></li>
                     </ul>
                     <p className="menu-label"><Link onClick={()=> {this.openSection('messages')}}>
@@ -42,7 +42,7 @@ class UserDashboard extends Component {
                         Settings
                     </Link></p>
                 </aside>
-                <div className="mysection">
+                <div>
                 {(() => {
                     switch(this.state.activeSection) {
                         case 'all requests':
