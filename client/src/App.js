@@ -59,7 +59,7 @@ class App extends Component {
                 }
             </header>
             <Switch>
-                <Route exact path='/' render={(props) => <Main showNotifications={this.showNotifications}{...props}/>} />
+                <Route exact path='/' render={(props) => <Main showNotifications={this.showNotifications} {...props} {...this.state}/>} />
                 {/* En dashboard habra que pasar algun tipo de props o algo para por si queremos ir directamente a mensajes */}
                 <Route path='/login'  render={(props) => <Login {...props} loggedIn={this.loggedIn}/>} />
                 <Route path='/signup'  render={(props) => <Signup {...props} loggedIn={this.loggedIn}/>} /> 
