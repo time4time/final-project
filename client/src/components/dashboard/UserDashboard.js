@@ -10,7 +10,7 @@ class UserDashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeSection: 'all requests'
+            activeSection: 'all requests',
         }
         this.openSection = this.openSection.bind(this)
     }
@@ -25,14 +25,17 @@ class UserDashboard extends Component {
                         All requests
                     </p>
                     <ul className="menu-list">
-                        <li><Link onClick={()=> {this.openSection('all requests')}}>Pending requests</Link></li>
+                        <li><Link onClick={()=> {this.openSection('all requests')}}>Pending requests <i className="fas fa-bolt"></i></Link></li>
                         <li><Link onClick={()=> {this.openSection('all requests')}}>History</Link></li>
                     </ul>
                     <p className="menu-label">
                         My petitions
                     </p>
                     <ul className="menu-list">
-                        <li><Link onClick={()=> {this.openSection('my petitions')}}>Pending petitions</Link></li>
+                        <li><Link onClick={()=> {this.openSection('my petitions')}}>Pending petitions &nbsp;  
+                        { this.props.petitionNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
+                        </Link>
+                        </li>
                         <li><Link onClick={()=> {this.openSection('my petitions')}}>History</Link></li>
                     </ul>
                     <p className="menu-label"><Link onClick={()=> {this.openSection('messages')}}>

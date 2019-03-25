@@ -124,6 +124,7 @@ export const AuthNav = class AuthNav extends Component {
                     <NavLink onClick={this.toggleDropdownMenu} to="/publish-offer" className="navbar-item">
                     Publish new offer
                     </NavLink>
+                    <NavLink className='title is-1 is-spaced'>Hello, {this.props.username}</NavLink>
                     <NavLink onClick={this.toggleDropdownMenu} to="/login" className="navbar-item">
                     Logout
                     </NavLink>

@@ -17,7 +17,8 @@ router.post('/publish-offer', upload.single('image'), function (req,res) {
         duration :      req.body.duration,
         category :      req.body.category,
         status:         'open',
-        image:          req.file.path
+        image:          req.file.path,
+        userRequest:    ''
     }
 
     const newOffer = new Offer(addOffer);

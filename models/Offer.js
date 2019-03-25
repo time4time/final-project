@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const offerSchema = new Schema({
     author:             {type: Schema.Types.ObjectId, ref: 'users'},
     authorUsername:     {type: String},
     postalCode:         {type: String},
     title:              {type: String},
     description:        {type: String},
-    date:               {type: Date},
+    date:               {type: Date  },
     duration:           {type: Number},
-    category:           {type: String, list: ['house', 'technology', 'music', 'repair', 'languages', 'cooking']},
-    status:             {type: String},
+    category:           {type: String, list: ['House', 'Technology', 'Music', 'Repair', 'Languages', 'Cooking']},
+    status:             {type: String, enum: ['Open', 'Pending', 'Approved']},
+    userRequest:        {type: String},
     image:              {type: String}
 })
 

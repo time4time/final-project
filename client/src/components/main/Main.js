@@ -4,6 +4,7 @@ import Search from './Search'
 import DisplayMap from './DisplayMap'
 
 
+
 //first page(render map, search, this component it's public)
 class Main extends Component {
     state = { 
@@ -16,7 +17,7 @@ class Main extends Component {
             <Link to='/publish-offer'>
                 <button className="button is-success">Publish offer!</button>
             </Link>
-            <Search/>
+            <Search {...this.props}/>
             <DisplayMap />
             </>
          );

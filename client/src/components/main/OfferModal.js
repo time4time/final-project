@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
-import axios from 'axios';
+import axios from 'axios'
 
 const display = {
     display: 'block'
@@ -17,9 +17,32 @@ class OfferModal extends Component {
         author: '',
         description: '',
         category: '',
+        
 
     }
 
+
+    handleSubmit=(event) =>{
+        this.props.showNotifications('petitionNotification')
+        event.preventDefault();
+        axios({
+          method: "post",
+          url: `${config.api}/apply`,
+         data:{offerId:this.props.offerIdentificator},
+          withCredentials: true,
+        })
+        .then(responseFromApi => {
+        //   this.setState({
+        //     listOfOffers: responseFromApi.data
+        //   })
+        this.props.history.push('/dashboard')
+        })
+        .catch(err => {
+            console.log(err)
+
+        })
+
+      }
 
 
     render() { 
@@ -29,7 +52,6 @@ class OfferModal extends Component {
                     <div className="modal-card">
                         <header className="modal-card-head">
                             <p className="modal-card-title">{this.props.title}</p>
-                            <img src={`${config.api}/${this.props.image}`} alt=""/>
                             <Link>
                                 <button className="delete" onClick={this.props.close} aria-label="close"></button>
                             </Link>
@@ -40,9 +62,8 @@ class OfferModal extends Component {
                                 <img src="lightscape-741984-unsplash.jpg" alt=''></img>
                             </p>
                                 <div className="content">
-                                    <p className="modal-card-title">Name: </p>
-                                    <p>{this.props.author}</p>
-                                    <p className="modal-card-title">Time in the app: </p>
+                                    <p className="modal-card-title">Name </p>
+                                    <p>{this.props.authorUsername}</p>
                                     <p className="modal-card-title">Califications </p>
                                     <Link>
                                         <button className="button is-success">See more</button>
@@ -51,14 +72,18 @@ class OfferModal extends Component {
                             </div>
                         <h1 className="modal-card-title">Description</h1>
                             <p>{this.props.description}</p>
+                        
+                            <img src={`${config.api}/${this.props.image}`} alt=""/>
+                        
+                        <h1 className="modal-card-title">Category</h1>
                             <p>{this.props.category}</p>
                         <h1 className="modal-card-title">Date</h1>
-                            <p>algun dia a las 12:30 pm</p>
-                            <p>2 hours</p>
+                            <p>{this.props.dateOffer}</p>
+                            <p></p>
                         </section>
                         <footer className="modal-card-foot">
                             <Link>
-                                <button className="button is-success">Apply </button>
+                                <button onClick={this.handleSubmit} className="button is-success">Apply </button>
                             </Link>
                         </footer>
                     </div>

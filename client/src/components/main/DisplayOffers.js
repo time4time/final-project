@@ -60,13 +60,16 @@ class DisplayOffers extends Component {
                                              <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
                                          </div>
                                      </div>
-                                     <OfferModal close={this.toggle} 
+                                     <OfferModal  {...this.props} close={this.toggle} 
                                          toggle={this.state.toggle === filteredOffer._id} 
+                                         offerIdentificator={filteredOffer._id}
                                          title={filteredOffer.title} 
                                          image={filteredOffer.image}
                                          author={filteredOffer.author} 
+                                         authorUsername={filteredOffer.authorUsername}
                                          description={filteredOffer.description} 
                                          category={filteredOffer.category}
+                                         dateOffer={filteredOffer.date}
                                      />
                                  </div>
                              )})
@@ -85,20 +88,24 @@ class DisplayOffers extends Component {
                                         <div className="tile is-ancestor">
                                             <div className="tile is-child box">
                                                     <h3>{offer.title}</h3>
-                                                    <img src={`${config.api}/${offer.image}`} alt=""/>
+                                                    {/* <img src={`${config.api}/${offer.image}`} alt=""/> */}
                                                     <h4>{offer.authorUsername}</h4>
                                                     <p>{offer.description}</p>
                                                     <p>{offer.category}</p>
                                                 <Link className='btn' onClick={()=> {this.toggle(offer._id)}}> Open offer</Link>
                                             </div>
                                         </div>
-                                        <OfferModal close={this.toggle} 
+                                        <OfferModal {...this.props} close={this.toggle} 
                                             toggle={this.state.toggle === offer._id} 
+                                            offerIdentificator={offer._id}
                                             title={offer.title} 
                                             image={offer.image}
-                                            author={offer.author} 
+                                            author={offer.author}
+                                            authorUsername={offer.authorUsername} 
                                             description={offer.description} 
                                             category={offer.category}
+                                            dateOffer={offer.date}
+
                                         />
                                     </div>
                                 )})
