@@ -100,7 +100,7 @@ class Search extends Component {
             </form>
            
         
-            <DisplayOffers filteredOffers={this.state.databaseResponse}
+            <DisplayOffers {...this.props} filteredOffers={this.state.databaseResponse}
             
             
             

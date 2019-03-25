@@ -8,14 +8,14 @@ import PublishOffer from './components/publish-offer/PublishOffer'
 import Login from './components/authentication/Login'
 import Signup from './components/authentication/Signup'
 import AuthorProfile from './components/author-profile/AuthorProfile'
-
 import { UnauthNav, AuthNav } from './components/Nav';
-
 
 class App extends Component {
     state = {
         loggedIn : false,
         username : "",
+        requestNotification: false,
+        petitionNotification: false,
     }
 
     loggedIn = (aBoolean, username) => {
@@ -32,23 +32,39 @@ class App extends Component {
         })
     }
 
+    showNotifications = (notification) => {
+        debugger
+        console.log('entro en show notifications')
+        if(notification === 'requestNotification'){
+            this.setState({
+                requestNotification: true
+            })
+        }else if(notification === 'petitionNotification'){
+            this.setState({
+                petitionNotification: true
+            })
+
+        }
+
+    }
+
     render() {
         return (
             <div className="App">
             <header> 
                 {/* <Nav {...this.state} logOut={this.logOut} /> */}
                 {this.state.loggedIn ?
-                    <AuthNav logOut={this.logOut} /> :
-                    <UnauthNav logOut={this.logOut} />
+                    <AuthNav {...this.state} /> :
+                    <UnauthNav {...this.state} />
                 }
             </header>
             <Switch>
-                <Route exact path='/' render={(props) => <Main {...props}/>} />
+                <Route exact path='/' render={(props) => <Main showNotifications={this.showNotifications}{...props}/>} />
                 {/* En dashboard habra que pasar algun tipo de props o algo para por si queremos ir directamente a mensajes */}
                 <Route path='/login'  render={(props) => <Login {...props} loggedIn={this.loggedIn}/>} />
                 <Route path='/signup'  render={(props) => <Signup {...props} loggedIn={this.loggedIn}/>} /> 
                 {/* <Route path='/dashboard' render={(props) => <UserDashboard {...props} />} /> */}
-                <PrivateRoute path='/dashboard' component={UserDashboard} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
+                <PrivateRoute path='/dashboard' component={UserDashboard} {...this.state} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
                 {/* <Route path='/publish-offer'  render={(props) => <PublishOffer {...props} />} /> */}
                 <PrivateRoute path='/publish-offer'  component={PublishOffer} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
                 {/* <Route path='/profile:id'  render={(props) => <AuthorProfile {...props} />} /> */}

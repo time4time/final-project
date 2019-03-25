@@ -11,8 +11,8 @@ const offerSchema = new Schema({
     date:               {type: Date  },
     duration:           {type: Number},
     category:           {type: String, list: ['House', 'Technology', 'Music', 'Repair', 'Languages', 'Cooking']},
-    status:             {type: String, enum: ['open', 'pending', 'close']},
-    usersRequest:       [{type: String}],
+    status:             {type: String, enum: ['Open', 'Pending', 'Approved']},
+    userRequest:        {type: String},
     image:              {type: String}
 })
 

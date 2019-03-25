@@ -60,7 +60,7 @@ class DisplayOffers extends Component {
                                              <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
                                          </div>
                                      </div>
-                                     <OfferModal close={this.toggle} 
+                                     <OfferModal  {...this.props} close={this.toggle} 
                                          toggle={this.state.toggle === filteredOffer._id} 
                                          offerIdentificator={filteredOffer._id}
                                          title={filteredOffer.title} 
@@ -95,9 +95,9 @@ class DisplayOffers extends Component {
                                                 <Link className='btn' onClick={()=> {this.toggle(offer._id)}}> Open offer</Link>
                                             </div>
                                         </div>
-                                        <OfferModal close={this.toggle} 
+                                        <OfferModal {...this.props} close={this.toggle} 
                                             toggle={this.state.toggle === offer._id} 
-                                            offerIdentificator={filteredOffer._id}
+                                            offerIdentificator={offer._id}
                                             title={offer.title} 
                                             image={offer.image}
                                             author={offer.author}

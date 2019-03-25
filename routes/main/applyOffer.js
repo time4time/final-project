@@ -3,17 +3,26 @@ var router = express.Router();
 var Offer = require('../../models/Offer')
 
 router.post('/apply', function(req, res, next) {
-    let offerId = req.body.plantId;
+    debugger
+    let offerId = req.body.offerId;
     let username = req.session.user.username;
 
-    Offer.findByIdAndUpdate(offerId, { $push: {status:'pending',username:username}})
+    // console.log(offerId)
+    // console.log(username)
+    // console.log(req.body)
+
+    Offer.findByIdAndUpdate(offerId,  
+        {$set:{userRequest:username,status:'pending'}})
         .then(() => { 
             console.log('update!');
-            res.json({message: "offer saved"});
+            res.json({message: "update"});
         })
         .catch(err => { 
-            res.json({message: "error"});
+            res.json({message: "not updated"});
         });
-});
 
 
+        
+    })
+
+module.exports = router;

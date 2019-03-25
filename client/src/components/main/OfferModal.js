@@ -17,25 +17,31 @@ class OfferModal extends Component {
         author: '',
         description: '',
         category: '',
+        
 
     }
 
 
-    //pasar los campos como props, y enviar dato a la base de datos con post
     handleSubmit=(event) =>{
-        debugger
+        this.props.showNotifications('petitionNotification')
         event.preventDefault();
         axios({
           method: "post",
           url: `${config.api}/apply`,
-          data: this.props.offerIdentificator,
-          withCredentials: true
+         data:{offerId:this.props.offerIdentificator},
+          withCredentials: true,
         })
         .then(responseFromApi => {
-          this.setState({
-            listOfOffers: responseFromApi.data
-          })
+        //   this.setState({
+        //     listOfOffers: responseFromApi.data
+        //   })
+        this.props.history.push('/dashboard')
         })
+        .catch(err => {
+            console.log(err)
+
+        })
+
       }
 
 
