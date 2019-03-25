@@ -9,6 +9,7 @@ class MyPetitions extends Component {
     render() { 
         return (
             <>
+            My petitions
             </>
         );
     }

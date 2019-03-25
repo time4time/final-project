@@ -9,6 +9,7 @@ class AllRequests extends Component {
     render() { 
         return (
             <>
+            All requests
             </>
         );
     }

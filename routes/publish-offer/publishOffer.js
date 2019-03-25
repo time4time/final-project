@@ -9,9 +9,10 @@ var Offer = require('../../models/Offer')
 
 // implementar sessions, con la session
 router.post('/publish-offer', function (req,res) {
-
+    console.log(req.session.user)
     let addOffer = {
         author:         req.session.user._id,
+        authorUsername: req.session.user.username,
         postalCode:     req.body.postalcode,
         title :         req.body.title,
         description :   req.body.description,
@@ -19,7 +20,6 @@ router.post('/publish-offer', function (req,res) {
         duration :      req.body.duration,
         category :      req.body.category,
         status:         'open'
-
     }
 
     const newOffer = new Offer(addOffer);

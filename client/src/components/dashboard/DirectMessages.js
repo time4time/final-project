@@ -5,6 +5,7 @@ class DirectMessages extends Component {
     render() { 
         return (
             <>
+            Messages
             </>
         );
     }

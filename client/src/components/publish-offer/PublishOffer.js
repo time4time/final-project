@@ -30,10 +30,7 @@ class PublishOffer extends Component {
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
-      
-        let newOffer = this.state
-        console.log(this.state)
-  
+        let newOffer = this.state  
         axios({
         method: 'post',
           url: `${config.api}/publish-offer`,
@@ -41,9 +38,7 @@ class PublishOffer extends Component {
           withCredentials : true,
           
           }).then(databaseResponse => {
-  
             this.setState({databaseResponse})
-            // this.props.loggedIn(true,this.state.username)
             this.props.history.push('/')
           }).catch(err => {
           

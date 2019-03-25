@@ -14,9 +14,7 @@ class DisplayOffers extends Component {
         this.toggle = this.toggle.bind(this)
         this.state={
             toggle: false,
-            listOfOffers: [],
-            
-
+            listOfOffers: []
         }
     }
     
@@ -56,7 +54,7 @@ class DisplayOffers extends Component {
                                      <div className="tile is-ancestor">
                                          <div className="tile is-child box">
                                                  <h3>{filteredOffer.title}</h3>
-                                                 <h4>{filteredOffer.author}</h4>
+                                                 <h4>{filteredOffer.authorUsername}</h4>
                                                  <p>{filteredOffer.description}</p>
                                                  <p>{filteredOffer.category}</p>
                                              <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
@@ -86,7 +84,7 @@ class DisplayOffers extends Component {
                                         <div className="tile is-ancestor">
                                             <div className="tile is-child box">
                                                     <h3>{offer.title}</h3>
-                                                    <h4>{offer.author}</h4>
+                                                    <h4>{offer.authorUsername}</h4>
                                                     <p>{offer.description}</p>
                                                     <p>{offer.category}</p>
                                                 <Link className='btn' onClick={()=> {this.toggle(offer._id)}}> Open offer</Link>

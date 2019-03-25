@@ -5,6 +5,7 @@ class UserSettings extends Component {
     render() { 
         return (
             <>
+            Settings
             </>
         );
     }
