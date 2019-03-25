@@ -70,6 +70,7 @@ app.use('/', require('./routes/authentication/logout'));
 app.use('/', require('./routes/authentication/auth'));
 app.use('/', require('./routes/author-profile/authorProfile'));
 app.use('/', require('./routes/main/applyOffer'))
+app.use('/', require('./routes/dashboard/myProfile'));
 app.use('/', require('./routes/dashboard/allRequests'));
 app.use('/', require('./routes/dashboard/directMessages'));
 app.use('/', require('./routes/dashboard/myPetitions'));

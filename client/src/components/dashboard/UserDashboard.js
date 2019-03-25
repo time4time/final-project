@@ -5,6 +5,7 @@ import AllRequests from './AllRequests.js'
 import MyPetitions from './MyPetitions'
 import DirectMessages from './DirectMessages'
 import UserSettings from './UserSettings'
+import MyProfile from './MyProfile'
 
 class UserDashboard extends Component {
     constructor(props) {
@@ -41,6 +42,9 @@ class UserDashboard extends Component {
                     <p className="menu-label"><Link onClick={()=> {this.openSection('messages')}}>
                         Direct messages
                     </Link></p>
+                    <p className="menu-label"><Link onClick={()=> {this.openSection('profile')}}>
+                        Profile
+                    </Link></p>
                     <p className="menu-label"><Link onClick={()=> {this.openSection('settings')}}>
                         Settings
                     </Link></p>
@@ -54,6 +58,8 @@ class UserDashboard extends Component {
                             return <MyPetitions />;
                         case 'messages':
                             return <DirectMessages />
+                        case 'profile':
+                            return <MyProfile />
                         case 'settings':
                             return <UserSettings />
                         default:

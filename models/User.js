@@ -15,6 +15,7 @@ const userSchema = new Schema({
     timeWallet:         {type: Number},
     offersCreated:      [{type: Schema.Types.ObjectId, ref: 'offers'}],
     offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
+    profileImage:       {type: String},
 
     google: {
         id: String,

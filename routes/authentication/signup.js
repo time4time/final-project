@@ -28,7 +28,8 @@ router.post("/signup", (req, res) => {
             birth:            req.body.birth,
             postalCode:       req.body.postalcode,
             password:         hash,
-            registrationDate: Date.now()
+            registrationDate: Date.now(),
+            profileImage:     ''
             
           }
           User.create(newUser, (err,userCreated) => {
