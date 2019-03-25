@@ -6,7 +6,7 @@ var upload = multer({ dest: 'public/images' })
 
 
 router.post('/publish-offer', upload.single('image'), function (req,res) {
-    console.log(req.session.user)
+    debugger
     let addOffer = {
         author:         req.session.user._id,
         authorUsername: req.session.user.username,
@@ -16,17 +16,18 @@ router.post('/publish-offer', upload.single('image'), function (req,res) {
         date :          req.body.date,
         duration :      req.body.duration,
         category :      req.body.category,
-        status:         'open',
+        status:         'Open',
         image:          req.file.path,
         userRequest:    ''
     }
-
     const newOffer = new Offer(addOffer);
     newOffer.save()
     .then((newOfferDocument) => {
+        debugger
         res.json(newOfferDocument)
     })
     .catch((err) => {
+        debugger
         res.status(404).json({errorMessage: "offer not created"})
     })
 
