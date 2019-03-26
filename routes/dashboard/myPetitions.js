@@ -8,7 +8,7 @@ router.get('/my-petitions', function(req, res, next) {
     
 //   Offer.find()
 //       .and([
-//         {status:'pending'},
+//         {status:'Pending'},
 //         {userRequest: username}])
 //         .then((pendingRequests) =>{
 //             res.json(pendingRequests)

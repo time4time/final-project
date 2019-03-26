@@ -45,8 +45,10 @@ class MyProfile extends Component {
                     </div>
                     </div>
                     <div className="content">
-                        <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hours</p>
+
+                        <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hour(s)</p>
                         <p><Moment format="D MMM YYYY" withTitle>{this.state.profileInfo.registrationDate}</Moment></p>
+
                     </div>
                 </div>
             </div>

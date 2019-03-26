@@ -21,6 +21,8 @@ router.post('/publish-offer', upload.single('image'), function (req,res) {
         image:          req.file.path,
         userRequest:    ''
     }
+
+
     const newOffer = new Offer(addOffer);
     newOffer.save()
     .then((newOfferDocument) => {
