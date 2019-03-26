@@ -46,7 +46,7 @@ class AuthorProfile extends Component {
                         <h2>Name: </h2>
                         <p>John Doe</p>
                         <h3>Time in the app: </h3>
-                        <h3>Califications: </h3>
+                        <h3>Ratings: </h3>
                         <h3>Bio:</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Phasellus nec iaculis mauris.</p>
