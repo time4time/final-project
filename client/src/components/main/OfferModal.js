@@ -16,14 +16,11 @@ class OfferModal extends Component {
         title: '',
         author: '',
         description: '',
-        category: '',
-        
-
+        category: ''
     }
 
-
     handleSubmit=(event) =>{
-        this.props.showNotifications('petitionNotification')
+        // this.props.showNotifications('petitionNotification')
         event.preventDefault();
         axios({
           method: "post",
@@ -32,18 +29,17 @@ class OfferModal extends Component {
           withCredentials: true,
         })
         .then(responseFromApi => {
-        //   this.setState({
-        //     listOfOffers: responseFromApi.data
-        //   })
         this.props.history.push('/dashboard')
         })
         .catch(err => {
             console.log(err)
 
         })
+    }
 
-      }
-
+    redirectToLogin = () => {
+        this.props.history.push('/login')
+    }
 
     render() { 
         return (
@@ -83,7 +79,10 @@ class OfferModal extends Component {
                         </section>
                         <footer className="modal-card-foot">
                             <Link>
-                                <button onClick={this.handleSubmit} className="button is-success">Apply </button>
+                            {this.props.loggedIn ?
+                                <button onClick={this.handleSubmit} className="button is-success">Apply </button>:
+                                <button onClick={this.redirectToLogin} className="button is-dark">Apply </button>
+                        }
                             </Link>
                         </footer>
                     </div>
@@ -91,5 +90,6 @@ class OfferModal extends Component {
         );
     }
 }
- 
+
+
 export default OfferModal;

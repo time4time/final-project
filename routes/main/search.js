@@ -20,7 +20,7 @@ router.post('/search', function(req, res) {
             {category:music}, {category: repair},
             {category: languages}, {category: cooking}
             ]},
-            {status:'open'}
+            {status:'Open'}
         ])
       .then((filteredOffer) => {
         //   debugger
