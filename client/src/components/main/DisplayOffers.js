@@ -70,6 +70,7 @@ class DisplayOffers extends Component {
                                          description={filteredOffer.description} 
                                          category={filteredOffer.category}
                                          dateOffer={filteredOffer.date}
+                                         durationOffer={filteredOffer.duration}
                                      />
                                  </div>
                              )})
@@ -105,6 +106,7 @@ class DisplayOffers extends Component {
                                             description={offer.description} 
                                             category={offer.category}
                                             dateOffer={offer.date}
+                                            durationOffer={offer.duration}
 
                                         />
                                     </div>
