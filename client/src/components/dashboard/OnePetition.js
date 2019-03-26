@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment'
+
 
 class OnePetition extends Component {
     render() { 
@@ -11,9 +13,9 @@ class OnePetition extends Component {
                 </header>
                 <div className="card-content">
                     <div className="content">
-                    {this.props.authorUsername}
-                    <time datetime="2016-1-1">{this.props.date}></time>
-                    <p>{this.props.duration}</p>
+                    <p>Author {this.props.authorUsername}</p>
+                    <p>Date <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
+                    <p>Duration {this.props.duration} hour(s)</p>
                     </div>
                 </div>
                 <footer className="card-footer">

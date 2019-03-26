@@ -11,11 +11,6 @@ router.get('/display-offers', function(req, res, next) {
   Offer.find({status:'Open'})
 
     .then((allOffers) => {
-        // debugger
-        // for(i=0;i<allOffers.length;i++){
-        //     let parsedDate = moment(allOffers[i].date).format('dd/mm/yyyy')
-        //     allOffers[i].parsedDate=parsedDate
-        // }
         res.json(allOffers)
     })
     .catch((err) => {

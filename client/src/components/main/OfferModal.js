@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
 import axios from 'axios'
+import Moment from 'react-moment';
 
 const display = {
     display: 'block'
@@ -19,9 +20,6 @@ class OfferModal extends Component {
         category: '',
         errorTimeWallet: ''
     }
-
-
-
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -98,8 +96,9 @@ class OfferModal extends Component {
                         <h1 className="modal-card-title">Category</h1>
                             <p>{this.props.category}</p>
                         <h1 className="modal-card-title">Date</h1>
-                            <p>{this.props.dateOffer}</p>
-                            <p></p>
+                            <p><Moment format="D MMM YYYY" withTitle>{this.props.dateOffer}</Moment></p>
+                        <h1 className="modal-card-title">Duration</h1>
+                            <p>{this.props.durationOffer} hour(s)</p>
                         </section>
                         <footer className="modal-card-foot">
                             <Link>

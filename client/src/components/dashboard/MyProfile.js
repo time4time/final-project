@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import config from '../../config.json'
+import Moment from 'react-moment'
 
-
-//axios request para sacar info del perfil
-//hacer lo de la image del tutorial de jurgen
 
 class MyProfile extends Component {
     state = { 
         profileInfo: {}
      }
+    
     getProfileInfo = () =>{
         axios({
           method: "get",
@@ -30,6 +29,7 @@ class MyProfile extends Component {
         this.getProfileInfo();
     }
     render() { 
+   
         return (
             <div className="card">
                 <div className="card-image">
@@ -45,8 +45,10 @@ class MyProfile extends Component {
                     </div>
                     </div>
                     <div className="content">
+
                         <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hour(s)</p>
-                        <time datetime="2016-1-1">{this.state.profileInfo.registrationDate}</time>
+                        <p><Moment format="D MMM YYYY" withTitle>{this.state.profileInfo.registrationDate}</Moment></p>
+
                     </div>
                 </div>
             </div>
