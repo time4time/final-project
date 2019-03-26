@@ -17,4 +17,14 @@ router.get('/my-offers-requested', function(req, res, next) {
         })
 });
 
+router.post('/approve-offer', function(req, res, next) {
+    Offer.findByIdAndUpdate(req.body.offerId, {status: 'Approved'})
+    .then((offerApproved) => {
+        res.json(offerApproved)
+    })
+    .catch((err) => {
+        res.status(404).json({errorMessage: 'Offer could not be approved'})
+    })
+})
+
 module.exports = router;
