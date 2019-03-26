@@ -124,7 +124,10 @@ export const AuthNav = class AuthNav extends Component {
                     <NavLink onClick={this.toggleDropdownMenu} to="/publish-offer" className="navbar-item">
                     Publish new offer
                     </NavLink>
-                    <NavLink onClick={this.toggleDropdownMenu} to="/login" className="navbar-item">
+                    <NavLink onClick={() => {
+                        this.toggleDropdownMenu()
+                        this.logMeOut()
+                        }} to="/login" className="navbar-item">
                     Logout
                     </NavLink>
                 </div>
@@ -148,8 +151,6 @@ export const AuthNav = class AuthNav extends Component {
                                     </NavLink>
                                 </p>
                                 <p className="control">Hello, <NavLink to="/dashboard">{this.props.username}</NavLink></p>
-                                {/* <NavLink className='title is-1 is-spaced'>Hello, {this.props.username}</NavLink> */}
-
                                 <p className="control">
                                     <NavLink to="/login" onClick={this.logMeOut}>Logout</NavLink>
                                 </p>

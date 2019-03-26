@@ -54,7 +54,7 @@ class App extends Component {
             <header> 
                 {/* <Nav {...this.state} logOut={this.logOut} /> */}
                 {this.state.loggedIn ?
-                    <AuthNav {...this.state} /> :
+                    <AuthNav {...this.state} logOut={this.logOut}/> :
                     <UnauthNav {...this.state} />
                 }
             </header>

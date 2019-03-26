@@ -85,6 +85,12 @@ class SignUp extends Component {
                                         </div>
                                     </div>
                                     <div className="field">
+                                        <label className="label">Time wallet:</label>
+                                        <div className="control">
+                                            <p>When you sign up you get 2 hours to spend!</p>
+                                        </div>
+                                    </div>
+                                    <div className="field">
                                         <p className="control has-icons-left">
                                             <input onChange={this.handleInput} className="input is-large" type="password" name="password" placeholder="Password" value={this.state.password} pattern="^[a-zA-Z0-9]{8,}$" title="At least 8 characters" required/>
                                             <span className="icon is-small is-left">
