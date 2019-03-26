@@ -11,20 +11,17 @@ class MyProfile extends Component {
         profileInfo: {}
      }
     getProfileInfo = () =>{
-        debugger
         axios({
           method: "get",
           url: `${config.api}/my-profile`,
           withCredentials: true
         })
         .then(responseFromApi => {
-            debugger
           this.setState({
             profileInfo: responseFromApi.data
           })
         })
         .catch(err => {
-            debugger
             console.log(err)
         })
       }
@@ -38,7 +35,6 @@ class MyProfile extends Component {
                 <div className="card-image">
                     <figure className="image is-4by3">
                     <img src={`${config.api}/${this.state.profileInfo.profileImage}`} alt="Profile"/>
-                    {/* <img src='http://localhost:3001/public/images/4b74c470f74e7f66a5793878eb5a76ef' alt="Profile"/> */}
                     </figure>
                 </div>
                 <div className="card-content">
@@ -49,7 +45,8 @@ class MyProfile extends Component {
                     </div>
                     </div>
                     <div className="content">
-                    <time datetime="2016-1-1">{this.state.profileInfo.registrationDate}</time>
+                        <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hours</p>
+                        <time datetime="2016-1-1">{this.state.profileInfo.registrationDate}</time>
                     </div>
                 </div>
             </div>

@@ -29,8 +29,7 @@ router.post("/signup", (req, res) => {
             postalCode:       req.body.postalcode,
             password:         hash,
             registrationDate: Date.now(),
-            profileImage:     ''
-            
+            profileImage:     ''            
           }
           User.create(newUser, (err,userCreated) => {
             if (err) res.json('error')

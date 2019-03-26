@@ -103,7 +103,7 @@ class UserDashboard extends Component {
                         case 'settings':
                             return <UserSettings />
                         default:
-                            return <AllRequests />
+                            return <AllRequests listOfOffersRequested={this.state.listOfOffersRequested}/>
                     }
                 })()}
                 </div>
