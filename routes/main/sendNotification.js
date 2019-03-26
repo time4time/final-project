@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 const nodemailer = require('nodemailer')
@@ -5,34 +6,41 @@ const Offer = require('../../models/Offer')
 
 
 router.post('/send-mail', (req,res,next) => {
-
     //step 1
     // take data from offer
-    
-    Offer.find({id:_id}, {ownerMail: authorMail})
-        .then((mailOffer) => res.json(mailOffer))
-        .catch(error => console.log(error));
-
-    //step 2 set transport
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'luis.sanmartin@unix.cl',
-            pass: 'h720zmeed'
-        }
-    });
-
-    //body of email
-    transporter.sendMail({
-        from:       '"Time for time" <luis.sanmartin@unix.cl>',
-        to:         ownerMail,
-        subject:    'hiiii',
-        text:
-        `Alguien ha aplicado a tu cuenta`
-        `Puedes revisar la solicitud en el siguiente link`
-        `Regards, time for time`
-    })
-    .then(info => res.json({message: "enviado"}))
-    .catch(error => console.log(error));
-
+    let offerId = req.body.offerId;
+    debugger
+    Offer.findById(offerId)
+        .then((mailOffer) =>{ 
+            //step 2 set transport
+            debugger
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'iyanezm@gmail.com',
+                    pass: 'Sputnik2327'
+                }
+            });
+            debugger
+            transporter.sendMail({
+                from:       '"Time for time" <iyanezm@gmail.com>',
+                to:         mailOffer.authorMail,
+                subject:    'You have a new request from time for time',
+                text: 
+                    `Somebody has sent an application for your offer, you can check this petition in our site.
+                    Best regards, 
+                    Time for Time team <3 `
+            })
+            debugger
+            return mailOffer;
+            }).then((mailOffer) => {
+                debugger
+                res.status(200).json(mailOffer)
+            }).catch(error =>{ 
+                    debugger
+                 res.status(500).json(error)
+                });
 });
+
+
+module.exports = router;

@@ -23,7 +23,8 @@ class OfferModal extends Component {
 
 
     handleSubmit=(event) =>{
-        this.props.showNotifications('petitionNotification')
+        // this.props.showNotifications('petitionNotification')
+        debugger
         event.preventDefault();
         axios({
           method: "post",
@@ -38,10 +39,29 @@ class OfferModal extends Component {
         this.props.history.push('/dashboard')
         })
         .catch(err => {
+            debugger
             console.log(err)
-
         })
 
+      }
+
+      sendEmail = (event) => {
+          event.preventDefault();
+          debugger
+          axios({
+              method:'post',
+              data:{offerId:this.props.offerIdentificator},
+              url: `${config.api}/send-mail`,
+              withCredentials: true,
+          })
+          .then(responseFromApi =>{
+            debugger
+              console.log('sent')
+          })
+          .catch(err => {
+            debugger
+              console.log(err)
+          })
       }
 
 
@@ -83,7 +103,12 @@ class OfferModal extends Component {
                         </section>
                         <footer className="modal-card-foot">
                             <Link>
-                                <button onClick={this.handleSubmit} className="button is-success">Apply </button>
+                              <button 
+                              onClick={(e) => {
+                                this.handleSubmit(e);
+                                this.sendEmail(e)} 
+                              }
+                              className="button is-success">Apply</button>
                             </Link>
                         </footer>
                     </div>
