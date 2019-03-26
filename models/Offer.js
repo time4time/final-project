@@ -9,7 +9,7 @@ const offerSchema = new Schema({
     title:              {type: String},
     description:        {type: String},
     date:               {type: Date  },
-    duration:           {type: Number},
+    duration:           {type: Number, min: 0},
     category:           {type: String, list: ['House', 'Technology', 'Music', 'Repair', 'Languages', 'Cooking']},
     status:             {type: String, enum: ['Open', 'Pending', 'Approved']},
     userRequest:        {type: String},

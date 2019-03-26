@@ -13,9 +13,7 @@ class OneRequest extends Component {
             offerApproved: undefined
         }
     }
-    // approveOffer = () => {
-    //     this.setState({offerStatus: 'Approved'})
-    // }
+
     approveOffer = (event) => {
         event.preventDefault();
         axios({
@@ -24,6 +22,7 @@ class OneRequest extends Component {
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {
+            this.updateTimeWallet(event)
             this.setState({
                 offerStatus: 'Approved',
                 offerApproved: databaseResponse.data
@@ -35,8 +34,18 @@ class OneRequest extends Component {
             // this.props.history.push('/signup')
         })
     }
-
-
+    updateTimeWallet = (event) => {
+        event.preventDefault();
+        axios({
+            method: 'post',
+            url: `${config.api}/update-time-wallet`,
+            data: {offerId: this.props.offerId},
+            withCredentials : true,
+        }).then(databaseResponse => {
+        }).catch(err => {
+            this.setState({error: 'The time wallet could not be updated'})
+        })
+    }
     render() { 
         return (
             <div className="card">
@@ -61,6 +70,7 @@ class OneRequest extends Component {
                     <Link className="card-footer-item button is-success">Approved!</Link> :
                     <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
                     }
+                    <p style={{color: 'green'}}>{this.state.offerStatus ? `You got ${this.state.offerApproved.duration} hours in your Time Wallet!` : ''}</p>
                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                 </footer>
             </div>

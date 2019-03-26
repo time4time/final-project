@@ -19,13 +19,12 @@ class OfferModal extends Component {
         category: ''
     }
 
-    handleSubmit=(event) =>{
-        // this.props.showNotifications('petitionNotification')
+    handleSubmit = (event) => {
         event.preventDefault();
         axios({
           method: "post",
           url: `${config.api}/apply`,
-         data:{offerId:this.props.offerIdentificator},
+          data: {offerId: this.props.offerIdentificator},
           withCredentials: true,
         })
         .then(responseFromApi => {
