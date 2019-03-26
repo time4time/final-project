@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const offerSchema = new Schema({
     author:             {type: Schema.Types.ObjectId, ref: 'users'},
     authorUsername:     {type: String},
+    authorMail:         {type: String},
     postalCode:         {type: String},
     title:              {type: String},
     description:        {type: String},

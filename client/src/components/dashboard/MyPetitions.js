@@ -10,7 +10,7 @@ class MyPetitions extends Component {
               return(
                 <OnePetition 
                 title={mypetition.title}
-                authorUsername = {mypetition.authorUsername}
+                Username = {mypetition.authorUsername}
                 date={mypetition.date}
                 duration={mypetition.duration}
                 status={mypetition.status}

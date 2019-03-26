@@ -6,7 +6,6 @@ import config from "../../config.json";
 
 //editar foto de perfil, codigo postal, password, email
 
-
 class UserSettings extends Component {
     constructor(props) {
         super(props)

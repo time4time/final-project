@@ -10,6 +10,7 @@ router.post('/publish-offer', upload.single('image'), function (req,res) {
     let addOffer = {
         author:         req.session.user._id,
         authorUsername: req.session.user.username,
+        authorMail:     req.session.user.email,
         postalCode:     req.body.postalcode,
         title :         req.body.title,
         description :   req.body.description,
