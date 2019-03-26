@@ -34,21 +34,21 @@ class MyProfile extends Component {
     }
     render() { 
         return (
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
+            <div className="card">
+                <div className="card-image">
+                    <figure className="image is-4by3">
                     <img src={`${config.api}/${this.state.profileInfo.profileImage}`} alt="Profile"/>
                     {/* <img src='http://localhost:3001/public/images/4b74c470f74e7f66a5793878eb5a76ef' alt="Profile"/> */}
                     </figure>
                 </div>
-                <div class="card-content">
-                    <div class="media">
-                    <div class="media-content">
-                        <p class="title is-4">{this.state.profileInfo.firstname} {this.state.profileInfo.lastname}</p>
-                        <p class="subtitle is-6">{this.state.profileInfo.username}</p>
+                <div className="card-content">
+                    <div className="media">
+                    <div className="media-content">
+                        <p className="title is-4">{this.state.profileInfo.firstname} {this.state.profileInfo.lastname}</p>
+                        <p className="subtitle is-6">{this.state.profileInfo.username}</p>
                     </div>
                     </div>
-                    <div class="content">
+                    <div className="content">
                     <time datetime="2016-1-1">{this.state.profileInfo.registrationDate}</time>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ class OfferModal extends Component {
     }
 
     handleSubmit=(event) =>{
-        this.props.showNotifications('petitionNotification')
+        // this.props.showNotifications('petitionNotification')
         event.preventDefault();
         axios({
           method: "post",

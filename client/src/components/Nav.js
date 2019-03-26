@@ -44,7 +44,7 @@ export const UnauthNav = class UnauthNav extends Component {
                     </div>
                 </div>
                 <div className={this.state.dropdownMenu}>
-                    <NavLink onClick={this.toggleDropdownMenu} to='/' class="navbar-item">
+                    <NavLink onClick={this.toggleDropdownMenu} to='/' className="navbar-item">
                     Home
                     </NavLink>
                     <NavLink onClick={this.toggleDropdownMenu} to="/login" className="navbar-item">
@@ -115,7 +115,7 @@ export const AuthNav = class AuthNav extends Component {
                     </div>
                 </div>
                 <div className={this.state.dropdownMenu}>
-                    <NavLink onClick={this.toggleDropdownMenu} to='/' class="navbar-item">
+                    <NavLink onClick={this.toggleDropdownMenu} to='/' className="navbar-item">
                     Home
                     </NavLink>
                     <NavLink onClick={this.toggleDropdownMenu} to="/dashboard" className="navbar-item">

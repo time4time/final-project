@@ -6,17 +6,56 @@ import MyPetitions from './MyPetitions'
 import DirectMessages from './DirectMessages'
 import UserSettings from './UserSettings'
 import MyProfile from './MyProfile'
+import axios from 'axios';
+import config from '../../config.json'
+
 
 class UserDashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
             activeSection: 'all requests',
+            petitionsNotification: false,
+            listOfPetitions: [],
+            offersRequestedNotification: false,
+            listOfOffersRequested: []
         }
         this.openSection = this.openSection.bind(this)
     }
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
+    }
+    // Para las ofertas que te han pedido, deberiamos preguntar por ofertas 
+    // en las que authorUsername = tu username, que el status sea pending
+    getMyOffersRequested = () => {
+        axios({
+            method: "get",
+            url: `${config.api}/my-offers-requested`,
+            withCredentials: true
+          })
+          .then(responseFromApi => {
+            this.setState({
+              listOfOffersRequested: responseFromApi.data,
+            })
+            if(responseFromApi.data.length > 0) this.setState({offersRequestedNotification: true})
+          })
+    }
+    getMyPetitions = () =>{
+        axios({
+          method: "get",
+          url: `${config.api}/my-petitions`,
+          withCredentials: true
+        })
+        .then(responseFromApi => {
+          this.setState({
+            listOfPetitions: responseFromApi.data,
+          })
+          if(responseFromApi.data.length > 0) this.setState({petitionsNotification: true})
+        })
+    }
+    componentDidMount(){
+        this.getMyPetitions()
+        this.getMyOffersRequested()
     }
     render() { 
         return (
@@ -26,7 +65,9 @@ class UserDashboard extends Component {
                         All requests
                     </p>
                     <ul className="menu-list">
-                        <li><Link onClick={()=> {this.openSection('all requests')}}>Pending requests <i className="fas fa-bolt"></i></Link></li>
+                        <li><Link onClick={()=> {this.openSection('all requests')}}>Pending requests &nbsp;  
+                        { this.state.offersRequestedNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
+                        </Link></li>
                         <li><Link onClick={()=> {this.openSection('all requests')}}>History</Link></li>
                     </ul>
                     <p className="menu-label">
@@ -34,9 +75,8 @@ class UserDashboard extends Component {
                     </p>
                     <ul className="menu-list">
                         <li><Link onClick={()=> {this.openSection('my petitions')}}>Pending petitions &nbsp;  
-                        { this.props.petitionNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link>
-                        </li>
+                        { this.state.petitionsNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
+                        </Link></li>
                         <li><Link onClick={()=> {this.openSection('my petitions')}}>History</Link></li>
                     </ul>
                     <p className="menu-label"><Link onClick={()=> {this.openSection('messages')}}>
@@ -53,11 +93,11 @@ class UserDashboard extends Component {
                 {(() => {
                     switch(this.state.activeSection) {
                         case 'all requests':
-                            return <AllRequests />;
+                            return <AllRequests listOfOffersRequested={this.state.listOfOffersRequested}/>;
                         case 'my petitions':
-                            return <MyPetitions />;
+                            return <MyPetitions listOfPetitions={this.state.listOfPetitions} />;
                         case 'messages':
-                            return <DirectMessages />
+                            return <DirectMessages/>
                         case 'profile':
                             return <MyProfile />
                         case 'settings':
