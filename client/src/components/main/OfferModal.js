@@ -16,34 +16,28 @@ class OfferModal extends Component {
         title: '',
         author: '',
         description: '',
-        category: '',
-        
-
+        category: ''
     }
 
 
-    handleSubmit=(event) =>{
-        // this.props.showNotifications('petitionNotification')
-        debugger
+
+
+    handleSubmit = (event) => {
         event.preventDefault();
         axios({
           method: "post",
           url: `${config.api}/apply`,
-         data:{offerId:this.props.offerIdentificator},
+          data: {offerId: this.props.offerIdentificator},
           withCredentials: true,
         })
         .then(responseFromApi => {
-        //   this.setState({
-        //     listOfOffers: responseFromApi.data
-        //   })
         this.props.history.push('/dashboard')
         })
         .catch(err => {
             debugger
             console.log(err)
         })
-
-      }
+    }
 
       sendEmail = (event) => {
           event.preventDefault();
@@ -63,6 +57,10 @@ class OfferModal extends Component {
               console.log(err)
           })
       }
+
+    redirectToLogin = () => {
+        this.props.history.push('/login')
+    }
 
 
     render() { 
@@ -103,12 +101,14 @@ class OfferModal extends Component {
                         </section>
                         <footer className="modal-card-foot">
                             <Link>
-                              <button 
-                              onClick={(e) => {
+
+                            {this.props.loggedIn ?
+                                <button onClick={(e) => {
                                 this.handleSubmit(e);
-                                this.sendEmail(e)} 
-                              }
-                              className="button is-success">Apply</button>
+                                this.sendEmail(e)}
+                                } className="button is-success">Apply </button>:
+                                <button onClick={this.redirectToLogin} className="button is-dark">Apply </button>
+                            }
                             </Link>
                         </footer>
                     </div>
@@ -116,5 +116,6 @@ class OfferModal extends Component {
         );
     }
 }
- 
+
+
 export default OfferModal;

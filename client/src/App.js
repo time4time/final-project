@@ -14,8 +14,8 @@ class App extends Component {
     state = {
         loggedIn : false,
         username : "",
-        requestNotification: false,
-        petitionNotification: false,
+        // requestNotification: false,
+        // petitionNotification: false,
     }
 
     loggedIn = (aBoolean, username) => {
@@ -32,21 +32,21 @@ class App extends Component {
         })
     }
 
-    showNotifications = (notification) => {
-        debugger
-        console.log('entro en show notifications')
-        if(notification === 'requestNotification'){
-            this.setState({
-                requestNotification: true
-            })
-        }else if(notification === 'petitionNotification'){
-            this.setState({
-                petitionNotification: true
-            })
+    // showNotifications = (notification) => {
+    //     debugger
+    //     console.log('entro en show notifications')
+    //     if(notification === 'requestNotification'){
+    //         this.setState({
+    //             requestNotification: true
+    //         })
+    //     }else if(notification === 'petitionNotification'){
+    //         this.setState({
+    //             petitionNotification: true
+    //         })
 
-        }
+    //     }
 
-    }
+    // }
 
     render() {
         return (
@@ -54,12 +54,12 @@ class App extends Component {
             <header> 
                 {/* <Nav {...this.state} logOut={this.logOut} /> */}
                 {this.state.loggedIn ?
-                    <AuthNav {...this.state} /> :
+                    <AuthNav {...this.state} logOut={this.logOut}/> :
                     <UnauthNav {...this.state} />
                 }
             </header>
             <Switch>
-                <Route exact path='/' render={(props) => <Main showNotifications={this.showNotifications}{...props}/>} />
+                <Route exact path='/' render={(props) => <Main {...props} {...this.state}/>} />
                 {/* En dashboard habra que pasar algun tipo de props o algo para por si queremos ir directamente a mensajes */}
                 <Route path='/login'  render={(props) => <Login {...props} loggedIn={this.loggedIn}/>} />
                 <Route path='/signup'  render={(props) => <Signup {...props} loggedIn={this.loggedIn}/>} /> 

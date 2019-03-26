@@ -10,9 +10,9 @@ const offerSchema = new Schema({
     title:              {type: String},
     description:        {type: String},
     date:               {type: Date  },
-    duration:           {type: Number},
-    category:           {type: String, list: ['house', 'technology', 'music', 'repair', 'languages', 'cooking']},
-    status:             {type: String, enum: ['open', 'pending', 'approved']},
+    duration:           {type: Number, min: 1},
+    category:           {type: String, list: ['House', 'Technology', 'Music', 'Repair', 'Languages', 'Cooking']},
+    status:             {type: String, enum: ['Open', 'Pending', 'Approved']},
     userRequest:        {type: String},
     image:              {type: String}
 })

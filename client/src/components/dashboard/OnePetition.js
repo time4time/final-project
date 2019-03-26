@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-
-//recoger la info de cada request con props desde el Component de MyPetitions
 
 class OnePetition extends Component {
-    state = {  }
-
-
     render() { 
         return (
             <div className="card">
@@ -26,7 +20,6 @@ class OnePetition extends Component {
                     <h1 className="card-footer-item"> {this.props.status}</h1>
                 </footer>
             </div>
-            
         );
     }
 }

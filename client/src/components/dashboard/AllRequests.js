@@ -8,9 +8,21 @@ class AllRequests extends Component {
     state = {  }
     render() { 
         return (
-            <>
-            All requests
-            </>
+            <div>
+            { this.props.listOfOffersRequested.map( myOfferRequested => {
+              return(
+                <OneRequest 
+                offerId={myOfferRequested._id}
+                title={myOfferRequested.title}
+                authorUsername = {myOfferRequested.authorUsername}
+                date={myOfferRequested.date}
+                duration={myOfferRequested.duration}
+                status={myOfferRequested.status}
+                />
+              )
+            })
+            }
+        </div> 
         );
     }
 }

@@ -12,7 +12,7 @@ const userSchema = new Schema({
     registrationDate:   {type: Date, default: Date.now},
     postalCode:         {type: String},
     ratings:            [{type: Schema.Types.ObjectId, ref: 'reviews'}],
-    timeWallet:         {type: Number},
+    timeWallet:         {type: Number, default: 2},
     offersCreated:      [{type: Schema.Types.ObjectId, ref: 'offers'}],
     offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
     profileImage:       {type: String},

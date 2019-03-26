@@ -27,7 +27,7 @@ class PublishOffer extends Component {
         publish[event.target.name] = event.target.value
         this.setState(publish)
         
-    }
+    }   
 
     //submit button
     handleSubmit = (event) =>{
@@ -89,7 +89,7 @@ class PublishOffer extends Component {
                 <div className="field">
                     <label className="label">Duration</label>
                     <div className="control">
-                        <input onChange={this.handleInput} name='duration' className="input" type="number" placeholder="Duration" value={this.state.duration}/>
+                        <input onChange={this.handleInput} name='duration' className="input" type="number" placeholder="Duration" value={this.state.duration} min='1'/>
                     </div>
                 </div>
                 <div className="field">
