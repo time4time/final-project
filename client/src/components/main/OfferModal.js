@@ -16,7 +16,8 @@ class OfferModal extends Component {
         title: '',
         author: '',
         description: '',
-        category: ''
+        category: '',
+        errorTimeWallet: ''
     }
 
 
@@ -31,11 +32,12 @@ class OfferModal extends Component {
           withCredentials: true,
         })
         .then(responseFromApi => {
-        this.props.history.push('/dashboard')
+            debugger
+            if( responseFromApi.data.message === "Not enough time in the wallet to apply" ) this.setState({errorTimeWallet: "You don't have enough time in your wallet to apply to this offer"})
+            else this.props.history.push('/dashboard')
         })
         .catch(err => {
-            debugger
-            console.log(err)
+          console.log(err)
         })
     }
 
@@ -82,7 +84,7 @@ class OfferModal extends Component {
                                 <div className="content">
                                     <p className="modal-card-title">Name </p>
                                     <p>{this.props.authorUsername}</p>
-                                    <p className="modal-card-title">Califications </p>
+                                    <p className="modal-card-title">Ratings</p>
                                     <Link>
                                         <button className="button is-success">See more</button>
                                     </Link>
@@ -110,6 +112,10 @@ class OfferModal extends Component {
                                 <button onClick={this.redirectToLogin} className="button is-dark">Apply </button>
                             }
                             </Link>
+                            {this.state.errorTimeWallet?
+                            <p style={{color: 'red'}}>{this.state.errorTimeWallet}</p>:
+                            <p></p>
+                            }
                         </footer>
                     </div>
                 </div>
