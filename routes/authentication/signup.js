@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
-const passport = require('../passport-auth/pauth.js');
+// const passport = require('../passport-auth/pauth.js');
 
 
 
-//check if username or email it's already taken
+//check if either username or email are already taken
 router.post("/signup", (req, res) => {
+    debugger
   const username = req.body.username;
   const email = req.body.email;
   User.findOne({$or:[
@@ -16,9 +17,12 @@ router.post("/signup", (req, res) => {
       ]
     })
     .then(result => {
+        debugger
       if (result) {
+          debugger
         res.status(409).json({message: 'err'})
       } else {
+          debugger
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           newUser = {
             firstname:        req.body.firstname,
@@ -32,15 +36,18 @@ router.post("/signup", (req, res) => {
             profileImage:     ''            
           }
           User.create(newUser, (err,userCreated) => {
-            if (err) res.json('error')
+            if (err) {
+                debugger
+                res.json('error')
+            }
             else {
-
+                debugger
               res.cookie("username", req.body.username);
               req.session.current = userCreated._doc
-              passport.authenticate('local')(req, res, ()=> {
-                res.json('user created');
-              });
-              
+              res.json('user created');
+            //   passport.authenticate('local')(req, res, ()=> {
+            //     res.json('user created');
+            //   });
             }
           })
         })

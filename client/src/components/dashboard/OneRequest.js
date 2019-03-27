@@ -15,6 +15,7 @@ class OneRequest extends Component {
     }
 
     approveOffer = (event) => {
+        debugger
         event.preventDefault();
         axios({
             method: 'post',
@@ -27,11 +28,10 @@ class OneRequest extends Component {
                 offerStatus: 'Approved',
                 offerApproved: databaseResponse.data
             })
+            this.props.updateOffers()
             this.props.history.push('/dashboard')
-            
         }).catch(err => {
             this.setState({error: 'The offer could not be approved'})
-            // this.props.history.push('/signup')
         })
     }
     updateTimeWallet = (event) => {
@@ -42,9 +42,26 @@ class OneRequest extends Component {
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {
+            console.log('updated time wallet')
         }).catch(err => {
             this.setState({error: 'The time wallet could not be updated'})
         })
+    }
+    // checkOffersStatus = () => {
+    //     axios({
+    //         method: "get",
+    //         url: `${config.api}/display-offers`,
+    //         withCredentials: true
+    //       })
+    //       .then(responseFromApi => {
+    //         this.setState({
+    //           listOfOffers: responseFromApi.data
+    //         })
+    //       })
+    // }
+    componentDidMount(){
+        //check status in database every time it mounts
+        console.log('OneRequest mounts')
     }
     render() { 
         return (
@@ -66,10 +83,26 @@ class OneRequest extends Component {
                     <h1 className="card-footer-item"> {this.state.offerApproved.status}</h1> :
                     <h1 className="card-footer-item"> {this.props.status}</h1>
                     }
-                    {this.state.offerStatus ? 
+                    {this.state.offerStatus === 'Approved' ?
                     <Link className="card-footer-item button is-success">Approved!</Link> :
-                    <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
+                    <div>
+                        {this.props.status === 'Open' ?
+                        null :
+                        <div>
+                            {this.props.status === 'Approved'? 
+                            <Link className="card-footer-item button is-success">Approved!</Link> :
+                            <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
+                            }
+                            {/* {this.state.offerStatus ? 
+                                <Link className="card-footer-item button is-success">Approved!</Link> :
+                                <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
+                                } */}
+                        </div>
+                        }
+                    </div>
                     }
+
+
                     <p style={{color: 'green'}}>{this.state.offerStatus ? `You got ${this.state.offerApproved.duration} hour(s) in your Time Wallet!` : ''}</p>
                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                 </footer>

@@ -1,4 +1,4 @@
-const passportLocalMongoose = require('passport-local-mongoose');
+// const passportLocalMongoose = require('passport-local-mongoose');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -18,17 +18,17 @@ const userSchema = new Schema({
     offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
     profileImage:       {type: String},
 
-    google: {
-        id: String,
-        token: String,
-        name: String,
-        email: String
-      }
+    // google: {
+    //     id: String,
+    //     token: String,
+    //     name: String,
+    //     email: String
+    //   }
 
 });
 
 
-userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(passportLocalMongoose);
 const User = mongoose.model('users', userSchema);
 
 

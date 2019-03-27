@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -9,15 +9,23 @@ const cors = require('cors')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
-const compression = require('compression');
-const helmet = require('helmet');
-const passport = require('passport');
+// const Chatkit = require('@pusher/chatkit-server')
+
+// const compression = require('compression');
+// const helmet = require('helmet');
+// const passport = require('passport');
 
 const app = express();
 
-app.use(compression());
-app.use(logger('dev'));
-app.use(helmet());
+// const chatkit = new Chatkit.default({
+//     instanceLocator: 'v1:us1:f51d67d6-018a-4569-b4d8-59e517592a01',
+//     key: '994a6519-dd57-4156-87d4-a0641a70b79f:kFzgXpiWgEIvO+DuUq6uiXJEHSb19tU0RXbhisIty9A=',
+// })
+  
+
+// app.use(compression());
+// app.use(logger('dev'));
+// app.use(helmet());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -58,8 +66,8 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname)));
 
-app.use(passport.initialize());  
-app.use(passport.session()); 
+// app.use(passport.initialize());  
+// app.use(passport.session()); 
 
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));

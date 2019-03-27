@@ -8,7 +8,7 @@ class MyPetitions extends Component {
           <div>
             { this.props.listOfPetitions.map( mypetition => {
               return(
-                <OnePetition 
+                <OnePetition {...this.props} 
                 title={mypetition.title}
                 Username = {mypetition.authorUsername}
                 date={mypetition.date}

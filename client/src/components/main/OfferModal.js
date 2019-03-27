@@ -15,14 +15,14 @@ const hide = {
 
 class OfferModal extends Component {
     state = { 
-        title: '',
-        author: '',
-        description: '',
-        category: '',
+        // title: '',
+        // author: '',
+        // description: '',
+        // category: '',
         errorTimeWallet: ''
     }
 
-    handleSubmit = (event) => {
+    handleApply = (event) => {
         event.preventDefault();
         axios({
           method: "post",
@@ -31,7 +31,6 @@ class OfferModal extends Component {
           withCredentials: true,
         })
         .then(responseFromApi => {
-            debugger
             if( responseFromApi.data.message === "Not enough time in the wallet to apply" ) this.setState({errorTimeWallet: "You don't have enough time in your wallet to apply to this offer"})
             else this.props.history.push('/dashboard')
         })
@@ -40,9 +39,8 @@ class OfferModal extends Component {
         })
     }
 
-      sendEmail = (event) => {
+    sendEmail = (event) => {
           event.preventDefault();
-          debugger
           axios({
               method:'post',
               data:{offerId:this.props.offerIdentificator},
@@ -50,23 +48,33 @@ class OfferModal extends Component {
               withCredentials: true,
           })
           .then(responseFromApi =>{
-            debugger
               console.log('sent')
           })
           .catch(err => {
-            debugger
               console.log(err)
           })
-      }
+    }
 
     redirectToLogin = () => {
         this.props.history.push('/login')
     }
 
+
     redirectToAuthorProfile = () =>{
         debugger
         this.props.history.push(`/profile/${this.props.author}`)
     }  
+
+    // checkAuthor = () => {
+    //     if (this.props.author === req)
+    // }
+
+    // componentDidMount() {
+    //     this.checkAuthor()
+    // }
+
+
+
     render() { 
         return (
                 <div className="modal" style={this.props.toggle ? display : hide}>
@@ -106,10 +114,9 @@ class OfferModal extends Component {
                         </section>
                         <footer className="modal-card-foot">
                             <Link>
-
                             {this.props.loggedIn ?
                                 <button onClick={(e) => {
-                                this.handleSubmit(e);
+                                this.handleApply(e);
                                 this.sendEmail(e)}
                                 } className="button is-success">Apply </button>:
                                 <button onClick={this.redirectToLogin} className="button is-dark">Apply </button>

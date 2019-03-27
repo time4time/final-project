@@ -5,19 +5,18 @@ import OneRequest from './OneRequest'
 //hacer map sobre la lista de requests con axios y return el Component de OneRequest
 
 class AllRequests extends Component {
-    state = {  }
     render() { 
         return (
             <div>
-            { this.props.listOfOffersRequested.map( myOfferRequested => {
+            { this.props.listOfMyOffers.map( myOffer => {
               return(
-                <OneRequest 
-                offerId={myOfferRequested._id}
-                title={myOfferRequested.title}
-                authorUsername = {myOfferRequested.authorUsername}
-                date={myOfferRequested.date}
-                duration={myOfferRequested.duration}
-                status={myOfferRequested.status}
+                <OneRequest {...this.props} 
+                offerId={myOffer._id}
+                title={myOffer.title}
+                authorUsername = {myOffer.authorUsername}
+                date={myOffer.date}
+                duration={myOffer.duration}
+                status={myOffer.status}
                 />
               )
             })
