@@ -1,43 +1,110 @@
 import React, { Component } from 'react';
-import UsernameForm from './UsernameForm'
-import ChatScreen from './ChatScreen'
-import config from '../../../config.json'
+import {
+    handleInput,
+    connectToChatkit,
+    connectToRoom,
+    sendMessage,
+    sendDM,
+    } from '../../../methods';
+import Dialog from './Dialog';
+import RoomList from './RoomList';
+import ChatSession from './ChatSession';
+import RoomUsers from './RoomUsers';
+
+import 'skeleton-css/css/normalize.css';
+import 'skeleton-css/css/skeleton.css';
+import '../../../DirectMessages.css'
 
 class DirectMessages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentUsername: '',
-            currentScreen: 'WhatIsYourUsernameScreen'     
+            userId: '',
+            showLogin: true,
+            isLoading: false,
+            currentUser: null,
+            currentRoom: null,
+            rooms: [],
+            roomUsers: [],
+            roomName: null,
+            messages: [],
+            newMessage: '',
         }
-        this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
-    }
+        this.handleInput = handleInput.bind(this);
+        this.connectToChatkit = connectToChatkit.bind(this);
+        this.connectToRoom = connectToRoom.bind(this);
+        this.sendMessage = sendMessage.bind(this);
+        this.sendDM = sendDM.bind(this);
+        }
 
-    //CAMBIAR A AXIOS
-    onUsernameSubmitted(username) {
-        fetch(`${config.api}/chat-users`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username }),
-        })
-          .then(response => {
-            this.setState({
-              currentUsername: username,
-              currentScreen: 'ChatScreen'
-            })
-          })
-          .catch(error => console.error('error', error))
-    }   
     render() { 
-        if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
-            return <UsernameForm onSubmit={this.onUsernameSubmitted} />
-        }
-        if (this.state.currentScreen === 'ChatScreen') {
-            return <ChatScreen currentUsername={this.state.currentUsername} />
-        }
-    
+        const {
+            userId,
+            showLogin,
+            rooms,
+            currentRoom,
+            currentUser,
+            messages,
+            newMessage,
+            roomUsers,
+            roomName,
+        } = this.state;
+        return(
+            <div className="direct-messages">
+            <aside className="sidebar left-sidebar">
+              {currentUser ? (
+                <div className="user-profile">
+                  <span className="username">{currentUser.name}</span>
+                  <span className="user-id">{`@${currentUser.id}`}</span>
+                </div>
+              ) : null}
+              {currentRoom ? (
+                <RoomList
+                  rooms={rooms}
+                  currentRoom={currentRoom}
+                  connectToRoom={this.connectToRoom}
+                  currentUser={currentUser}
+                />
+              ) : null}
+            </aside>
+            <section className="chat-screen">
+              <header className="chat-header">
+                {currentRoom ? <h3>{roomName}</h3> : null}
+              </header>
+              <ul className="chat-messages">
+                <ChatSession messages={messages} />
+              </ul>
+              <footer className="chat-footer">
+                <form onSubmit={this.sendMessage} className="message-form">
+                  <input
+                    type="text"
+                    value={newMessage}
+                    name="newMessage"
+                    className="message-input"
+                    placeholder="Type your message and hit ENTER to send"
+                    onChange={this.handleInput}
+                  />
+                </form>
+              </footer>
+            </section>
+            <aside className="sidebar right-sidebar">
+              {currentRoom ? (
+                <RoomUsers
+                  currentUser={currentUser}
+                  sendDM={this.sendDM}
+                  roomUsers={roomUsers}
+                />
+              ) : null}
+            </aside>
+            {showLogin ? (
+              <Dialog
+                userId={userId}
+                handleInput={this.handleInput}
+                connectToChatkit={this.connectToChatkit}
+              />
+            ) : null}
+          </div>
+            )
     }
 }
  
