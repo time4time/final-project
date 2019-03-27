@@ -23,18 +23,15 @@ class OneRequest extends Component {
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.updateTimeWallet(event)
             this.setState({
                 offerStatus: 'Approved',
                 offerApproved: databaseResponse.data
             })
+            this.props.updateOffers()
             this.props.history.push('/dashboard')
-            
         }).catch(err => {
-            debugger
             this.setState({error: 'The offer could not be approved'})
-            // this.props.history.push('/signup')
         })
     }
     updateTimeWallet = (event) => {
@@ -45,9 +42,26 @@ class OneRequest extends Component {
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {
+            console.log('updated time wallet')
         }).catch(err => {
             this.setState({error: 'The time wallet could not be updated'})
         })
+    }
+    // checkOffersStatus = () => {
+    //     axios({
+    //         method: "get",
+    //         url: `${config.api}/display-offers`,
+    //         withCredentials: true
+    //       })
+    //       .then(responseFromApi => {
+    //         this.setState({
+    //           listOfOffers: responseFromApi.data
+    //         })
+    //       })
+    // }
+    componentDidMount(){
+        //check status in database every time it mounts
+        console.log('OneRequest mounts')
     }
     render() { 
         return (

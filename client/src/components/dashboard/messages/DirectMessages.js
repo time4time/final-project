@@ -11,8 +11,8 @@ import RoomList from './RoomList';
 import ChatSession from './ChatSession';
 import RoomUsers from './RoomUsers';
 
-import 'skeleton-css/css/normalize.css';
-import 'skeleton-css/css/skeleton.css';
+// import 'skeleton-css/css/normalize.css';
+// import 'skeleton-css/css/skeleton.css';
 import '../../../DirectMessages.css'
 
 class DirectMessages extends Component {

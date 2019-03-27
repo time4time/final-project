@@ -25,8 +25,22 @@ class UserDashboard extends Component {
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
     }
-    // Para las ofertas que te han pedido, deberiamos preguntar por ofertas 
-    // en las que authorUsername = tu username, que el status sea pending
+    notificationControl = (dataFromRequest, statusControl) => {
+        let checkPending = []
+        for(var i = 0; i < dataFromRequest.length; i++) {
+            if(dataFromRequest[i].status === 'Pending') checkPending.push('new offer')
+        }
+        switch(statusControl) {
+            case 'offers':
+                if(checkPending.length > 0) return this.setState({myOffers: true})
+                else return this.setState({myOffers: false})
+            case 'petitions':
+                if(checkPending.length > 0) return this.setState({petitionsNotification: true})
+                else return this.setState({petitionsNotification: false})
+            default:
+            return null
+        }
+    }
     getMyOffers = () => {
         axios({
             method: "get",
@@ -37,15 +51,7 @@ class UserDashboard extends Component {
             this.setState({
               listOfMyOffers: responseFromApi.data,
             })
-            //cambiar validacion
-            //puedo hacer un for loop through responseFromApi.data y dentro poner si responseFromApi.data[i].status === 'Pending' entonces cambiar el estado
-            //luego preocuparme del update
-            debugger
-            for(var i = 0; i < responseFromApi.data.length; i++) {
-                debugger
-                if(responseFromApi.data[i].status === 'Pending') return this.setState({myOffers: true})
-            }
-            // if(responseFromApi.data.length > 0) this.setState({myOffers: true})
+            this.notificationControl(responseFromApi.data, 'offers')
           })
     }
     getMyPetitions = () =>{
@@ -58,12 +64,9 @@ class UserDashboard extends Component {
           this.setState({
             listOfPetitions: responseFromApi.data,
           })
-          if(responseFromApi.data.length > 0) this.setState({petitionsNotification: true})
+          this.notificationControl(responseFromApi.data, 'petitions')
         })
-    }
-
-
-   
+    }   
     componentDidMount(){
         this.getMyPetitions()
         this.getMyOffers()
@@ -102,7 +105,7 @@ class UserDashboard extends Component {
                 {(() => {
                     switch(this.state.activeSection) {
                         case 'all requests':
-                            return <AllRequests {...this.props} {...this.state} listOfMyOffers={this.state.listOfMyOffers}/>;
+                            return <AllRequests {...this.props} {...this.state} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;
                         case 'my petitions':
                             return <MyPetitions {...this.props} {...this.state} listOfPetitions={this.state.listOfPetitions} />;
                         case 'messages':
