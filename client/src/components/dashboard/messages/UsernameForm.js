@@ -30,7 +30,7 @@ render() {
               placeholder="Your full name"
               onChange={this.onChange}
             />
-            <input type="submit" />
+            <input type="submit"/>
           </form>
         </div>
       </div>

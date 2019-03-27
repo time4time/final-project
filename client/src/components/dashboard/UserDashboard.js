@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import AllRequests from './AllRequests.js'
 import MyPetitions from './MyPetitions'
-import DirectMessages from './DirectMessages'
+import DirectMessages from './messages/DirectMessages'
 import UserSettings from './UserSettings'
 import MyProfile from './MyProfile'
 import axios from 'axios';
@@ -19,11 +19,8 @@ class UserDashboard extends Component {
             listOfPetitions: [],
             myOffers: false,
             listOfMyOffers: [],
-            currentUsername: '',
-            currentScreen: 'WhatIsYourUsernameScreen'     
         }
         this.openSection = this.openSection.bind(this)
-        this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
     }
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
@@ -66,23 +63,6 @@ class UserDashboard extends Component {
     }
 
 
-    //CAMBIAR POR AXIOS
-    onUsernameSubmitted(username) {
-        fetch('http://localhost:3001/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username }),
-        })
-          .then(response => {
-            this.setState({
-              currentUsername: username,
-              currentScreen: 'ChatScreen'
-            })
-          })
-          .catch(error => console.error('error', error))
-    }
    
     componentDidMount(){
         this.getMyPetitions()

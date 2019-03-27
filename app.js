@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -9,7 +9,7 @@ const cors = require('cors')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
-const Chatkit = require('@pusher/chatkit-server')
+// const Chatkit = require('@pusher/chatkit-server')
 
 // const compression = require('compression');
 // const helmet = require('helmet');
@@ -17,10 +17,10 @@ const Chatkit = require('@pusher/chatkit-server')
 
 const app = express();
 
-const chatkit = new Chatkit.default({
-    instanceLocator: 'v1:us1:f51d67d6-018a-4569-b4d8-59e517592a01',
-    key: '994a6519-dd57-4156-87d4-a0641a70b79f:kFzgXpiWgEIvO+DuUq6uiXJEHSb19tU0RXbhisIty9A=',
-})
+// const chatkit = new Chatkit.default({
+//     instanceLocator: 'v1:us1:f51d67d6-018a-4569-b4d8-59e517592a01',
+//     key: '994a6519-dd57-4156-87d4-a0641a70b79f:kFzgXpiWgEIvO+DuUq6uiXJEHSb19tU0RXbhisIty9A=',
+// })
   
 
 // app.use(compression());
