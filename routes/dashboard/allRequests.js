@@ -4,14 +4,25 @@ var Offer = require('../../models/Offer')
 var User = require('../../models/User')
 
 //find user request and pending status
-router.get('/my-offers-requested', function(req, res, next) {
+// router.get('/my-offers-requested', function(req, res, next) {
+//     let username = req.session.user.username
+//     Offer.find()
+//       .and([
+//         {status:'Pending'},
+//         {authorUsername: username}])
+//         .then((myOffersRequested) =>{
+//             res.json(myOffersRequested)
+//         }) 
+//         .catch((err) =>{
+//             res.status(404).json({errorMessage: 'not found'})
+//         })
+// });
+
+router.get('/my-offers', function(req, res, next) {
     let username = req.session.user.username
-    Offer.find()
-      .and([
-        {status:'Pending'},
-        {authorUsername: username}])
-        .then((myOffersRequested) =>{
-            res.json(myOffersRequested)
+    Offer.find({authorUsername: username})
+        .then((myOffers) =>{
+            res.json(myOffers)
         }) 
         .catch((err) =>{
             res.status(404).json({errorMessage: 'not found'})
@@ -19,11 +30,14 @@ router.get('/my-offers-requested', function(req, res, next) {
 });
 
 router.post('/approve-offer', function(req, res, next) {
+    debugger
     Offer.findByIdAndUpdate(req.body.offerId, {status: 'Approved'}, {new: true})
     .then((offerApproved) => {
+        debugger
         res.json(offerApproved)
     })
     .catch((err) => {
+        debugger
         res.status(404).json({errorMessage: 'Offer could not be approved'})
     })
 })

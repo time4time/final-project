@@ -10,14 +10,14 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
 const compression = require('compression');
-const helmet = require('helmet');
-const passport = require('passport');
+// const helmet = require('helmet');
+// const passport = require('passport');
 
 const app = express();
 
-app.use(compression());
-app.use(logger('dev'));
-app.use(helmet());
+// app.use(compression());
+// app.use(logger('dev'));
+// app.use(helmet());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -58,8 +58,8 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname)));
 
-app.use(passport.initialize());  
-app.use(passport.session()); 
+// app.use(passport.initialize());  
+// app.use(passport.session()); 
 
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));
