@@ -9,6 +9,7 @@ const userSchema = new Schema({
     firstname:          {type: String},
     lastname:           {type: String},
     birth:              {type: Date},
+    bio:                {type: Date},
     registrationDate:   {type: Date, default: Date.now},
     postalCode:         {type: String},
     ratings:            [{type: Schema.Types.ObjectId, ref: 'reviews'}],

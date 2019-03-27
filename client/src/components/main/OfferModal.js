@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import config from '../../config.json'
 import axios from 'axios'
 import Moment from 'react-moment';
+import AuthorProfile from '../author-profile/AuthorProfile.js';
 
 const display = {
     display: 'block'
@@ -62,7 +63,10 @@ class OfferModal extends Component {
         this.props.history.push('/login')
     }
 
-
+    redirectToAuthorProfile = () =>{
+        debugger
+        this.props.history.push(`/profile/${this.props.author}`)
+    }  
     render() { 
         return (
                 <div className="modal" style={this.props.toggle ? display : hide}>
@@ -77,14 +81,14 @@ class OfferModal extends Component {
                         <section className="modal-card-body">
                             <div className='media'>
                             <p className="image is-64x64">
-                                <img src="lightscape-741984-unsplash.jpg" alt=''></img>
+                            <img src={`${config.api}/${this.props.authorProfileImage}`} alt=""/>
                             </p>
                                 <div className="content">
                                     <p className="modal-card-title">Name </p>
                                     <p>{this.props.authorUsername}</p>
                                     <p className="modal-card-title">Ratings</p>
                                     <Link>
-                                        <button className="button is-success">See more</button>
+                                        <button onClick={this.redirectToAuthorProfile}className="button is-success">See more</button>
                                     </Link>
                                 </div>
                             </div>

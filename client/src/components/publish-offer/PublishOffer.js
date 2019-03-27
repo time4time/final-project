@@ -97,6 +97,7 @@ class PublishOffer extends Component {
                     <div className="control">
                         <div className="select">
                         <select name='category' value={this.state.category} onChange={this.handleInput}>
+                            <option></option>
                             <option value='house'>House</option>
                             <option value='technology'>Technology</option>
                             <option value="music">Music</option>

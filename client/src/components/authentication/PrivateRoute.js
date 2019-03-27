@@ -6,6 +6,7 @@ import { Route, Redirect } from "react-router-dom";
 //en caso de necesitar que este logueado para mostrar 
 // wrapping/composing
 const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => (
+  
   <Route {...rest} render={(props) => (
         loggedIn ? (
             <Component {...props} {...rest}/>

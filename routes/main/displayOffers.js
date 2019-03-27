@@ -6,8 +6,6 @@ moment().format()
 
 router.get('/display-offers', function(req, res, next) {
 
-
-
   Offer.find({status:'Open'})
 
     .then((allOffers) => {
@@ -18,16 +16,6 @@ router.get('/display-offers', function(req, res, next) {
     })
         
 })
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;
