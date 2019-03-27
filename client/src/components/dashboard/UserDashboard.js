@@ -18,9 +18,12 @@ class UserDashboard extends Component {
             petitionsNotification: false,
             listOfPetitions: [],
             myOffers: false,
-            listOfMyOffers: []
+            listOfMyOffers: [],
+            currentUsername: '',
+            currentScreen: 'WhatIsYourUsernameScreen'     
         }
         this.openSection = this.openSection.bind(this)
+        this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
     }
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
@@ -61,6 +64,26 @@ class UserDashboard extends Component {
           if(responseFromApi.data.length > 0) this.setState({petitionsNotification: true})
         })
     }
+
+
+    //CAMBIAR POR AXIOS
+    onUsernameSubmitted(username) {
+        fetch('http://localhost:3001/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username }),
+        })
+          .then(response => {
+            this.setState({
+              currentUsername: username,
+              currentScreen: 'ChatScreen'
+            })
+          })
+          .catch(error => console.error('error', error))
+    }
+   
     componentDidMount(){
         this.getMyPetitions()
         this.getMyOffers()
