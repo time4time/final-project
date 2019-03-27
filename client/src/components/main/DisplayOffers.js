@@ -56,7 +56,7 @@ class DisplayOffers extends Component {
                                      <div className="tile is-ancestor">
                                          <div className="tile is-child box">
                                                  <h3>{filteredOffer.title}</h3>
-                                                 <img src={`${config.api}/${filteredOffer.image}`} alt=""/>
+                                                 <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                                  <h4>{filteredOffer.authorUsername}</h4>
                                                  <p>{filteredOffer.description}</p>
                                                  <p>{filteredOffer.category}</p>
@@ -68,8 +68,9 @@ class DisplayOffers extends Component {
                                          offerIdentificator={filteredOffer._id}
                                          title={filteredOffer.title} 
                                          image={filteredOffer.image}
-                                         author={filteredOffer.author} 
+                                         author={filteredOffer.author}
                                          authorUsername={filteredOffer.authorUsername}
+                                         authorProfileImage={filteredOffer.authorProfileImage}
                                          description={filteredOffer.description} 
                                          category={filteredOffer.category}
                                          dateOffer={filteredOffer.date}
@@ -106,6 +107,7 @@ class DisplayOffers extends Component {
                                             image={offer.image}
                                             author={offer.author}
                                             authorUsername={offer.authorUsername} 
+                                            authorProfileImage={offer.authorProfileImage}
                                             description={offer.description} 
                                             category={offer.category}
                                             dateOffer={offer.date}

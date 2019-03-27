@@ -68,7 +68,7 @@ class App extends Component {
                 {/* <Route path='/publish-offer'  render={(props) => <PublishOffer {...props} />} /> */}
                 <PrivateRoute path='/publish-offer'  component={PublishOffer} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
                 {/* <Route path='/profile:id'  render={(props) => <AuthorProfile {...props} />} /> */}
-                <PrivateRoute path='/profile:id'  component={AuthorProfile} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
+                <PrivateRoute path='/profile/:id'  component={AuthorProfile} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
             </Switch>
             </div>
         );

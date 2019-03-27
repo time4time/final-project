@@ -34,6 +34,7 @@ class Login extends Component {
                 this.props.loggedIn(true,this.state.username)
                 this.props.history.push('/dashboard')
             }).catch(err => {
+            this.setState({error: 'Username or email is incorrect'})    
             this.props.history.push('/login')
             })
     }
@@ -61,12 +62,13 @@ class Login extends Component {
                                             <input onChange={this.handleInput}className="input is-large" type="password" name="password" placeholder="Password" value={this.state.password} required/>
                                         </div>
                                     </div>
+                                    <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                                     <button className="button is-block is-info is-large is-fullwidth">Login</button>
                                 </form>
                             </div>
                             <p className="has-text-grey"> New to Time4Time?
                                 <Link to="/signup"> Sign Up</Link>
-                                <Link to='/auth/google'>TEST GOOGLE</Link>
+                                
                             </p>
                         </div>
                     </div>
