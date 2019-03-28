@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import config from '../../config.json'
 
-//redirigirle a su dashboard cuando publique la oferta
-
 //private router
 class PublishOffer extends Component {
 
@@ -41,7 +39,7 @@ class PublishOffer extends Component {
           data: newOffer,
           withCredentials : true
           }).then(databaseResponse => {
-            this.setState({databaseResponse})
+            // this.setState({newOffer:databaseResponse.data})
             this.props.history.push('/')
           }).catch(err => {
             this.setState({error: "Something went wrong! Your offer was not published"})
@@ -76,7 +74,10 @@ class PublishOffer extends Component {
                     <label className="label">Description</label>
                     <div className="control has-icons-left has-icons-right">
                     <div className="control">
-                        <textarea onChange={this.handleInput} name='description' className="textarea" placeholder="Description" value={this.state.description}/>
+                        <textarea onChange={this.handleInput} 
+                        name='description' className="textarea" placeholder="Describe your offer in max 250 characters" 
+                        maxLength="250"
+                        value={this.state.description}/>
                     </div>
                     </div>
                 </div>
@@ -97,7 +98,7 @@ class PublishOffer extends Component {
                     <div className="control">
                         <div className="select">
                         <select name='category' value={this.state.category} onChange={this.handleInput}>
-                            <option></option>
+                            <option>Select a category</option>
                             <option value='house'>House</option>
                             <option value='technology'>Technology</option>
                             <option value="music">Music</option>

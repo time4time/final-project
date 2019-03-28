@@ -48,7 +48,7 @@ class DisplayOffers extends Component {
                 <>
                 { this.props.filteredOffers? 
                  <div>
-                 <h1>Ofertas disponibles</h1>
+                 <h1>Available offers</h1>
                  <div className="list is-hoverable">
                          { this.props.filteredOffers.data.map( filteredOffer => {
                              return (
@@ -85,7 +85,7 @@ class DisplayOffers extends Component {
                 :
 
                 <div>
-                    <h1>Ofertas disponibles</h1>
+                    <h1>Available offers</h1>
                     <div className="list is-hoverable">
                             { this.state.listOfOffers.map( offer => {
                                 return (

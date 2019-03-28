@@ -23,6 +23,10 @@
   color: #61dafb;
 }
 
+.social-media{
+    cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

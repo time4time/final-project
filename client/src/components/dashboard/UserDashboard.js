@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
 import AllRequests from './AllRequests.js'
 import MyPetitions from './MyPetitions'
 import DirectMessages from './messages/DirectMessages'
@@ -8,6 +7,7 @@ import UserSettings from './UserSettings'
 import MyProfile from './MyProfile'
 import axios from 'axios';
 import config from '../../config.json'
+
 
 
 class UserDashboard extends Component {
@@ -113,7 +113,7 @@ class UserDashboard extends Component {
                         case 'profile':
                             return <MyProfile />
                         case 'settings':
-                            return <UserSettings />
+                            return <UserSettings {...this.props}/>
                         default:
                             return <AllRequests {...this.props} {...this.state} listOfMyOffers={this.state.listOfMyOffers}/>
                     }

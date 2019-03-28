@@ -5,9 +5,6 @@ import config from "../../config.json";
 
 
 
-// implementar el remember me si hay tiempo
-
-
 class Login extends Component {
     state = { 
         username: '',
@@ -21,7 +18,7 @@ class Login extends Component {
         this.setState(myInput)
     }
 
-
+    //send data with axios
     handleSubmit = (event) =>{
         event.preventDefault();
         let newUser = this.state
@@ -68,7 +65,6 @@ class Login extends Component {
                             </div>
                             <p className="has-text-grey"> New to Time4Time?
                                 <Link to="/signup"> Sign Up</Link>
-                                
                             </p>
                         </div>
                     </div>

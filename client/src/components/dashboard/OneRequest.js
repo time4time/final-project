@@ -70,15 +70,15 @@ class OneRequest extends Component {
                 </header>
                 <div className="card-content">
                     <div className="content">
-                    {this.props.authorUsername}
-                    <p><Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
-                    <p>{this.props.duration}</p>
+                    <p>My username: &nbsp;{this.props.authorUsername} </p>
+                    <p>Date: &nbsp; <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
+                    <p>Duration: &nbsp; {this.props.duration} hour(s)</p>
                     </div>
                 </div>
                 <footer className="card-footer">
                     {this.state.offerApproved ?
                     <h1 className="card-footer-item"> {this.state.offerApproved.status}</h1> :
-                    <h1 className="card-footer-item"> {this.props.status}</h1>
+                    <h1 className="card-footer-item"> Offer status: &nbsp; {this.props.status}</h1>
                     }
                     {this.state.offerStatus === 'Approved' ?
                     <Link className="card-footer-item button is-success">Approved!</Link> :

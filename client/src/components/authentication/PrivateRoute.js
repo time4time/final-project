@@ -2,9 +2,7 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 
-//declarar si la ruta es privada y realizar validaciones 
-//en caso de necesitar que este logueado para mostrar 
-// wrapping/composing
+//render private routes
 const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => (
   
   <Route {...rest} render={(props) => (

@@ -15,6 +15,7 @@ class AuthorProfile extends Component {
           date: '',
           error: '',
           success: '',
+          bio: '',
           newReview: undefined,
           listOfReviews: []
         };
@@ -120,22 +121,23 @@ class AuthorProfile extends Component {
                         <div className="media">
                             <div className="media-content">
                                 <p className="title is-4">{this.state.authorProfile.firstname}&nbsp;{this.state.authorProfile.lastname}</p>
-                                <p>In the app from: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.authorProfile.registrationDate}</Moment></p>
+                                <div className="content">
+                                    <p>In the app from: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.authorProfile.registrationDate}</Moment></p>
+                                </div>
                             </div>
                         </div>
                         <div className="content">
-                        <p>{this.state.authorProfile.description}</p>
-                            <br></br>
-                            <p>The time is now: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.authorProfile.date}</Moment></p>
+                        <p>{this.state.authorProfile.bio}</p>
+                        <p>The time is now: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.authorProfile.date}</Moment></p>
                         </div>
                     </div>
                 </div>
                 <div className="column">
                 <form ref={this.form} onSubmit={this.handleSubmitReview}>
                     <div className="field">
-                        <label className="label">Rating</label>
+                        <label className="label">Reviews</label>
                         <div className="control">
-                            <h2>Rating: {rating}</h2>
+                            <h2>Your Rating: {rating}</h2>
                             <StarRatingComponent 
                                 name="rate1" 
                                 starCount={5}
