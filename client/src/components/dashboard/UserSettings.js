@@ -79,7 +79,7 @@ class UserSettings extends Component {
                                             </div>
                                         </div>
                                         <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
-                                        <button className="button is-block is-info is-large is-fullwidth" value="submit">Edit profile image</button>
+                                        <button className="button is-block is-large is-fullwidth" value="submit">Edit profile image</button>
                                     </form>
                                 </div>
                                 <div className="box">
@@ -123,7 +123,7 @@ class UserSettings extends Component {
                                             </p>
                                         </div>
                                         <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
-                                        <button className="button is-block is-info is-large is-fullwidth" value="submit">Edit personal information</button>
+                                        <button className="button is-block is-large is-fullwidth" value="submit">Edit personal information</button>
                                     </form>
                                 </div>
                             </div>

@@ -34,8 +34,8 @@ export const UnauthNav = class UnauthNav extends Component {
         return ( 
             <nav className="navbar is-transparent">
                 <div className="navbar-brand">
-                    <NavLink className="navbar-item" to="https://bulma.io">
-                        <img src="https://bulma.io/images/bulma-logo.png" alt="" width="112" height="28"></img>
+                    <NavLink className="navbar-item" >
+                        <img src="" alt="" width="112" height="28"></img>
                     </NavLink>
                     <div onClick={this.toggleDropdownMenu} className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>

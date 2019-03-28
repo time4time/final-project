@@ -46,7 +46,7 @@ class Login extends Component {
                             <p className="subtitle has-text-grey">Please login to proceed.</p>
                             <div className="box">
                                 <figure className="avatar">
-                                    <img src="lightscape-741984-unsplash.jpg" alt=""/>
+                                    <img src="timextime.jpg" alt=""/>
                                 </figure>
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="field">
@@ -60,7 +60,9 @@ class Login extends Component {
                                         </div>
                                     </div>
                                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
-                                    <button className="button is-block is-info is-large is-fullwidth">Login</button>
+                                    
+                                    <button className="button is-block is-large is-fullwidth">Login</button>
+            
                                 </form>
                             </div>
                             <p className="has-text-grey"> New to Time4Time?
