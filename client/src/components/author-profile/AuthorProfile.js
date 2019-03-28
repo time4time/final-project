@@ -17,7 +17,9 @@ class AuthorProfile extends Component {
           success: '',
           bio: '',
           newReview: undefined,
-          listOfReviews: []
+          listOfReviews: [],
+          currentPage: 1,
+          reviewsPerPage: 5
         };
     this.form = React.createRef()
     this.onStarClick = this.onStarClick.bind(this)
@@ -100,6 +102,9 @@ class AuthorProfile extends Component {
         })
     }
 
+    handlePageClick = (event) => {
+        this.setState({currentPage: Number(event.target.id)})
+    }
 
     componentDidMount() {
         this.getAuthorInfo()
@@ -107,8 +112,42 @@ class AuthorProfile extends Component {
     }
 
     render() {
-
         const { rating } = this.state;
+
+        const { listOfReviews, currentPage, reviewsPerPage } = this.state
+
+        const indexOfLastReview = currentPage * reviewsPerPage
+        const indexOfFirstReview = indexOfLastReview - reviewsPerPage
+        const currentReviews = listOfReviews.slice(indexOfFirstReview, indexOfLastReview)
+
+        const renderReviews = currentReviews.map (review => {
+            return <Review
+                rating={review.rating}
+                opinion={review.opinion}
+                date={review.date}
+                pictureUrl={review.picture}
+                reviewer={review.reviewer}
+            />
+        })
+
+        const pageNumbers = []
+        for (let i = 1; i <= Math.ceil(listOfReviews.length / reviewsPerPage); i++) {
+            pageNumbers.push(i)
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+                <li
+                    key={number}
+                    id={number}
+                    onClick={this.handlePageClick}
+                >
+                    {number}
+                </li>
+            )
+        })
+
+
         return (
             <div className="colummns">
                 <div className="card column is-one-quarter">
@@ -177,15 +216,10 @@ class AuthorProfile extends Component {
                     </form>
                 </div>
                 <div>
-                    {this.state.listOfReviews.map (review => {
-                        return <Review
-                            rating={review.rating}
-                            opinion={review.opinion}
-                            date={review.date}
-                            pictureUrl={review.picture}
-                            reviewer={review.reviewer}
-                        />
-                    })}
+                    { renderReviews }
+                    <ul id="page-numbers">
+                        { renderPageNumbers }
+                    </ul>
                 </div>
           </div>
         );
