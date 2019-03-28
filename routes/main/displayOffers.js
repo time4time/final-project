@@ -5,7 +5,6 @@ var moment = require('moment')
 moment().format()
 
 router.get('/display-offers', function(req, res, next) {
-
   Offer.find({status:'Open'})
     .then((allOffers) => {
         res.json(allOffers)

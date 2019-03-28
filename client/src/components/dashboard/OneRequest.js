@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios  from 'axios';
 import config from "../../config.json";
+import Moment from "react-moment";
 
 
 class OneRequest extends Component {
@@ -59,10 +60,6 @@ class OneRequest extends Component {
     //         })
     //       })
     // }
-    componentDidMount(){
-        //check status in database every time it mounts
-        console.log('OneRequest mounts')
-    }
     render() { 
         return (
             <div className="card">
@@ -74,7 +71,7 @@ class OneRequest extends Component {
                 <div className="card-content">
                     <div className="content">
                     {this.props.authorUsername}
-                    <time datetime="2016-1-1">{this.props.date}></time>
+                    <p><Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
                     <p>{this.props.duration}</p>
                     </div>
                 </div>
