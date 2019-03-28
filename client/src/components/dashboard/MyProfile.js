@@ -41,13 +41,13 @@ class MyProfile extends Component {
                     <div className="media">
                     <div className="media-content">
                         <p className="title is-4">{this.state.profileInfo.firstname} {this.state.profileInfo.lastname}</p>
-                        <p className="subtitle is-6">{this.state.profileInfo.username}</p>
+                        <p className="subtitle is-6">Username: &nbsp; {this.state.profileInfo.username}</p>
                     </div>
                     </div>
                     <div className="content">
 
                         <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hour(s)</p>
-                        <p><Moment format="D MMM YYYY" withTitle>{this.state.profileInfo.registrationDate}</Moment></p>
+                        <p>Registration Date: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.profileInfo.registrationDate}</Moment></p>
 
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
 import config from "../../config.json";
+// import { setFlagsFromString } from 'v8';
 
 
 
@@ -15,7 +16,9 @@ class UserSettings extends Component {
         email: '',
         postalCode: '',
         user: [],
-        error: ''
+        error: '',
+        success: '',
+        
     }
     handleInput = (event)=> {
         let myInput = {} //empty object
@@ -34,8 +37,7 @@ class UserSettings extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
-            this.props.history.push('/dashboard')
+            this.props.history.push('/')
         }).catch(err => {
             debugger
             this.setState({error: 'Could not edit personal information'})
@@ -53,7 +55,7 @@ class UserSettings extends Component {
             withCredentials : true,
         }).then(databaseResponse => {
             debugger
-            this.props.history.push('/dashboard')
+            this.props.history.push('/')
         }).catch(err => {
             debugger
             this.setState({error: 'Could not edit personal information'})

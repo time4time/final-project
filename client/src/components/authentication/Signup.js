@@ -15,6 +15,7 @@ class SignUp extends Component {
         postalCode: '',
         error: ''
      }
+     
     //take an input and update status
     handleInput = (event)=> {
         let myInput = {} //empty object

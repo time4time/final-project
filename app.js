@@ -40,8 +40,6 @@ mongoose.connect('mongodb://localhost/timefortime', { useNewUrlParser: true }, f
 })
  
 
-
-
 app.use(session({
     secret:             'verysecret',
     resave:             true,

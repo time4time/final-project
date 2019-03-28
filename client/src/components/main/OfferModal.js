@@ -4,6 +4,15 @@ import config from '../../config.json'
 import axios from 'axios'
 import Moment from 'react-moment';
 import AuthorProfile from '../author-profile/AuthorProfile.js';
+import {
+    FacebookIcon,
+    FacebookShareButton,
+    TwitterShareButton,
+    TwitterIcon,
+    PinterestShareButton,
+    PinterestIcon,
+    
+  } from 'react-share';
 
 const display = {
     display: 'block'
@@ -15,10 +24,10 @@ const hide = {
 
 class OfferModal extends Component {
     state = { 
-        // title: '',
-        // author: '',
-        // description: '',
-        // category: '',
+        title: '',
+        author: '',
+        description: '',
+        category: '',
         errorTimeWallet: ''
     }
 
@@ -95,6 +104,17 @@ class OfferModal extends Component {
                                     <p className="modal-card-title">Name </p>
                                     <p>{this.props.authorUsername}</p>
                                     <p className="modal-card-title">Ratings</p>
+                                    <div className='social-media'>
+                                    <FacebookShareButton url={'https://www.facebook.com'}>
+                                        <FacebookIcon size={32} round={true}/>
+                                    </FacebookShareButton>
+                                    <TwitterShareButton url={'https://www.twitter.com'}>
+                                        <TwitterIcon size={32} round={true}/>
+                                    </TwitterShareButton>
+                                    <PinterestShareButton url={'https://www.pinterest.com/'}>
+                                        <PinterestIcon size={32} round={true}/>
+                                    </PinterestShareButton>
+                                    </div>
                                     <Link>
                                         <button onClick={this.redirectToAuthorProfile}className="button is-success">See more</button>
                                     </Link>
@@ -113,6 +133,7 @@ class OfferModal extends Component {
                             <p>{this.props.durationOffer} hour(s)</p>
                         </section>
                         <footer className="modal-card-foot">
+                      
                             <Link>
                             {this.props.loggedIn ?
                                 <button onClick={(e) => {

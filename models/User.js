@@ -9,13 +9,13 @@ const userSchema = new Schema({
     firstname:          {type: String},
     lastname:           {type: String},
     birth:              {type: Date},
-    bio:                {type: Date},
+    bio:                {type: String},
     registrationDate:   {type: Date, default: Date.now},
     postalCode:         {type: String},
     ratings:            [{type: Schema.Types.ObjectId, ref: 'reviews'}],
     timeWallet:         {type: Number, default: 2},
-    offersCreated:      [{type: Schema.Types.ObjectId, ref: 'offers'}],
-    offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
+    // offersCreated:      [{type: Schema.Types.ObjectId, ref: 'offers'}],
+    // offersRequested:    [{type: Schema.Types.ObjectId, ref: 'offers'}],
     profileImage:       {type: String},
 
     // google: {
