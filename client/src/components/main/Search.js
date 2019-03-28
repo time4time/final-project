@@ -14,6 +14,7 @@ class Search extends Component {
         repair:     '',
         languages:  '',
         cooking:    '',
+        filteredOffers: []
      }
     }
 
@@ -42,7 +43,7 @@ class Search extends Component {
           data: newSearch,
           withCredentials : true,
           }).then(databaseResponse => {
-            this.setState({databaseResponse})
+            this.setState({filteredOffers: databaseResponse.data})
           }).catch(err => {
 
             
@@ -100,7 +101,7 @@ class Search extends Component {
             </form>
            
         
-            <DisplayOffers {...this.props} filteredOffers={this.state.databaseResponse}
+            <DisplayOffers {...this.props} filteredOffers={this.state.filteredOffers}
             
             
             
