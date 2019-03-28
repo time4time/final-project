@@ -54,7 +54,7 @@ class SignUp extends Component {
                             <p className="subtitle has-text-grey">Please sign up to proceed.</p>
                             <div className="box">
                                 <figure className="avatar">
-                                    <img src="lightscape-741984-unsplash.jpg" alt=""/>
+                                    <img src="timextime.jpg" alt=""/>
                                 </figure>
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="field">
@@ -102,7 +102,7 @@ class SignUp extends Component {
                                         </p>
                                     </div>
                                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
-                                    <button className="button is-block is-info is-large is-fullwidth" value="submit">Sign up</button>
+                                    <button className="button is-block is-large is-fullwidth" value="submit">Sign up</button>
                                 </form>
                             </div>
                             <p className="has-text-grey">Already got an account?
