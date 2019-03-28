@@ -30,19 +30,19 @@ class DisplayOffers extends Component {
           withCredentials: true
         })
         .then(responseFromApi => {
-            debugger
           this.setState({
             listOfOffers: responseFromApi.data
           })
         })
+        .catch(err => {
+            console.log('error')
+        })
     }
     
-    // componentDidMount() {
-    //     this.getAllOffers();
-    // }
-    componentDidUpdate() {
+    componentDidMount() {
         this.getAllOffers();
     }
+
     render() { 
             return ( 
                 <>

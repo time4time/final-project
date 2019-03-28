@@ -76,7 +76,7 @@ class PublishOffer extends Component {
                     <label className="label">Description</label>
                     <div className="control has-icons-left has-icons-right">
                     <div className="control">
-                        <textarea onChange={this.handleInput} name='description'className="textarea" placeholder="Description" value={this.state.description}/>
+                        <textarea onChange={this.handleInput} name='description' className="textarea" placeholder="Description" value={this.state.description}/>
                     </div>
                     </div>
                 </div>

@@ -3,40 +3,41 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import config from '../../config.json'
 import Moment from 'react-moment'
-
-
-
-//axios reviews
-
+import Review from './Review'
 
 class AuthorProfile extends Component {
     constructor() {
         super();
         this.state = {
           rating: 1,
-          authorProfile:{}
-          
+          authorProfile:{},
+          opinion: '',
+          date: '',
+          error: '',
+          success: '',
+          newReview: undefined,
+          listOfReviews: []
         };
     this.form = React.createRef()
-
+    this.onStarClick = this.onStarClick.bind(this)
     
     }
-    // onStarClick(nextValue, prevValue, name) {
-    //     this.setState({rating: nextValue});
-    // }
-    
+    onStarClick(nextValue, prevValue, name) {
+        this.setState({rating: nextValue});
+    }
+    handleInput = (event) => {
+        const {name, value} = event.target
+        this.setState({[name]: value})
+    }
  
     getAuthorInfo = () =>{
-        const {id} = this.props.match.params
-
-        
+        const {id} = this.props.match.params        
         axios({
           method: "get",
           url: `${config.api}/author-profile/${id}`,
           withCredentials: true
         })
         .then(responseFromApi => {
-           
           this.setState({
             authorProfile: responseFromApi.data
           })
@@ -44,11 +45,6 @@ class AuthorProfile extends Component {
         .catch(err => {
             console.log(err)
         })
-      }
-
-      componentDidMount() {
-       
-        this.getAuthorInfo()
     }
     
     handleSubmitReview = (event) => {
@@ -63,17 +59,55 @@ class AuthorProfile extends Component {
             withCredentials : true,
         }).then(databaseResponse => {
             debugger
-            this.props.history.push('/dashboard')
+            this.setState({success: 'You successfully added a review!', newReview: databaseResponse.data})
+            }).then(() => {
+                this.sendUserId()
+            }).catch(err => {
+                debugger
+                this.setState({error: 'Could not add your review'})
+            })
+    }
+
+    sendUserId = () => {
+        debugger
+        axios({
+            method: 'post',
+            url: `${config.api}/user-reviewed-id`,
+            data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
+            withCredentials : true,
+        }).then(databaseResponse => {
+            debugger
+            // this.setState({success: 'You successfully added a review!'})
         }).catch(err => {
             debugger
-            this.setState({error: 'Could not add your review'})
-            // this.props.history.push('/signup')
+            // this.setState({error: 'Could not add your review'})
         })
     }
-    
+
+    getReviews = () => {
+        axios({
+            method: 'get',
+            url: `${config.api}/get-reviews`,
+            withCredentials : true,
+        }).then(databaseResponse => {
+            debugger
+            this.setState({listOfReviews: databaseResponse.data})
+            // this.setState({success: 'You successfully added a review!'})
+        }).catch(err => {
+            debugger
+            // this.setState({error: 'Could not add your review'})
+        })
+    }
+
+
+    componentDidMount() {
+        this.getAuthorInfo()
+        this.getReviews()
+    }
+
     render() {
 
-        // const { rating } = this.state;
+        const { rating } = this.state;
         return (
             <div className="colummns">
                 <div className="card column is-one-quarter">
@@ -98,46 +132,36 @@ class AuthorProfile extends Component {
                 </div>
                 <div className="column">
                 <form ref={this.form} onSubmit={this.handleSubmitReview}>
-                    <div>
-                        <h1>About</h1>
-                        <h2>{this.state.authorProfile.firstname} </h2>
-                        <h3>Time in the app: </h3>
-                        <h3>Ratings: </h3>
-                        <h3>Bio:</h3>
-                        <p>{this.state.authorProfile.description}</p>
-                    </div>
                     <div className="field">
                         <label className="label">Rating</label>
                         <div className="control">
-                            {/* <h2>Rating: {rating}</h2> */}
-                            {/* <StarRatingComponent 
+                            <h2>Rating: {rating}</h2>
+                            <StarRatingComponent 
                                 name="rate1" 
                                 starCount={5}
                                 value={rating}
                                 onStarClick={this.onStarClick}
-                            /> */}
+                            />
                         </div>
                     </div>
                     <div className="field">
                         <label className="label">Opinion</label>
                         <div className="control has-icons-left has-icons-right">
                         <div className="control">
-                            <textarea name='opinion'className="textarea" placeholder="Your opinion"></textarea>
+                            <textarea onChange={this.handleInput} name='opinion' value={this.state.opinion} className="textarea" placeholder="Your opinion"></textarea>
                         </div>
                         </div>
                     </div>
                     <div className="field">
                         <label className="label">Date</label>
                         <div className="control">
-                        {/* Poner que le salga automaticamente la fecha de hoy */}
-                            <input className="input" type="date" placeholder="Date of activity"/>
+                            <input onChange={this.handleInput} name='date' value={this.state.date} className="input" type="date" placeholder="Date of activity"/>
                         </div>
                     </div>
                     <div className="field">
-                        <label className="label">Pictures</label>
-                        {/* hacer lo de moodle por la tarde */}
+                        <label className="label">Picture</label>
                         <div className="control">
-                        <input onChange={this.handleInput} name='image' className="input" type="file"/>
+                        <input onChange={this.handleInput} name='review-image' className="input" type="file"/>
                         </div>
                     </div>
                     <div className="field is-grouped">
@@ -150,9 +174,21 @@ class AuthorProfile extends Component {
                     </div>
                     </form>
                 </div>
+                <div>
+                    {this.state.listOfReviews.map (review => {
+                        return <Review
+                            rating={review.rating}
+                            opinion={review.opinion}
+                            date={review.date}
+                            pictureUrl={review.picture}
+                            reviewer={review.reviewer}
+                        />
+                    })}
+                </div>
           </div>
         );
     }
 }
+
  
 export default AuthorProfile;
