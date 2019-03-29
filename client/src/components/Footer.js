@@ -5,13 +5,13 @@ class Footer extends Component {
     render() { 
         return (
             <footer className="footer">
-                <div className="container is-fluid">
-                    <div className="content has-text-centered">
-                        <p>
-                        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                        </p>
+                <div className="container is-fluid columns">
+                    <div className="content has-text-centered column is-2">
+                        <img className="footer-img" src="/logo_black.png" alt=""></img>
+                    </div>
+                    <div className="content has-text-centered column">
+                        <p><strong>About us</strong></p>
+                        <p>In Time 4 Time, we believe in circular economy. Modern society is created around the value of money. Our purpose is to go back to simpler times when you could enjoy your free time without having to be productive all the time. If you too are tired of the pressure of modern times, you can join us and meet new people to learn lots of new things in an environment where sharing is the key.</p>
                     </div>
                 </div>
             </footer>

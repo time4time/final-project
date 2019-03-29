@@ -94,6 +94,15 @@ $button-background-color: $coral;
     margin: -12px 0;
 }
 
+.footer {
+    background-color: lightgrey;
+}
+
+.footer-img {
+    width: 100px;
+    height: auto;
+}
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
