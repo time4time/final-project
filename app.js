@@ -65,13 +65,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname)));
 
 
-if(process.env.ENV == "production"){
-  console.log("hi")
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-  });
-}
+app.use(express.static(path.join(__dirname, 'public/build')));;
 
 // app.use(passport.initialize());  
 // app.use(passport.session()); 
