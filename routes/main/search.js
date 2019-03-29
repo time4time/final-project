@@ -22,15 +22,7 @@ router.post('/search', function(req, res) {
             ]},
             {status:'Open'}
         ])
-      .then((filteredOffer) => {
-        //   debugger
-        // for(i=0;i<filteredOffer.length;i++){
-        //     let parsedDate = moment(filteredOffer[i].date).format('dd/mm/yyyy')
-        //     filteredOffer[i].parsedDate=parsedDate
-        //     console.log(parsedDate)
-        //     console.log(filteredOffer)
-        // }
-        
+      .then((filteredOffer) => {        
           res.json(filteredOffer)})
       .catch((err) => {
           res.status(404).json({errorMessage: "Offers not found"})

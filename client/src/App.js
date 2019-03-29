@@ -8,6 +8,7 @@ import PublishOffer from './components/publish-offer/PublishOffer'
 import Login from './components/authentication/Login'
 import Signup from './components/authentication/Signup'
 import AuthorProfile from './components/author-profile/AuthorProfile'
+import Footer from './components/Footer'
 import { UnauthNav, AuthNav } from './components/Nav';
 
 class App extends Component {
@@ -32,22 +33,6 @@ class App extends Component {
         })
     }
 
-    // showNotifications = (notification) => {
-    //     debugger
-    //     console.log('entro en show notifications')
-    //     if(notification === 'requestNotification'){
-    //         this.setState({
-    //             requestNotification: true
-    //         })
-    //     }else if(notification === 'petitionNotification'){
-    //         this.setState({
-    //             petitionNotification: true
-    //         })
-
-    //     }
-
-    // }
-
     render() {
         return (
             <div className="App">
@@ -70,6 +55,7 @@ class App extends Component {
                 {/* <Route path='/profile:id'  render={(props) => <AuthorProfile {...props} />} /> */}
                 <PrivateRoute path='/profile/:id'  component={AuthorProfile} currentUsername={this.state.username} loggedIn={this.state.loggedIn} />
             </Switch>
+            <Footer />
             </div>
         );
     }

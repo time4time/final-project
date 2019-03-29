@@ -69,7 +69,6 @@ app.use(express.static(path.join(__dirname)));
 
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));
-// app.use('/', require('./routes/authentication/auth-google'))
 app.use('/', require('./routes/authentication/signup'));
 app.use('/', require('./routes/authentication/login'));
 app.use('/', require('./routes/authentication/logout'));

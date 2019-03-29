@@ -53,7 +53,6 @@ class AuthorProfile extends Component {
     handleSubmitReview = (event) => {
         event.preventDefault();
         let formData = new FormData(this.form.current) 
-        debugger
         axios({
             method: 'post',
             url: `${config.api}/author-profile`,
@@ -61,29 +60,24 @@ class AuthorProfile extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.setState({success: 'You successfully added a review!', newReview: databaseResponse.data})
             }).then(() => {
                 this.sendUserId()
             }).catch(err => {
-                debugger
                 this.setState({error: 'Could not add your review'})
             })
     }
 
     sendUserId = () => {
-        debugger
         axios({
             method: 'post',
             url: `${config.api}/user-reviewed-id`,
             data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
-            // this.setState({success: 'You successfully added a review!'})
+            console.log('Found the user')
         }).catch(err => {
-            debugger
-            // this.setState({error: 'Could not add your review'})
+            this.setState({error: 'Could not add your review'})
         })
     }
 
@@ -93,12 +87,8 @@ class AuthorProfile extends Component {
             url: `${config.api}/get-reviews`,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.setState({listOfReviews: databaseResponse.data})
-            // this.setState({success: 'You successfully added a review!'})
         }).catch(err => {
-            debugger
-            // this.setState({error: 'Could not add your review'})
         })
     }
 

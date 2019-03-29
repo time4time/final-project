@@ -4,7 +4,6 @@ var Offer = require('../../models/Offer')
 var User = require('../../models/User')
 
 router.post('/apply', function(req, res, next) {
-    debugger
     let offerId = req.body.offerId;
     let userId = req.session.user._id
     let username = req.session.user.username;

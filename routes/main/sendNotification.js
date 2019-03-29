@@ -9,11 +9,9 @@ router.post('/send-mail', (req,res,next) => {
     //step 1
     // take data from offer
     let offerId = req.body.offerId;
-    debugger
     Offer.findById(offerId)
         .then((mailOffer) =>{ 
             //step 2 set transport
-            debugger
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -21,7 +19,6 @@ router.post('/send-mail', (req,res,next) => {
                     pass: 'Sputnik2327'
                 }
             });
-            debugger
             transporter.sendMail({
                 from:       '"Time for time" <iyanezm@gmail.com>',
                 to:         mailOffer.authorMail,
@@ -31,13 +28,10 @@ router.post('/send-mail', (req,res,next) => {
                     Best regards, 
                     Time for Time team <3 `
             })
-            debugger
             return mailOffer;
             }).then((mailOffer) => {
-                debugger
                 res.status(200).json(mailOffer)
             }).catch(error =>{ 
-                    debugger
                  res.status(500).json(error)
                 });
 });

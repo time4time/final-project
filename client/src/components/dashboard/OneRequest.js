@@ -16,7 +16,6 @@ class OneRequest extends Component {
     }
 
     approveOffer = (event) => {
-        debugger
         event.preventDefault();
         axios({
             method: 'post',
@@ -48,18 +47,6 @@ class OneRequest extends Component {
             this.setState({error: 'The time wallet could not be updated'})
         })
     }
-    // checkOffersStatus = () => {
-    //     axios({
-    //         method: "get",
-    //         url: `${config.api}/display-offers`,
-    //         withCredentials: true
-    //       })
-    //       .then(responseFromApi => {
-    //         this.setState({
-    //           listOfOffers: responseFromApi.data
-    //         })
-    //       })
-    // }
     render() { 
         return (
             <div className="card">
@@ -90,10 +77,6 @@ class OneRequest extends Component {
                             <Link className="card-footer-item button is-success">Approved!</Link> :
                             <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
                             }
-                            {/* {this.state.offerStatus ? 
-                                <Link className="card-footer-item button is-success">Approved!</Link> :
-                                <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
-                                } */}
                         </div>
                         }
                     </div>

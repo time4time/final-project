@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import Search from './Search'
-import DisplayMap from './DisplayMap'
 
 
 
-//first page(render map, search, this component it's public)
+//first page(render search, this component is public)
 class Main extends Component {
-    state = { 
-
-     }
     render() { 
         return ( 
             <>
-            <h1>Main page</h1>
-            <Link to='/publish-offer'>
-                <button className="button is-success">Publish offer!</button>
-            </Link>
-            <Search {...this.props}/>
-            <DisplayMap />
+            <section className="hero is-medium is-bold hero-bg">
+                <div className="hero-body">
+                    <div className="container">
+                    </div>
+                </div>
+            </section>
+            <div className="section">
+                <Search {...this.props}/>
+            </div>
             </>
          );
     }

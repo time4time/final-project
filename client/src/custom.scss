@@ -1,41 +1,107 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Markazi+Text');
 
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
-$green: black;
-$yellow: blue;
+$dark-blue: #4062bb;
+$aqua-blue: #59c3c3;
+$light-grey: #ebebeb;
+$coral: #f45b69;
+
+$link: $aqua-blue;
+// $purple: #8A4D76;
+// $pink: #FA7C91;
+// $brown: #757763;
+// $beige-light: #D0D1CD;
+// $beige-lighter: #EFF0EB;
+// $green: black;
+// $yellow: blue;
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-$blue:  #ffffff;
+$family-sans-serif: "Quicksand", sans-serif;
+// $grey-dark: $brown;
+// $grey-light: $beige-light;
+// $primary: $purple;
+// $link: $pink;
+// $widescreen-enabled: false;
+// $fullhd-enabled: false;
+// $blue:  #ffffff;
 // Update some of Bulma's component variables
-$body-background-color: white;
-$button-background-color: $pink;
+// $body-background-color: white;
+$button-background-color: $coral;
 
-$body-background-colortwo: purple;
+// $body-background-colortwo: purple;
 
-.button-two {
-    background-color:  $body-background-colortwo!important;
+// .button-two {
+//     background-color:  $body-background-colortwo!important;
+// }
+
+// .is-success {
+//     background-color: brown !important;
+// }
+// $control-border-width: 2px;
+// // $input-border-color: transparent;
+// $input-shadow: none;
+
+
+
+
+.navbar-item img {
+    max-height: 2.5rem !important
 }
 
-.is-success {
-    background-color: brown !important;
+.button {
+    color: white !important
 }
-$control-border-width: 2px;
-// $input-border-color: transparent;
-$input-shadow: none;
+
+.hero-bg {
+    background-image: url(/header_LQ2.jpg) ;
+    // background-position: center bottom;
+    background-position: 0% 48%;
+    background-repeat:  no-repeat;
+    // background-attachment: fixed;
+    background-size:  cover;
+    height: 55vh;
+    background-color: #999;
+}
+
+.title {
+    font-family: 'Markazi Text', serif;
+}
+
+.modal-offer-title {
+    font-family: 'Markazi Text', serif;
+    font-weight: lighter;
+    font-size: 3em;
+}
+
+.modal-image {
+    padding: 0 !important
+}
+
+.page-numbers-column {
+    margin: 0 !important;
+}
+
+.box {
+    border-radius: 0;
+    padding: 20px 0;
+}
+
+.tile.is-ancestor {
+    width: 100%;
+    margin: -12px 0;
+}
+
+.footer {
+    background-color: lightgrey;
+}
+
+.footer-img {
+    width: 100px;
+    height: auto;
+}
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
