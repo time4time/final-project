@@ -7,7 +7,6 @@ class Search extends Component {
     constructor(props){
         super(props)
     this.state = { 
-        postalcode:      '',
         house:      '',
         technology:   '',
         music:      '',
@@ -18,13 +17,6 @@ class Search extends Component {
      }
     }
 
-    //input postal code
-    handleInput = (event)=> {
-        let generalSearch = {} //empty object
-        generalSearch[event.target.name] = event.target.value
-        this.setState(generalSearch)
-        
-    }
 
     handleCheck = (event)=> {
         let generalSearch = {} //empty object
@@ -45,70 +37,62 @@ class Search extends Component {
           }).then(databaseResponse => {
             this.setState({filteredOffers: databaseResponse.data})
           }).catch(err => {
-
-            
-        //   this.props.history.push('/')
+              this.setState({error: 'Something went wrong! We could not do the search'})
           })
     }
     
 
     render() { 
         return ( 
-            <>
-            <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                    <label className="label">Postal code</label>
-                    <div className="control">
-                    <input onChange={this.handleInput} name='postalcode'className="input" 
-                    type="text" placeholder="Postal code" value={this.state.postalcode}/>
-                    </div>
-                </div>
-            
-                <label className="checkbox">
+            <div className="container is-fluid">
+            <div className="columns">
+            <div className="column is-2">
+            <form onSubmit={this.handleSubmit} className="section">
+                
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='house' type="checkbox" />
                         House
                 </label>
 
-                <label className="checkbox">
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='technology'type="checkbox" />
                         Technology
                 </label>
 
-                <label className="checkbox">
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='music'type="checkbox" />
                         Music
                 </label>
 
-                <label className="checkbox">
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='repair'type="checkbox" />
                         Repair
                 </label>
 
-                <label className="checkbox">
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='languages'type="checkbox" />
                         Languages
                 </label>
 
-                <label className="checkbox">
+                <label className="checkbox level">
                     <input onChange={this.handleCheck} name='cooking'type="checkbox" />
                         Cooking
                 </label>
 
-                <div className="control">
+                <div className="control level">
                     <button className="button is-link">Search </button>
                 </div>
-
+                <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
             </form>
-           
-        
+            </div>
+
+            <div className="column">
             <DisplayOffers {...this.props} filteredOffers={this.state.filteredOffers}
-            
-            
-            
-            
             />
+            </div>
+            </div>
             
-            </>
+            </div>
 
          );
     }

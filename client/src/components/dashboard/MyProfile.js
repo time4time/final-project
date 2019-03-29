@@ -33,7 +33,7 @@ class MyProfile extends Component {
         return (
             <div className="card">
                 <div className="card-image">
-                    <figure className="image is-4by3">
+                    <figure className="image is-128x128">
                     <img src={`${config.api}/${this.state.profileInfo.profileImage}`} alt="Profile"/>
                     </figure>
                 </div>

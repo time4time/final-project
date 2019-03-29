@@ -18,11 +18,9 @@ class Review extends Component {
             data: {reviewerId: this.props.reviewer},
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.setState({reviewer: databaseResponse.data})
         }).catch(err => {
-            debugger
-            // this.setState({error: 'Could not add your review'})
+            console.log(err)
         })
     }
     componentDidMount(){

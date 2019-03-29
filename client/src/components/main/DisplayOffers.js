@@ -49,6 +49,8 @@ class DisplayOffers extends Component {
     }
 
     render() { 
+
+        //Set pagination for list of offers
         const { listOfOffers, currentPage, offersPerPage } = this.state
 
         const indexOfLastOffer = currentPage * offersPerPage
@@ -62,6 +64,7 @@ class DisplayOffers extends Component {
                         <div className="tile is-child box">
                                 <h3>{offer.title}</h3>
                                 <h4>{offer.authorUsername}</h4>
+                                <p>{offer.postalCode}</p>
                                 <p>{offer.description}</p>
                                 <p>{offer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(offer._id)}}>Open offer</Link>
@@ -75,6 +78,7 @@ class DisplayOffers extends Component {
                         author={offer.author}
                         authorUsername={offer.authorUsername} 
                         authorProfileImage={offer.authorProfileImage}
+                        postalCode={offer.postalCode}
                         description={offer.description} 
                         category={offer.category}
                         dateOffer={offer.date}
@@ -85,6 +89,7 @@ class DisplayOffers extends Component {
             )
         })
 
+        //Numbers for pagination
         const pageNumbers = []
         for (let i = 1; i <= Math.ceil(listOfOffers.length / offersPerPage); i++) {
             pageNumbers.push(i)
@@ -96,12 +101,14 @@ class DisplayOffers extends Component {
                     key={number}
                     id={number}
                     onClick={this.handlePageClick}
+                    className="column"
                 >
                     {number}
                 </li>
             )
         })
 
+        //Pagination for the list of offers you get when you search
         const currentFilteredOffers = this.props.filteredOffers.slice(indexOfFirstOffer, indexOfLastOffer)
 
         let renderFilteredOffers = currentFilteredOffers.map((filteredOffer) => {
@@ -112,6 +119,7 @@ class DisplayOffers extends Component {
                                 <h3>{filteredOffer.title}</h3>
                                 <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                 <h4>{filteredOffer.authorUsername}</h4>
+                                <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>
                                 <p>{filteredOffer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
@@ -125,6 +133,7 @@ class DisplayOffers extends Component {
                         author={filteredOffer.author}
                         authorUsername={filteredOffer.authorUsername}
                         authorProfileImage={filteredOffer.authorProfileImage}
+                        postalCode={filteredOffer.postalCode}
                         description={filteredOffer.description} 
                         category={filteredOffer.category}
                         dateOffer={filteredOffer.date}
@@ -134,6 +143,7 @@ class DisplayOffers extends Component {
             )
         })
 
+        //Numbers for the list obtained after searching
         const pageFilteredNumbers = []
         for (let i = 1; i <= Math.ceil(this.props.filteredOffers.length / offersPerPage); i++) {
             pageNumbers.push(i)
@@ -145,6 +155,7 @@ class DisplayOffers extends Component {
                     key={number}
                     id={number}
                     onClick={this.handlePageClick}
+                    className="column"
                 >
                     {number}
                 </li>
@@ -154,28 +165,31 @@ class DisplayOffers extends Component {
 
             return ( 
                 <>
+
+                {/* Ternary operator to show the whole list of offers or the filtered one 
+                if you have done a search */}
                 { this.props.filteredOffers.length > 0 ? 
                  <div>
-
-                 <h1>Available offers</h1>
-
-                 <div className="list is-hoverable">
+                    <div className="list is-hoverable">
                             { renderFilteredOffers }
-                            <ul id="page-numbers">
-                                { renderFilteredPageNumbers }
-                            </ul>
-                 </div>
-             </div>
+                            <div className="columns page-numbers-column">
+                                <ul id="page-numbers" className="level column is-half is-offset-one-quarter columns">
+                                    { renderFilteredPageNumbers }
+                                </ul>
+                            </div>
+                    </div>
+                </div>
 
                 :
 
                 <div>
-                    <h1>Available offers</h1>
                     <div className="list is-hoverable">
                             { renderOffers }
-                            <ul id="page-numbers">
-                                { renderPageNumbers }
-                            </ul>
+                            <div className="columns page-numbers-column">
+                                <ul id="page-numbers" className="level column is-half is-offset-one-quarter columns">
+                                    { renderPageNumbers }
+                                </ul>
+                            </div>
                     </div>
                 </div>
                         }

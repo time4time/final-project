@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
 import config from "../../config.json";
-// import { setFlagsFromString } from 'v8';
 
-
-
-//editar foto de perfil, codigo postal, password, email
 
 class UserSettings extends Component {
     constructor(props) {
@@ -14,7 +10,7 @@ class UserSettings extends Component {
     }
     state = {
         email: '',
-        postalCode: '',
+        bio: '',
         user: [],
         error: '',
         success: '',
@@ -29,7 +25,6 @@ class UserSettings extends Component {
     handleSubmitProfileImage = (event) => {
         event.preventDefault();
         let formData = new FormData(this.form.current) 
-        debugger
         axios({
             method: 'post',
             url: `${config.api}/profile-image`,
@@ -39,36 +34,28 @@ class UserSettings extends Component {
         }).then(databaseResponse => {
             this.props.history.push('/')
         }).catch(err => {
-            debugger
             this.setState({error: 'Could not edit personal information'})
-            // this.props.history.push('/signup')
         })
     }
     handleSubmitPersonalInfo = (event) => {
         event.preventDefault();
         let editUser = this.state
-        debugger
         axios({
             method: 'post',
             url: `${config.api}/user-settings`,
             data: editUser,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.props.history.push('/')
         }).catch(err => {
-            debugger
             this.setState({error: 'Could not edit personal information'})
-            // this.props.history.push('/signup')
         })
     }
 
     render() { 
         return (
                 <section>
-                    <div className="hero-body">
-                        <div className="container has-text-centered">
-                            <div className="column is-4 is-offset-4">
+                            <div className="column">
                                 <h3 className="title has-text-grey">User's settings</h3>
                                 <div className="box">
                                     <form ref={this.form} onSubmit={this.handleSubmitProfileImage}>
@@ -100,6 +87,17 @@ class UserSettings extends Component {
                                             </div>
                                         </div>
                                         <div className="field">
+                                            <label className="label">Bio</label>
+                                            <div className="control has-icons-left has-icons-right">
+                                            <div className="control">
+                                                <textarea onChange={this.handleInput} 
+                                                name='bio' className="textarea" placeholder="Describe yourself in max 250 characters" 
+                                                maxLength="250"
+                                                value={this.state.bio}/>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div className="field">
                                             <div className="control">
                                                 <input onChange={this.handleInput} className="input is-large" type="email" name="email" placeholder="e-mail" value={this.state.email}/>
                                             </div>
@@ -107,11 +105,6 @@ class UserSettings extends Component {
                                         <div className="field">
                                             <div className="control">
                                             <p>{this.state.user.birth}</p>
-                                            </div>
-                                        </div>
-                                        <div className="field">
-                                            <div className="control">
-                                                <input onChange={this.handleInput} className="input is-large" type="text" name="postalCode" placeholder="Postal Code" value={this.state.postalCode}/>
                                             </div>
                                         </div>
                                         <div className="field">
@@ -127,8 +120,6 @@ class UserSettings extends Component {
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                 </section>
         );
     }

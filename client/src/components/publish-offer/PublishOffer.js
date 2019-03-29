@@ -29,7 +29,6 @@ class PublishOffer extends Component {
 
     //submit button
     handleSubmit = (event) =>{
-        debugger
         event.preventDefault();
         // let newOffer = this.state  
         let newOffer = new FormData(this.form.current)
@@ -40,12 +39,9 @@ class PublishOffer extends Component {
           data: newOffer,
           withCredentials : true
           }).then(databaseResponse => {
-
             this.props.history.push('/')
           }).catch(err => {
-              debugger
             this.setState({error: "Something went wrong! Your offer was not published"})
-        //   this.props.history.push('/')
           })
     }
  

@@ -30,14 +30,11 @@ router.get('/my-offers', function(req, res, next) {
 });
 
 router.post('/approve-offer', function(req, res, next) {
-    debugger
     Offer.findByIdAndUpdate(req.body.offerId, {status: 'Approved'}, {new: true})
     .then((offerApproved) => {
-        debugger
         res.json(offerApproved)
     })
     .catch((err) => {
-        debugger
         res.status(404).json({errorMessage: 'Offer could not be approved'})
     })
 })

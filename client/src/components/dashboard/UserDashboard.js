@@ -73,8 +73,10 @@ class UserDashboard extends Component {
     }
     render() { 
         return (
-            <>
-                <aside className="menu">
+            <div className='section'>
+            <div className='container'>
+            <div className='columns'>
+                <aside className="menu column is-3">
                     {/* <p className="menu-label">
                         All requests
                     </p> */}
@@ -101,7 +103,7 @@ class UserDashboard extends Component {
                         Settings
                     </Link></p>
                 </aside>
-                <div>
+                <div className="column">
                 {(() => {
                     switch(this.state.activeSection) {
                         case 'all requests':
@@ -119,10 +121,9 @@ class UserDashboard extends Component {
                     }
                 })()}
                 </div>
-
-                
-                
-            </>
+            </div>
+            </div>
+            </div>
         );
     }
 }

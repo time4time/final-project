@@ -27,20 +27,16 @@ class SignUp extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         let newUser = this.state
-        debugger
         axios({
             method: 'post',
             url: `${config.api}/signup`,
             data: newUser,
             withCredentials: true,
         }).then(databaseResponse => {
-            debugger
             this.props.loggedIn(true)
             this.props.history.push('/dashboard')
         }).catch(err => {
-            debugger
             this.setState({error: 'Username or email already taken'})
-            // this.props.history.push('/signup')
         })
     }
 
