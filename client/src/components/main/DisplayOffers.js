@@ -55,10 +55,12 @@ class DisplayOffers extends Component {
 
         const indexOfLastOffer = currentPage * offersPerPage
         const indexOfFirstOffer = indexOfLastOffer - offersPerPage
-        let currentOffers = []
-        if(listOfOffers.length > 0 ){
-            let currentOffers = listOfOffers.slice(indexOfFirstOffer, indexOfLastOffer)
-        }
+        // let currentOffers = []
+        // if(listOfOffers.length > 0 ){
+        //     let currentOffers = listOfOffers.slice(indexOfFirstOffer, indexOfLastOffer)
+        // }
+
+        const currentOffers = listOfOffers.slice(indexOfFirstOffer, indexOfLastOffer)
         const renderOffers = currentOffers.map((offer) => {
             return (
                 <div key={offer._id}>
