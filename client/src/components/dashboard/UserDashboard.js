@@ -6,7 +6,7 @@ import DirectMessages from './messages/DirectMessages'
 import UserSettings from './UserSettings'
 import MyProfile from './MyProfile'
 import axios from 'axios';
-import config from '../../config.json'
+const config = process.env
 
 
 

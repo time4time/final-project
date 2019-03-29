@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
 import { Link } from 'react-router-dom'
-import config from "../../config.json";
-
+const config = process.env
 class SignUp extends Component {
     //set a values for form
     state = { 

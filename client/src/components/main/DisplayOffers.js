@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import config from '../../config.json'
 import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
+const config = process.env
 
 
 class DisplayOffers extends Component {

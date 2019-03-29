@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DisplayOffers from './DisplayOffers';
 import axios from 'axios';
-import config from '../../config.json'
+const config = process.env
 
 class Search extends Component {
     constructor(props){
