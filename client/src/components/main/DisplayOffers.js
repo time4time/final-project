@@ -27,7 +27,7 @@ class DisplayOffers extends Component {
     getAllOffers = () =>{
         axios({
           method: "get",
-          url: `${config.api}/display-offers`,
+          url: `${config.REACT_APP_api}/display-offers`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -121,7 +121,7 @@ class DisplayOffers extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
                                 <h3 className="title">{filteredOffer.title}</h3>
-                                <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
+                                <img src={`${config.REACT_APP_api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                 <h4>User: {filteredOffer.authorUsername}</h4>
                                 <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>

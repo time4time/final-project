@@ -18,7 +18,7 @@ class OneRequest extends Component {
         event.preventDefault();
         axios({
             method: 'post',
-            url: `${config.api}/approve-offer`,
+            url: `${config.REACT_APP_api}/approve-offer`,
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {
@@ -37,7 +37,7 @@ class OneRequest extends Component {
         event.preventDefault();
         axios({
             method: 'post',
-            url: `${config.api}/update-time-wallet`,
+            url: `${config.REACT_APP_api}/update-time-wallet`,
             data: {offerId: this.props.offerId},
             withCredentials : true,
         }).then(databaseResponse => {

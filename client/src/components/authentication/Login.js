@@ -23,7 +23,7 @@ class Login extends Component {
         let newUser = this.state
         axios({
             method: 'post',
-            url: `${config.api}/login`,
+            url: `${config.REACT_APP_api}/login`,
             data: newUser,
             withCredentials : true,
             }).then(databaseResponse => {

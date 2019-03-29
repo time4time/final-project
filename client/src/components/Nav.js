@@ -16,7 +16,7 @@ export const UnauthNav = class UnauthNav extends Component {
     logMeOut = ()=> {
         axios({
             method: "post",
-            url: `${config.api}/logout`,
+            url: `${config.REACT_APP_api}/logout`,
             withCredentials: true,
         })
         .then((response)=> {
@@ -89,7 +89,7 @@ export const AuthNav = class AuthNav extends Component {
     logMeOut = ()=> {
         axios({
             method: "post",
-            url: `${config.api}/logout`,
+            url: `${config.REACT_APP_api}/logout`,
             withCredentials: true,
         })
         .then((response)=> {
