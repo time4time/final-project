@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 class MyPetitions extends Component {
     render() { 
         return (
+
             <>
             { this.props.listOfPetitions.length === 0 ?
             <p>You still haven't applied to any offer, do you want to check <Link to="/">all the avalaible offers</Link> now?</p> :
@@ -24,6 +25,7 @@ class MyPetitions extends Component {
                 })
                 }
             </div> 
+
             }
             </>
 

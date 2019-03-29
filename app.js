@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -54,15 +54,24 @@ app.use(session({
 }))
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname)));
+
+
+if(process.env.ENV == "production"){
+  console.log("hi")
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('/', (req, res) =>{
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
+}
 
 // app.use(passport.initialize());  
 // app.use(passport.session()); 

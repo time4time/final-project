@@ -4,7 +4,10 @@ import OneRequest from './OneRequest'
 
 class AllRequests extends Component {
     render() { 
+      console.log(this.props.listOfMyOffers)
+      debugger
         return (
+
             <>
             {this.props.listOfMyOffers.length === 0 ?
                 <p>You didn't get any request for any of your offers. <em>Yet!</em></p> :
@@ -23,6 +26,7 @@ class AllRequests extends Component {
                 })
                 }
             </div> 
+
             }
             </>
 
