@@ -66,8 +66,8 @@ class DisplayOffers extends Component {
                 <div key={offer._id}>
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
-                                <h3>{offer.title}</h3>
-                                <h4>{offer.authorUsername}</h4>
+                                <h3 className="title">{offer.title}</h3>
+                                <h4>User: {offer.authorUsername}</h4>
                                 <p>{offer.postalCode}</p>
                                 <p>{offer.description}</p>
                                 <p>{offer.category}</p>
@@ -120,9 +120,9 @@ class DisplayOffers extends Component {
                 <div key={filteredOffer._id}>
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
-                                <h3>{filteredOffer.title}</h3>
+                                <h3 className="title">{filteredOffer.title}</h3>
                                 <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
-                                <h4>{filteredOffer.authorUsername}</h4>
+                                <h4>User: {filteredOffer.authorUsername}</h4>
                                 <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>
                                 <p>{filteredOffer.category}</p>
