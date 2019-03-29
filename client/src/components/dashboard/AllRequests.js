@@ -6,9 +6,11 @@ import OneRequest from './OneRequest'
 
 class AllRequests extends Component {
     render() { 
+      console.log(this.props.listOfMyOffers)
+      debugger
         return (
             <div>
-            { this.props.listOfMyOffers.map( myOffer => {
+            {this.props.listOfMyOffers.map( myOffer => {
               return(
                 <OneRequest {...this.props} 
                 offerId={myOffer._id}

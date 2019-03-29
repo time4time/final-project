@@ -6,7 +6,7 @@ class MyPetitions extends Component {
     render() { 
         return (
           <div>
-            { this.props.listOfPetitions.map( mypetition => {
+            { this.props.listOfPetitions.length > 0 && this.props.listOfPetitions.map( mypetition => {
               return(
                 <OnePetition {...this.props} 
                 title={mypetition.title}
