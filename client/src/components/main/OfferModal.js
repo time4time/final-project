@@ -28,7 +28,8 @@ class OfferModal extends Component {
         author: '',
         description: '',
         category: '',
-        errorTimeWallet: ''
+        errorTimeWallet: '',
+        myOffer: undefined
     }
 
     handleApply = (event) => {
@@ -72,16 +73,6 @@ class OfferModal extends Component {
     redirectToAuthorProfile = () =>{
         this.props.history.push(`/profile/${this.props.author}`)
     }  
-
-    // checkAuthor = () => {
-    //     if (this.props.author === req)
-    // }
-
-    // componentDidMount() {
-    //     this.checkAuthor()
-    // }
-
-
 
     render() { 
         return (
@@ -171,6 +162,7 @@ class OfferModal extends Component {
         );
     }
 }
+
 
 
 export default OfferModal;

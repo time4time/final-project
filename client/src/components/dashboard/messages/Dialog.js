@@ -9,7 +9,7 @@ import React from 'react';
           <div className="dialog">
             <form className="dialog-form" onSubmit={connectToChatkit}>
               <label className="username-label" htmlFor="username">
-                Login with your username
+                Enter your username
               </label>
               <input
                 id="username"

@@ -19,11 +19,23 @@ class OnePetition extends Component {
                     </div>
                 </div>
                 <footer className="card-footer">
-                    <h1 className="card-footer-item"> {this.props.status}</h1>
+                {(() => {
+                    switch(this.props.status) {
+                        case 'Open':
+                            return <h1 className="card-footer-item">{this.props.status}</h1>;
+                        case 'Pending':
+                            return <h1 className="card-footer-item has-background-warning">{this.props.status}</h1>;
+                        case 'Approved':
+                            return <h1 className="card-footer-item has-background-success">{this.props.status}</h1>;
+                        default:
+                            return null;
+                    }
+                })()}
                 </footer>
             </div>
         );
     }
 }
- 
+
+
 export default OnePetition;

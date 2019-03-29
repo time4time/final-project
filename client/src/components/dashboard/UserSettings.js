@@ -23,6 +23,7 @@ class UserSettings extends Component {
     }
 
     handleSubmitProfileImage = (event) => {
+        debugger
         event.preventDefault();
         let formData = new FormData(this.form.current) 
         axios({
@@ -32,8 +33,11 @@ class UserSettings extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            this.props.history.push('/')
+            debugger
+            this.setState({success: 'You updated your personal information successfully'})
+            this.props.history.push('/dashboard')
         }).catch(err => {
+            debugger
             this.setState({error: 'Could not edit personal information'})
         })
     }
@@ -46,7 +50,8 @@ class UserSettings extends Component {
             data: editUser,
             withCredentials : true,
         }).then(databaseResponse => {
-            this.props.history.push('/')
+            this.setState({success: 'You updated your personal information successfully'})
+            this.props.history.push('/dashboard')
         }).catch(err => {
             this.setState({error: 'Could not edit personal information'})
         })
@@ -56,6 +61,7 @@ class UserSettings extends Component {
         return (
                 <section>
                             <div className="column">
+                            <p style={{color: 'green'}}>{this.state.success? this.state.success:''}</p>
                                 <h3 className="title has-text-grey">User's settings</h3>
                                 <div className="box">
                                     <form ref={this.form} onSubmit={this.handleSubmitProfileImage}>

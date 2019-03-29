@@ -101,6 +101,23 @@ $button-background-color: $coral;
 .footer-img {
     width: 100px;
     height: auto;
+    margin: 20px 0;
+}
+
+.is-success {
+    background-color: $dark-blue !important;
+}
+
+.is-link {
+    background-color: $dark-blue !important;
+}
+
+.button.is-warning {
+    color: #363636 !important;
+}
+
+.dialog-container {
+    background-color: transparent;
 }
 
 // Import only what you need from Bulma

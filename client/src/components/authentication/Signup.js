@@ -12,7 +12,6 @@ class SignUp extends Component {
         lastname:'',
         email: '',
         birth: '',
-        postalCode: '',
         error: ''
      }
      
@@ -79,14 +78,9 @@ class SignUp extends Component {
                                         </div>
                                     </div>
                                     <div className="field">
-                                        <div className="control">
-                                            <input onChange={this.handleInput} className="input is-large" type="text" name="postalCode" placeholder="Postal Code" value={this.state.postalCode} required/>
-                                        </div>
-                                    </div>
-                                    <div className="field">
                                         <label className="label">Time wallet:</label>
-                                        <div className="control">
-                                            <p>When you sign up you get 2 hours to spend!</p>
+                                        <div className="control has-text-centered">
+                                            <p style={{color: 'green'}}>When you sign up you get 2 hours to spend!</p>
                                         </div>
                                     </div>
                                     <div className="field">

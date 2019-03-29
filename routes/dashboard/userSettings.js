@@ -9,13 +9,16 @@ var upload = multer({ dest: 'public/images' })
 
 //You can change user's profile picture here
 router.post('/profile-image', upload.single('profile-image'), function(req, res, next) {
+    debugger
     let editUser = {}
     editUser.profileImage = req.file.path
     User.findOneAndUpdate({username: req.session.user.username}, editUser)
     .then((response) => {
+        debugger
         res.status(200).json(response)
     })
     .catch((err) => {
+        debugger
         res.status(500).json({message: err})
     })
 });
@@ -23,7 +26,7 @@ router.post('/profile-image', upload.single('profile-image'), function(req, res,
 //You can change user settings here
 router.post('/user-settings', function(req, res, next) {
     if(req.body.password) {
-        console.log('nueva password')
+        console.log('new password')
         bcrypt.hash(req.body.password, 10, (err, hash) => {
             if (err) res.status(500).json({message: err})
             else {
@@ -40,10 +43,9 @@ router.post('/user-settings', function(req, res, next) {
         })
     } else if (!req.body.password){
         console.log('empty password')
-        // let editUser = req.body
         let editUser = {}
         req.body.email ? editUser.email = req.body.email : console.log('no email')
-        req.body.postalCode ? editUser.postalCode = req.body.postalCode : console.log('no postal code')
+        req.body.bio ? editUser.bio = req.body.bio : console.log('no bio')
         User.findOneAndUpdate({username: req.session.user.username}, editUser)
         .then((response) => {
             res.status(200).json(response)

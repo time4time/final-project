@@ -60,31 +60,29 @@ class OneRequest extends Component {
                     <p>My username: &nbsp;{this.props.authorUsername} </p>
                     <p>Date: &nbsp; <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
                     <p>Duration: &nbsp; {this.props.duration} hour(s)</p>
+                    <p style={{color: 'green'}}>{this.state.offerStatus ? `You got ${this.state.offerApproved.duration} hour(s) in your Time Wallet!` : ''}</p>
+                    <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                     </div>
                 </div>
                 <footer className="card-footer">
                     {this.state.offerApproved ?
-                    <h1 className="card-footer-item"> {this.state.offerApproved.status}</h1> :
-                    <h1 className="card-footer-item"> Offer status: &nbsp; {this.props.status}</h1>
+                        <h1 className="card-footer-item"> Offer status: &nbsp; {this.state.offerApproved.status}</h1> :
+                        <h1 className="card-footer-item"> Offer status: &nbsp; {this.props.status}</h1>
                     }
                     {this.state.offerStatus === 'Approved' ?
                     <Link className="card-footer-item button is-success">Approved!</Link> :
-                    <div>
+                    <>
                         {this.props.status === 'Open' ?
                         null :
-                        <div>
+                        <>
                             {this.props.status === 'Approved'? 
                             <Link className="card-footer-item button is-success">Approved!</Link> :
-                            <Link onClick={this.approveOffer} className="card-footer-item button is-danger">Approve</Link>
+                            <Link onClick={this.approveOffer} className="card-footer-item button is-warning">Approve</Link>
                             }
-                        </div>
+                        </>
                         }
-                    </div>
+                    </>
                     }
-
-
-                    <p style={{color: 'green'}}>{this.state.offerStatus ? `You got ${this.state.offerApproved.duration} hour(s) in your Time Wallet!` : ''}</p>
-                    <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                 </footer>
             </div>
         );

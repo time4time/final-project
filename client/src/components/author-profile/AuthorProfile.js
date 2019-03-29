@@ -139,10 +139,10 @@ class AuthorProfile extends Component {
 
 
         return (
-            <div className="colummns">
-                <div className="card column is-one-quarter">
+            <div className="columns">
+                <div className="card column is-3">
                     <div className="card-image">
-                        <figure className="image is-4by3">
+                        <figure className="image is-square">
                             <img src= {`${config.api}/${this.state.authorProfile.profileImage}`} alt="User profile"></img>
                         </figure>
                     </div>
@@ -156,60 +156,62 @@ class AuthorProfile extends Component {
                             </div>
                         </div>
                         <div className="content">
-                        <p>{this.state.authorProfile.bio}</p>
-                        <p>The time is now: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.authorProfile.date}</Moment></p>
+                            <p>{this.state.authorProfile.bio}</p>
                         </div>
                     </div>
                 </div>
                 <div className="column">
-                <form ref={this.form} onSubmit={this.handleSubmitReview}>
-                    <div className="field">
-                        <label className="label">Reviews</label>
-                        <div className="control">
-                            <h2>Your Rating: {rating}</h2>
-                            <StarRatingComponent 
-                                name="rate1" 
-                                starCount={5}
-                                value={rating}
-                                onStarClick={this.onStarClick}
-                            />
+                    <div className="column">
+                    <form ref={this.form} onSubmit={this.handleSubmitReview}>
+                        <div className="field">
+                            <label className="label">Reviews</label>
+                            <div className="control">
+                                <h2>Your Rating: {rating}</h2>
+                                <StarRatingComponent 
+                                    name="rate1" 
+                                    starCount={5}
+                                    value={rating}
+                                    onStarClick={this.onStarClick}
+                                />
+                            </div>
                         </div>
+                        <div className="field">
+                            <label className="label">Opinion</label>
+                            <div className="control has-icons-left has-icons-right">
+                            <div className="control">
+                                <textarea onChange={this.handleInput} name='opinion' value={this.state.opinion} className="textarea" placeholder="Your opinion"></textarea>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Date</label>
+                            <div className="control">
+                                <input onChange={this.handleInput} name='date' value={this.state.date} className="input" type="date" placeholder="Date of activity"/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Picture</label>
+                            <div className="control">
+                            <input onChange={this.handleInput} name='review-image' className="input" type="file"/>
+                            </div>
+                        </div>
+                        <div className="field is-grouped">
+                            <div className="control">
+                                <button handleSubmitReview className="button is-link">Submit</button>
+                            </div>
+                            <div className="control">
+                                <button className="button is-text">Cancel</button>
+                            </div>
+                        </div>
+                        </form>
                     </div>
-                    <div className="field">
-                        <label className="label">Opinion</label>
-                        <div className="control has-icons-left has-icons-right">
-                        <div className="control">
-                            <textarea onChange={this.handleInput} name='opinion' value={this.state.opinion} className="textarea" placeholder="Your opinion"></textarea>
-                        </div>
-                        </div>
+                    <h1 className="title">List of reviews</h1>
+                    <div className="column">
+                        { renderReviews }
+                        <ul id="page-numbers">
+                            { renderPageNumbers }
+                        </ul>
                     </div>
-                    <div className="field">
-                        <label className="label">Date</label>
-                        <div className="control">
-                            <input onChange={this.handleInput} name='date' value={this.state.date} className="input" type="date" placeholder="Date of activity"/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className="label">Picture</label>
-                        <div className="control">
-                        <input onChange={this.handleInput} name='review-image' className="input" type="file"/>
-                        </div>
-                    </div>
-                    <div className="field is-grouped">
-                        <div className="control">
-                            <button handleSubmitReview className="button is-link">Submit</button>
-                        </div>
-                        <div className="control">
-                            <button className="button is-text">Cancel</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-                <div>
-                    { renderReviews }
-                    <ul id="page-numbers">
-                        { renderPageNumbers }
-                    </ul>
                 </div>
           </div>
         );

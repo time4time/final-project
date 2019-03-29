@@ -77,17 +77,11 @@ class UserDashboard extends Component {
             <div className='container'>
             <div className='columns'>
                 <aside className="menu column is-3">
-                    {/* <p className="menu-label">
-                        All requests
-                    </p> */}
                     <ul className="menu-label">
                         <li><Link onClick={()=> {this.openSection('all requests')}}>My offers &nbsp;  
                         { this.state.myOffers ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
                         </Link></li>
                     </ul>
-                    {/* <p className="menu-label">
-                        My petitions
-                    </p> */}
                     <ul className="menu-label">
                         <li><Link onClick={()=> {this.openSection('my petitions')}}>My petitions &nbsp;  
                         { this.state.petitionsNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
