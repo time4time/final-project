@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import config from '../../config.json'
 import axios from 'axios';
 import Moment from 'react-moment'
-
+const config = process.env
 
 class Review extends Component {
     constructor(props) {

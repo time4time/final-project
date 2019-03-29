@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
-import config from '../../config.json'
 import Moment from 'react-moment'
 import Review from './Review'
+const config = process.env
 
 class AuthorProfile extends Component {
     constructor() {
