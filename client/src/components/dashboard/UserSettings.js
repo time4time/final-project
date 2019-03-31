@@ -22,7 +22,6 @@ class UserSettings extends Component {
     }
 
     handleSubmitProfileImage = (event) => {
-        debugger
         event.preventDefault();
         let formData = new FormData(this.form.current) 
         axios({
@@ -32,11 +31,10 @@ class UserSettings extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
+            
             this.setState({success: 'You updated your personal information successfully'})
             this.props.history.push('/dashboard')
         }).catch(err => {
-            debugger
             this.setState({error: 'Could not edit personal information'})
         })
     }

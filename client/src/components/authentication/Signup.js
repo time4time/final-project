@@ -3,7 +3,7 @@ import axios  from 'axios';
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
 class SignUp extends Component {
-    //set a values for form
+    //set a values for signup form
     state = { 
         username: '',
         password: '',
@@ -96,7 +96,6 @@ class SignUp extends Component {
                             </div>
                             <p className="has-text-grey">Already got an account?
                                 <Link to="/login"> Login</Link>
-                                {/* <Link to='/auth/google'>TEST GOOGLE</Link> */}
                             </p>
                         </div>
                     </div>

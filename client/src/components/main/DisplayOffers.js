@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
-const config = process.env
+// const config = process.env
+import config from '../../config.json'
 
 
 class DisplayOffers extends Component {
@@ -27,7 +28,8 @@ class DisplayOffers extends Component {
     getAllOffers = () =>{
         axios({
           method: "get",
-          url: `${config.REACT_APP_api}/display-offers`,
+          url: `${config.api}/display-offers`,
+        //   url: `${config.REACT_APP_api}/display-offers`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -105,7 +107,7 @@ class DisplayOffers extends Component {
                     key={number}
                     id={number}
                     onClick={this.handlePageClick}
-                    className="column"
+                    className="page-numbers column"
                 >
                     {number}
                 </li>
@@ -160,7 +162,7 @@ class DisplayOffers extends Component {
                     key={number}
                     id={number}
                     onClick={this.handlePageClick}
-                    className="column"
+                    className="page-numbers column"
                 >
                     {number}
                 </li>

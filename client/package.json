@@ -25,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "dotenv -e .env react-scripts build",
+    "build-dev": "dotenv -e .env.development react-scripts build && cr -r build ../API/public",
     "build-prod": "dotenv -e .prod.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

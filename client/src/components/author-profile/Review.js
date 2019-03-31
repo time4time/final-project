@@ -3,6 +3,8 @@ import axios from 'axios';
 import Moment from 'react-moment'
 import config from '../../config.json'
 
+//Render and constructing review component, this router 
+//it's private and you can only add a review when you have an account
 class Review extends Component {
     constructor(props) {
         super(props)
@@ -10,6 +12,7 @@ class Review extends Component {
             reviewer: {}
         }
     }
+    //call to database and take username's reviewer
     getReviewerUsername = () => {
         axios({
             method: 'post',

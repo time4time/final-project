@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -16,12 +16,6 @@ const MongoStore = require('connect-mongo')(session);
 // const passport = require('passport');
 
 const app = express();
-
-// const chatkit = new Chatkit.default({
-//     instanceLocator: 'v1:us1:f51d67d6-018a-4569-b4d8-59e517592a01',
-//     key: '994a6519-dd57-4156-87d4-a0641a70b79f:kFzgXpiWgEIvO+DuUq6uiXJEHSb19tU0RXbhisIty9A=',
-// })
-  
 
 // app.use(compression());
 // app.use(logger('dev'));

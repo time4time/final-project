@@ -7,7 +7,6 @@ moment().format()
 router.get('/display-offers', function(req, res, next) {
   Offer.find({status:'Open'})
     .then((allOffers) => {
-        console.log("sds", allOffers)
         res.json(allOffers)
     })
     .catch((err) => {

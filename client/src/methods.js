@@ -26,7 +26,7 @@ function handleInput(event) {
   });
 }
 
-function connectToRoom(id = '19394183') {
+function connectToRoom(id = '19495675') {
   const { currentUser } = this.state;
 
   this.setState({
@@ -88,10 +88,10 @@ function connectToChatkit(event) {
   });
 
   axios
-    .post(`${config.REACT_APP_api}/chat-users`, { userId })
+    .post(`${config.api}/chat-users`, { userId })
     .then(() => {
       const tokenProvider = new Chatkit.TokenProvider({
-        url: `${config.REACT_APP_api}/authenticate`,
+        url: `${config.api}/authenticate`,
       });
 
       const chatManager = new Chatkit.ChatManager({

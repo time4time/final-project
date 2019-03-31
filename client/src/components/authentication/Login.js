@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
 
-
+//render login component
 class Login extends Component {
     state = { 
         username: '',
@@ -23,7 +23,8 @@ class Login extends Component {
         let newUser = this.state
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/login`,
+            url: `${config.api}/login`,
+            // url: `${config.REACT_APP_api}/login`,
             data: newUser,
             withCredentials : true,
             }).then(databaseResponse => {
@@ -34,7 +35,7 @@ class Login extends Component {
             this.props.history.push('/login')
             })
     }
-
+    //login box html
     render() { 
         return ( 
             <section className="hero is-fullheight">
@@ -59,9 +60,7 @@ class Login extends Component {
                                         </div>
                                     </div>
                                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
-                                    
                                     <button className="button is-block is-large is-fullwidth">Login</button>
-            
                                 </form>
                             </div>
                             <p className="has-text-grey"> New to Time4Time?

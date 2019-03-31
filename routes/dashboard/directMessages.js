@@ -10,7 +10,6 @@ const chatkit = new Chatkit.default({
   
 router.post('/chat-users', (req, res) => {
     const { userId } = req.body;
-
     chatkit
       .createUser({
         id: userId,
