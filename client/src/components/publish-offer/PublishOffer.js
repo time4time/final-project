@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-const config = process.env
+import config from '../../config.json'
 
 //private router
 class PublishOffer extends Component {

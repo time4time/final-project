@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
-const config = process.env
+import config from '../../config.json'
 
 
 class DisplayOffers extends Component {
@@ -67,10 +67,10 @@ class DisplayOffers extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
                                 <h3 className="title">{offer.title}</h3>
-                                <h4>User: {offer.authorUsername}</h4>
+                                <h4><strong>User</strong>: {offer.authorUsername}</h4>
                                 <p>{offer.postalCode}</p>
                                 <p>{offer.description}</p>
-                                <p>{offer.category}</p>
+                                <p><strong>Category</strong>: {offer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(offer._id)}}>Open offer</Link>
                         </div>
                     </div>
@@ -122,10 +122,10 @@ class DisplayOffers extends Component {
                         <div className="tile is-child box">
                                 <h3 className="title">{filteredOffer.title}</h3>
                                 <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
-                                <h4>User: {filteredOffer.authorUsername}</h4>
+                                <h4><strong>User</strong>: {filteredOffer.authorUsername}</h4>
                                 <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>
-                                <p>{filteredOffer.category}</p>
+                                <p><strong>Category</strong>: {filteredOffer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
                         </div>
                     </div>

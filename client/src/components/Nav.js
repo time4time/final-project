@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
-const config = process.env
+import config from '../config.json'
 
 
 //Named exports
