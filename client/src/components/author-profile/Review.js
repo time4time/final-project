@@ -16,7 +16,7 @@ class Review extends Component {
     getReviewerUsername = () => {
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/reviewer`,
+            url: `${config.api}/reviewer`,
             data: {reviewerId: this.props.reviewer},
             withCredentials : true,
         }).then(databaseResponse => {
