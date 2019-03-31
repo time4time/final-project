@@ -36,7 +36,7 @@ class OfferModal extends Component {
         event.preventDefault();
         axios({
           method: "post",
-          url: `${config.api}/apply`,
+          url: `${config.REACT_APP_api}/apply`,
           data: {offerId: this.props.offerIdentificator},
           withCredentials: true,
         })
@@ -54,7 +54,7 @@ class OfferModal extends Component {
           axios({
               method:'post',
               data:{offerId:this.props.offerIdentificator},
-              url: `${config.api}/send-mail`,
+              url: `${config.REACT_APP_api}/send-mail`,
               withCredentials: true,
           })
           .then(responseFromApi =>{
@@ -88,7 +88,7 @@ class OfferModal extends Component {
                         <section className="modal-card-body">
                             <div className='media columns'>
                             {/* <p className="image is-64x64">
-                                <img src={`${config.api}/${this.props.authorProfileImage}`} alt=""/>
+                                <img src={`${config.REACT_APP_api}/${this.props.authorProfileImage}`} alt=""/>
                             </p> */}
                                 <div className="content column">
                                     <p className="modal-card-title">Username: {this.props.authorUsername}</p>
@@ -106,7 +106,7 @@ class OfferModal extends Component {
                                 <div className='column'>
                                     <div className="columns">
                                         <div className="column">
-                                            <img className="image is-3by1 modal-image" src={`${config.api}/${this.props.image}`} alt=""/>
+                                            <img className="image is-3by1 modal-image" src={`${config.REACT_APP_api}/${this.props.image}`} alt=""/>
                                         </div>
                                         <div className="column">
                                             <h1 className="modal-card-title">Description</h1>

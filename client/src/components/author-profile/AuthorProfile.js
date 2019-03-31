@@ -37,7 +37,7 @@ class AuthorProfile extends Component {
         const {id} = this.props.match.params        
         axios({
           method: "get",
-          url: `${config.api}/author-profile/${id}`,
+          url: `${config.REACT_APP_api}/author-profile/${id}`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -55,7 +55,7 @@ class AuthorProfile extends Component {
         let formData = new FormData(this.form.current) 
         axios({
             method: 'post',
-            url: `${config.api}/author-profile`,
+            url: `${config.REACT_APP_api}/author-profile`,
             config: { headers: {'Content-Type': 'multipart/form-data' }},
             data: formData,
             withCredentials : true,
@@ -71,7 +71,7 @@ class AuthorProfile extends Component {
     sendUserId = () => {
         axios({
             method: 'post',
-            url: `${config.api}/user-reviewed-id`,
+            url: `${config.REACT_APP_api}/user-reviewed-id`,
             data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
             withCredentials : true,
         }).then(databaseResponse => {
@@ -84,7 +84,7 @@ class AuthorProfile extends Component {
     getReviews = () => {
         axios({
             method: 'get',
-            url: `${config.api}/get-reviews`,
+            url: `${config.REACT_APP_api}/get-reviews`,
             withCredentials : true,
         }).then(databaseResponse => {
             this.setState({listOfReviews: databaseResponse.data})
@@ -143,7 +143,7 @@ class AuthorProfile extends Component {
                 <div className="card column is-3">
                     <div className="card-image">
                         <figure className="image is-square">
-                            <img src= {`${config.api}/${this.state.authorProfile.profileImage}`} alt="User profile"></img>
+                            <img src= {`${config.REACT_APP_api}/${this.state.authorProfile.profileImage}`} alt="User profile"></img>
                         </figure>
                     </div>
                     <div className="card-content">

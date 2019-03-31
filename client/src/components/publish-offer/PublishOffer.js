@@ -34,7 +34,7 @@ class PublishOffer extends Component {
         let newOffer = new FormData(this.form.current)
         axios({
         method: 'post',
-          url: `${config.api}/publish-offer`,
+          url: `${config.REACT_APP_api}/publish-offer`,
           config: {headers: {'Content-Type': 'multipart/form-data'}},
           data: newOffer,
           withCredentials : true

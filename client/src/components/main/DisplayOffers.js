@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import OfferModal from './OfferModal'
 import { Link } from 'react-router-dom'
-import config from '../../config.json'
+const config = process.env
 
 
 class DisplayOffers extends Component {
@@ -27,7 +27,7 @@ class DisplayOffers extends Component {
     getAllOffers = () =>{
         axios({
           method: "get",
-          url: `${config.api}/display-offers`,
+          url: `${config.REACT_APP_api}/display-offers`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -121,7 +121,8 @@ class DisplayOffers extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
                                 <h3 className="title">{filteredOffer.title}</h3>
-                                <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
+
+                                <img src={`${config.REACT_APP_api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                 <h4><strong>User</strong>: {filteredOffer.authorUsername}</h4>
                                 <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>

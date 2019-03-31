@@ -88,10 +88,10 @@ function connectToChatkit(event) {
   });
 
   axios
-    .post(`${config.api}/chat-users`, { userId })
+    .post(`${config.REACT_APP_api}/chat-users`, { userId })
     .then(() => {
       const tokenProvider = new Chatkit.TokenProvider({
-        url: `${config.api}/authenticate`,
+        url: `${config.REACT_APP_api}/authenticate`,
       });
 
       const chatManager = new Chatkit.ChatManager({
