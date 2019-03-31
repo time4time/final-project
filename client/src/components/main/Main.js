@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Search from './Search'
 
-
-
-//first page(render search, this component is public)
+//first page render search, this component is public
+//if you wanna make some transactios into web site 
 class Main extends Component {
     render() { 
         return ( 

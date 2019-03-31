@@ -64,7 +64,8 @@ class UserDashboard extends Component {
     getMyOffers = () => {
         axios({
             method: "get",
-            url: `${config.REACT_APP_api}/my-offers`,
+            url: `${config.api}/my-offers`,
+            // url: `${config.REACT_APP_api}/my-offers`,
             withCredentials: true
           })
           .then(responseFromApi => {
@@ -77,7 +78,8 @@ class UserDashboard extends Component {
     getMyPetitions = () =>{
         axios({
           method: "get",
-          url: `${config.REACT_APP_api}/my-petitions`,
+          url: `${config.api}/my-petitions`,
+        //   url: `${config.REACT_APP_api}/my-petitions`,
           withCredentials: true
         })
         .then(responseFromApi => {

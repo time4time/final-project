@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Moment from 'react-moment';
+
 import {
     FacebookIcon,
     FacebookShareButton,
@@ -36,7 +37,8 @@ class OfferModal extends Component {
         event.preventDefault();
         axios({
           method: "post",
-          url: `${config.REACT_APP_api}/apply`,
+          url: `${config.api}/apply`,
+        //   url: `${config.REACT_APP_api}/apply`,
           data: {offerId: this.props.offerIdentificator},
           withCredentials: true,
         })
@@ -54,7 +56,8 @@ class OfferModal extends Component {
           axios({
               method:'post',
               data:{offerId:this.props.offerIdentificator},
-              url: `${config.REACT_APP_api}/send-mail`,
+              url: `${config.api}/send-mail`,
+            //   url: `${config.REACT_APP_api}/send-mail`,
               withCredentials: true,
           })
           .then(responseFromApi =>{

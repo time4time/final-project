@@ -26,7 +26,8 @@ class UserSettings extends Component {
         let formData = new FormData(this.form.current) 
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/profile-image`,
+            url: `${config.api}/profile-image`,
+            // url: `${config.REACT_APP_api}/profile-image`,
             config: { headers: {'Content-Type': 'multipart/form-data' }},
             data: formData,
             withCredentials : true,
@@ -43,7 +44,8 @@ class UserSettings extends Component {
         let editUser = this.state
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/user-settings`,
+            url: `${config.api}/user-settings`,
+            // url: `${config.REACT_APP_api}/user-settings`,
             data: editUser,
             withCredentials : true,
         }).then(databaseResponse => {
