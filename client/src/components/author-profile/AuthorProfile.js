@@ -40,7 +40,7 @@ class AuthorProfile extends Component {
         const {id} = this.props.match.params        
         axios({
           method: "get",
-          url: `${config.REACT_APP_api}/author-profile/${id}`,
+          url: `${config.api}/author-profile/${id}`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -54,19 +54,23 @@ class AuthorProfile extends Component {
     }
     //add a review and sent to database
     handleSubmitReview = (event) => {
+        debugger
         event.preventDefault();
         let formData = new FormData(this.form.current) 
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/author-profile`,
+            url: `${config.api}/author-profile`,
             config: { headers: {'Content-Type': 'multipart/form-data' }},
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
+            debugger
             this.setState({success: 'You successfully added a review!', newReview: databaseResponse.data})
             }).then(() => {
+                debugger
                 this.sendUserId()
             }).catch(err => {
+                debugger
                 this.setState({error: 'Could not add your review'})
             })
     }
@@ -74,7 +78,7 @@ class AuthorProfile extends Component {
     sendUserId = () => {
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/user-reviewed-id`,
+            url: `${config.api}/user-reviewed-id`,
             data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
             withCredentials : true,
         }).then(databaseResponse => {
@@ -87,7 +91,7 @@ class AuthorProfile extends Component {
     getReviews = () => {
         axios({
             method: 'get',
-            url: `${config.REACT_APP_api}/get-reviews`,
+            url: `${config.api}/get-reviews`,
             withCredentials : true,
         }).then(databaseResponse => {
             this.setState({listOfReviews: databaseResponse.data})
@@ -143,7 +147,7 @@ class AuthorProfile extends Component {
                 <div className="card column is-3">
                     <div className="card-image">
                         <figure className="image is-square">
-                            <img src= {`${config.REACT_APP_api}/${this.state.authorProfile.profileImage}`} alt="User profile"></img>
+                            <img src= {`${config.api}/${this.state.authorProfile.profileImage}`} alt="User profile"></img>
                         </figure>
                     </div>
                     <div className="card-content">

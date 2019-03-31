@@ -18,8 +18,8 @@ html {
   }
 
   .direct-messages {
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */
+    /* height: 100vh; */
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
   }
