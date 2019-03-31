@@ -90,9 +90,6 @@ class OfferModal extends Component {
                         </header>
                         <section className="modal-card-body">
                             <div className='media columns'>
-                            {/* <p className="image is-64x64">
-                                <img src={`${config.REACT_APP_api}/${this.props.authorProfileImage}`} alt=""/>
-                            </p> */}
                                 <div className="content column">
                                     <p className="modal-card-title">Username: {this.props.authorUsername}</p>
                                     {/* <p className="modal-card-title">Ratings</p> */}
@@ -109,7 +106,8 @@ class OfferModal extends Component {
                                 <div className='column'>
                                     <div className="columns">
                                         <div className="column">
-                                            <img className="image is-3by1 modal-image" src={`${config.REACT_APP_api}/${this.props.image}`} alt=""/>
+                                            <img className="image is-3by1 modal-image" src={`${config.api}/${this.props.image}`} alt=""/>
+                                            {/* <img className="image is-3by1 modal-image" src={`${config.REACT_APP_api}/${this.props.image}`} alt=""/> */}
                                         </div>
                                         <div className="column">
                                             <h1 className="modal-card-title">Description</h1>
