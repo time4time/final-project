@@ -68,6 +68,7 @@ class AuthorProfile extends Component {
             this.setState({success: 'You successfully added a review!', newReview: databaseResponse.data})
             }).then(() => {
                 this.sendUserId()
+                this.getReviews()
             }).catch(err => {
                 this.setState({error: 'Could not add your review'})
             })
@@ -78,7 +79,6 @@ class AuthorProfile extends Component {
             method: 'post',
             url: `${config.api}/user-reviewed-id`,
             // url: `${config.REACT_APP_api}/user-reviewed-id`,
-
             data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
             withCredentials : true,
         }).then(databaseResponse => {
@@ -136,6 +136,7 @@ class AuthorProfile extends Component {
                     key={number}
                     id={number}
                     onClick={this.handlePageClick}
+                    className="page-numbers column"
                 >
                     {number}
                 </li>
@@ -171,8 +172,9 @@ class AuthorProfile extends Component {
                     <form ref={this.form} onSubmit={this.handleSubmitReview}>
                         <div className="field">
                             <label className="label">Reviews</label>
+                            <p style={{color: 'green'}}>{this.state.success? this.state.success:''}</p>
                             <div className="control">
-                                <h2>Your Rating: {rating}</h2>
+                                <h2>Your Rating: {rating} <span style={{color: 'red'}}><small>*Required</small></span></h2>
                                 <StarRatingComponent 
                                     name="rate1" 
                                     starCount={5}
@@ -182,23 +184,23 @@ class AuthorProfile extends Component {
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">Opinion</label>
+                            <label className="label">Opinion</label> <span style={{color: 'red'}}><small>*Required</small></span>
                             <div className="control has-icons-left has-icons-right">
                             <div className="control">
-                                <textarea onChange={this.handleInput} name='opinion' value={this.state.opinion} className="textarea" placeholder="Your opinion"></textarea>
+                                <textarea onChange={this.handleInput} name='opinion' value={this.state.opinion} className="textarea" placeholder="Your opinion" required></textarea>
                             </div>
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">Date</label>
+                            <label className="label">Date</label> <span style={{color: 'red'}}><small>*Required</small></span>
                             <div className="control">
-                                <input onChange={this.handleInput} name='date' value={this.state.date} className="input" type="date" placeholder="Date of activity"/>
+                                <input onChange={this.handleInput} name='date' value={this.state.date} className="input" type="date" placeholder="Date of activity" required/>
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">Picture</label>
+                            <label className="label">Picture</label> <span style={{color: 'red'}}><small>*Required</small></span>
                             <div className="control">
-                            <input onChange={this.handleInput} name='review-image' className="input" type="file"/>
+                            <input onChange={this.handleInput} name='review-image' className="input" type="file" required/>
                             </div>
                         </div>
                         <div className="field is-grouped">

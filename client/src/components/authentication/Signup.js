@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import axios  from 'axios';
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
+
+
 class SignUp extends Component {
     
-    //set a values for signup form
+    //set values for signup form
     state = { 
         username: '',
         password: '',
@@ -33,7 +35,7 @@ class SignUp extends Component {
             data: newUser,
             withCredentials: true,
         }).then(databaseResponse => {
-            this.props.loggedIn(true)
+            this.props.loggedIn(true,this.state.username)
             this.props.history.push('/dashboard')
         }).catch(err => {
             this.setState({error: 'Username or email already taken'})

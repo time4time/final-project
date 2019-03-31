@@ -9,17 +9,9 @@ const cors = require('cors')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
-// const Chatkit = require('@pusher/chatkit-server')
-
-// const compression = require('compression');
-// const helmet = require('helmet');
-// const passport = require('passport');
 
 const app = express();
 
-// app.use(compression());
-// app.use(logger('dev'));
-// app.use(helmet());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -47,15 +39,11 @@ app.use(session({
     })
 }))
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname)));
 
 
@@ -63,8 +51,6 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.static(path.join(__dirname, 'public/build')));;
 
 
-// app.use(passport.initialize());  
-// app.use(passport.session()); 
 
 app.use('/', require('./routes/main/displayOffers'));
 app.use('/', require('./routes/main/search'));

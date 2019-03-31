@@ -32,7 +32,8 @@ class Search extends Component {
         let newSearch = this.state  
         axios({
         method: 'post',
-          url: `${config.REACT_APP_api}/search`,
+          url: `${config.api}/search`,
+        //   url: `${config.REACT_APP_api}/search`,
           data: newSearch,
           withCredentials : true,
           }).then(databaseResponse => {

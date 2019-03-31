@@ -25,6 +25,7 @@ class UserDashboard extends Component {
     }
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
+        //This switch case is for selecting the active item in the menu
         switch(selectedSection) {
             case 'all requests':
                 this.setState({activeMenuItems: [true, false, false, false, false]})
@@ -125,6 +126,7 @@ class UserDashboard extends Component {
                 </aside>
                 <div className="column">
                 {(() => {
+                    //this switch case is used to open the selected section when you click the menu item
                     switch(this.state.activeSection) {
                         case 'all requests':
                             return <AllRequests {...this.props} {...this.state} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;

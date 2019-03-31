@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import config from '../../config.json'
 
-//private router
 //in this component you can publish a new offer
 class PublishOffer extends Component {
     constructor(props){
@@ -30,11 +29,11 @@ class PublishOffer extends Component {
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
-        // let newOffer = this.state  
         let newOffer = new FormData(this.form.current)
         axios({
         method: 'post',
-          url: `${config.REACT_APP_api}/publish-offer`,
+          url: `${config.api}/publish-offer`,
+        //   url: `${config.REACT_APP_api}/publish-offer`,
           config: {headers: {'Content-Type': 'multipart/form-data'}},
           data: newOffer,
           withCredentials : true

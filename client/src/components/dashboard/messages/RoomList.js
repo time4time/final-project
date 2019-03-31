@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
-//setuo roomlist for a public chat
+//set up roomlist for a public chat
 const RoomList = props => {
   const { rooms, currentRoom, connectToRoom, currentUser } = props;
   const roomList = rooms.map(room => {
