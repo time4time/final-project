@@ -4,8 +4,8 @@ import axios from 'axios'
 import config from '../config.json'
 
 
-//Named exports
 
+//Nav component: render this nav if the user isn't login
 export const UnauthNav = class UnauthNav extends Component {
     constructor(props){
         super(props)
@@ -32,6 +32,7 @@ export const UnauthNav = class UnauthNav extends Component {
     }
     render() { 
         return ( 
+            <div className="navfill">
             <nav className="navbar is-transparent">
                 <div className="container is-fluid">
                     <div className="navbar-brand">
@@ -73,12 +74,13 @@ export const UnauthNav = class UnauthNav extends Component {
                         </div>
                     </div>
                 </div>
-            </nav>            
+            </nav>       
+            </div>     
          );
     }
 }
 
-
+//Auth nav
 export const AuthNav = class AuthNav extends Component {
     constructor(props){
         super(props)
@@ -105,6 +107,7 @@ export const AuthNav = class AuthNav extends Component {
     }
     render() { 
         return ( 
+            <div className='navfill'>
             <nav className="navbar is-transparent">
                 <div className="container is-fluid">
                     <div className="navbar-brand">
@@ -156,7 +159,8 @@ export const AuthNav = class AuthNav extends Component {
                         </div>
                     </div>
                 </div>
-            </nav>            
-         );
+            </nav>        
+        </div>    
+        );
     }
 }

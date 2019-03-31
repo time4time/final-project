@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => (
           <Redirect to="/login"/>
         )
   )}/>
-//   
+
 )
 
 export default PrivateRoute;

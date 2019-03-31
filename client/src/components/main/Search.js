@@ -3,6 +3,7 @@ import DisplayOffers from './DisplayOffers';
 import axios from 'axios';
 import config from '../../config.json'
 
+//render general search
 class Search extends Component {
     constructor(props){
         super(props)
@@ -46,37 +47,37 @@ class Search extends Component {
         return ( 
             <div className="container is-fluid">
             <div className="columns">
-            <div className="column is-2">
+            <div className="search-column column is-2">
             <form onSubmit={this.handleSubmit} className="section">
                 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='house' type="checkbox" />
-                        House
+                    &nbsp;House &nbsp;
                 </label>
 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='technology'type="checkbox" />
-                        Technology
+                    &nbsp;Technology &nbsp;
                 </label>
 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='music'type="checkbox" />
-                        Music
+                    &nbsp;Music &nbsp;
                 </label>
 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='repair'type="checkbox" />
-                        Repair
+                    &nbsp;Repair &nbsp;
                 </label>
 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='languages'type="checkbox" />
-                        Languages
+                    &nbsp;Languages &nbsp;
                 </label>
 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='cooking'type="checkbox" />
-                        Cooking
+                    &nbsp;Cooking
                 </label>
 
                 <div className="control level">

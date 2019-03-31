@@ -5,6 +5,8 @@ import Moment from 'react-moment'
 import Review from './Review'
 import config from '../../config.json'
 
+//author profile component, this component it's private
+//You only see this component if you have a username
 class AuthorProfile extends Component {
     constructor() {
         super();
@@ -25,6 +27,7 @@ class AuthorProfile extends Component {
     this.onStarClick = this.onStarClick.bind(this)
     
     }
+    //rating with start component
     onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
     }
@@ -32,7 +35,7 @@ class AuthorProfile extends Component {
         const {name, value} = event.target
         this.setState({[name]: value})
     }
- 
+    //get author info from backend
     getAuthorInfo = () =>{
         const {id} = this.props.match.params        
         axios({
@@ -49,7 +52,7 @@ class AuthorProfile extends Component {
             console.log(err)
         })
     }
-    
+    //add a review and sent to database
     handleSubmitReview = (event) => {
         event.preventDefault();
         let formData = new FormData(this.form.current) 
@@ -67,7 +70,7 @@ class AuthorProfile extends Component {
                 this.setState({error: 'Could not add your review'})
             })
     }
-
+    //send user id (review author)
     sendUserId = () => {
         axios({
             method: 'post',
@@ -80,7 +83,7 @@ class AuthorProfile extends Component {
             this.setState({error: 'Could not add your review'})
         })
     }
-
+    //render author's reviews
     getReviews = () => {
         axios({
             method: 'get',
@@ -103,13 +106,10 @@ class AuthorProfile extends Component {
 
     render() {
         const { rating } = this.state;
-
         const { listOfReviews, currentPage, reviewsPerPage } = this.state
-
         const indexOfLastReview = currentPage * reviewsPerPage
         const indexOfFirstReview = indexOfLastReview - reviewsPerPage
         const currentReviews = listOfReviews.slice(indexOfFirstReview, indexOfLastReview)
-
         const renderReviews = currentReviews.map (review => {
             return <Review
                 rating={review.rating}
@@ -137,7 +137,7 @@ class AuthorProfile extends Component {
             )
         })
 
-
+        //html content
         return (
             <div className="columns">
                 <div className="card column is-3">

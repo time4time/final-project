@@ -11,42 +11,21 @@ $light-grey: #ebebeb;
 $coral: #f45b69;
 
 $link: $aqua-blue;
-// $purple: #8A4D76;
-// $pink: #FA7C91;
-// $brown: #757763;
-// $beige-light: #D0D1CD;
-// $beige-lighter: #EFF0EB;
-// $green: black;
-// $yellow: blue;
-// Update Bulma's global variables
+
 $family-sans-serif: "Quicksand", sans-serif;
-// $grey-dark: $brown;
-// $grey-light: $beige-light;
-// $primary: $purple;
-// $link: $pink;
-// $widescreen-enabled: false;
-// $fullhd-enabled: false;
-// $blue:  #ffffff;
-// Update some of Bulma's component variables
-// $body-background-color: white;
+
 $button-background-color: $coral;
 
-// $body-background-colortwo: purple;
+.navbar{
+    position: fixed !important;
+    width: 100vw;
+}
+.navfill{
+    position: relative;
+    height: 50px;
+    
 
-// .button-two {
-//     background-color:  $body-background-colortwo!important;
-// }
-
-// .is-success {
-//     background-color: brown !important;
-// }
-// $control-border-width: 2px;
-// // $input-border-color: transparent;
-// $input-shadow: none;
-
-
-
-
+}
 .navbar-item img {
     max-height: 2.5rem !important
 }
@@ -54,11 +33,14 @@ $button-background-color: $coral;
 .button {
     color: white !important
 }
+.search-column{
+    text-align: left
+}
 
 .hero-bg {
     background-image: url(/header_LQ2.jpg) ;
     // background-position: center bottom;
-    background-position: 0% 48%;
+    background-position: 50% 48%;
     background-repeat:  no-repeat;
     // background-attachment: fixed;
     background-size:  cover;
@@ -96,6 +78,9 @@ $button-background-color: $coral;
 
 .footer {
     background-color: lightgrey;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    bottom: 0px;
 }
 
 .footer-img {
@@ -119,6 +104,8 @@ $button-background-color: $coral;
 .dialog-container {
     background-color: transparent;
 }
+
+.page-numbers { cursor: pointer; }
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";

@@ -22,7 +22,6 @@ router.get('/my-offers', function(req, res, next) {
     let username = req.session.user.username
     Offer.find({authorUsername: username})
         .then((myOffers) =>{
-            console.log("hooo")
             res.json(myOffers)
         }) 
         .catch((err) =>{
