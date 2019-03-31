@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Moment from 'react-moment';
-import AuthorProfile from '../author-profile/AuthorProfile.js';
 import {
     FacebookIcon,
     FacebookShareButton,
@@ -13,7 +12,7 @@ import {
     
   } from 'react-share';
 
-const config = process.env
+import config from '../../config.json'
 
 const display = {
     display: 'block'

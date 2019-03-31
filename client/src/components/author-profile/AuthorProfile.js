@@ -3,7 +3,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 import Moment from 'react-moment'
 import Review from './Review'
-const config = process.env
+import config from '../../config.json'
 
 class AuthorProfile extends Component {
     constructor() {

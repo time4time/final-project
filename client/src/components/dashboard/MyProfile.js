@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Moment from 'react-moment'
-const config = process.env
+import config from '../../config.json'
 
 class MyProfile extends Component {
     state = { 

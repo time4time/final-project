@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios  from 'axios';
 import Moment from "react-moment";
-const config = process.env
+import config from '../../config.json'
 
 class OneRequest extends Component {
     constructor(props){
