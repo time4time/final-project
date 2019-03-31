@@ -16,6 +16,7 @@ $family-sans-serif: "Quicksand", sans-serif;
 
 $button-background-color: $coral;
 
+
 .navbar{
     position: fixed !important;
     width: 100vw;
@@ -39,10 +40,8 @@ $button-background-color: $coral;
 
 .hero-bg {
     background-image: url(/header_LQ2.jpg) ;
-    // background-position: center bottom;
     background-position: 50% 48%;
     background-repeat:  no-repeat;
-    // background-attachment: fixed;
     background-size:  cover;
     height: 55vh;
     background-color: #999;
@@ -107,6 +106,14 @@ $button-background-color: $coral;
 }
 
 .page-numbers { cursor: pointer; }
+
+.menu-list a.is-active {
+    background-color: $coral;
+}
+
+.inactive {
+    background-color: transparent;
+}
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";

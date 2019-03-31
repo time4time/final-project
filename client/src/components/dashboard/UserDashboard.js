@@ -19,11 +19,31 @@ class UserDashboard extends Component {
             listOfPetitions: [],
             myOffers: false,
             listOfMyOffers: [],
+            activeMenuItems: [true, false, false, false, false]
         }
         this.openSection = this.openSection.bind(this)
     }
     openSection(selectedSection) {
         this.setState({activeSection: selectedSection})
+        switch(selectedSection) {
+            case 'all requests':
+                this.setState({activeMenuItems: [true, false, false, false, false]})
+                break;
+            case 'my petitions':
+                this.setState({activeMenuItems: [false, true, false, false, false]})
+                break;
+            case 'messages':
+                this.setState({activeMenuItems: [false, false, true, false, false]})
+                break;
+            case 'profile':
+                this.setState({activeMenuItems: [false, false, false, true, false]})
+                break;
+            case 'settings':
+                this.setState({activeMenuItems: [false, false, false, false, true]})
+                break;
+            default:
+                this.setState({activeMenuItems: [true, false, false, false, false]})
+        }
     }
     notificationControl = (dataFromRequest, statusControl) => {
         let checkPending = []
@@ -74,30 +94,34 @@ class UserDashboard extends Component {
         this.getMyOffers()
     }
     render() { 
+
         return (
             <div className='section'>
             <div className='container'>
             <div className='columns'>
                 <aside className="menu column is-3">
-                    <ul className="menu-label">
-                        <li><Link onClick={()=> {this.openSection('all requests')}}>My offers &nbsp;  
+                    <ul className="menu-list">
+                        <Link className={this.state.activeMenuItems[0] ? "is-active" : "inactive"} onClick={()=> {this.openSection('all requests')}}>My offers &nbsp;  
                         { this.state.myOffers ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link></li>
+                        </Link>
                     </ul>
-                    <ul className="menu-label">
-                        <li><Link onClick={()=> {this.openSection('my petitions')}}>My petitions &nbsp;  
+                    <ul className="menu-list">
+                        <Link className={this.state.activeMenuItems[1] ? "is-active" : "inactive"} onClick={()=> {this.openSection('my petitions')}}>My petitions &nbsp;  
                         { this.state.petitionsNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link></li>
+                        </Link>
                     </ul>
-                    <p className="menu-label"><Link onClick={()=> {this.openSection('messages')}}>
+                    <ul className="menu-list">
+                        <Link className={this.state.activeMenuItems[2] ? "is-active" : "inactive"} onClick={()=> {this.openSection('messages')}}>
                         Direct messages
-                    </Link></p>
-                    <p className="menu-label"><Link onClick={()=> {this.openSection('profile')}}>
-                        Profile
-                    </Link></p>
-                    <p className="menu-label"><Link onClick={()=> {this.openSection('settings')}}>
+                        </Link></ul>
+                    <ul className="menu-list">
+                        <Link className={this.state.activeMenuItems[3] ? "is-active" : "inactive"} onClick={()=> {this.openSection('profile')}}>
+                            Profile
+                        </Link></ul>
+                    <ul className="menu-list">
+                        <Link className={this.state.activeMenuItems[4] ? "is-active" : "inactive"} onClick={()=> {this.openSection('settings')}}>
                         Settings
-                    </Link></p>
+                        </Link></ul>
                 </aside>
                 <div className="column">
                 {(() => {

@@ -78,6 +78,7 @@ class AuthorProfile extends Component {
             method: 'post',
             url: `${config.api}/user-reviewed-id`,
             // url: `${config.REACT_APP_api}/user-reviewed-id`,
+
             data: {userReviewedId: this.state.authorProfile._id, newReviewId: this.state.newReview._id},
             withCredentials : true,
         }).then(databaseResponse => {
