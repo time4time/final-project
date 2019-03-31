@@ -20,7 +20,6 @@ router.get('/author-profile/:id', function(req, res, next) {
 });
 
 router.post('/author-profile', upload.single('review-image'), function(req, res, next) {
-    debugger
     let addReview = {
         rating: req.body.rate1,
         opinion: req.body.opinion,
@@ -29,7 +28,6 @@ router.post('/author-profile', upload.single('review-image'), function(req, res,
         reviewer: req.session.user._id,
     }
     Review.create(addReview, (err, reviewCreated) => {
-        debugger
         if(err) res.json('error')
         else res.json(reviewCreated)
     })

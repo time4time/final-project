@@ -54,7 +54,6 @@ class AuthorProfile extends Component {
     }
     //add a review and sent to database
     handleSubmitReview = (event) => {
-        debugger
         event.preventDefault();
         let formData = new FormData(this.form.current) 
         axios({
@@ -64,13 +63,10 @@ class AuthorProfile extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            debugger
             this.setState({success: 'You successfully added a review!', newReview: databaseResponse.data})
             }).then(() => {
-                debugger
                 this.sendUserId()
             }).catch(err => {
-                debugger
                 this.setState({error: 'Could not add your review'})
             })
     }
