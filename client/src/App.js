@@ -11,6 +11,7 @@ import AuthorProfile from './components/author-profile/AuthorProfile'
 import Footer from './components/Footer'
 import { UnauthNav, AuthNav } from './components/Nav';
 
+
 class App extends Component {
     state = {
         loggedIn : false,

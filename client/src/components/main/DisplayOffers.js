@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 // const config = process.env
 import config from '../../config.json'
 
+//this component display all offers in the main page with OPEN status
+//pending and close offers, don't show in main page
 
 class DisplayOffers extends Component {
 
@@ -51,17 +53,10 @@ class DisplayOffers extends Component {
     }
 
     render() { 
-
         //Set pagination for list of offers
         const { listOfOffers, currentPage, offersPerPage } = this.state
-
         const indexOfLastOffer = currentPage * offersPerPage
         const indexOfFirstOffer = indexOfLastOffer - offersPerPage
-        // let currentOffers = []
-        // if(listOfOffers.length > 0 ){
-        //     let currentOffers = listOfOffers.slice(indexOfFirstOffer, indexOfLastOffer)
-        // }
-
         const currentOffers = listOfOffers.slice(indexOfFirstOffer, indexOfLastOffer)
         const renderOffers = currentOffers.map((offer) => {
             return (
@@ -89,7 +84,6 @@ class DisplayOffers extends Component {
                         category={offer.category}
                         dateOffer={offer.date}
                         durationOffer={offer.duration}
-
                     />
                 </div>
             )
@@ -123,8 +117,8 @@ class DisplayOffers extends Component {
                     <div className="tile is-ancestor">
                         <div className="tile is-child box">
                                 <h3 className="title">{filteredOffer.title}</h3>
-
-                                <img src={`${config.REACT_APP_api}/${filteredOffer.authorProfileImage}`} alt=""/>
+                                {/* <img src={`${config.REACT_APP_api}/${filteredOffer.authorProfileImage}`} alt=""/> */}
+                                <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                 <h4><strong>User</strong>: {filteredOffer.authorUsername}</h4>
                                 <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>
@@ -172,7 +166,6 @@ class DisplayOffers extends Component {
 
             return ( 
                 <>
-
                 {/* Ternary operator to show the whole list of offers or the filtered one 
                 if you have done a search */}
                 { this.props.filteredOffers.length > 0 ? 

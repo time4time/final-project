@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { format } from 'date-fns';
 
+//chat session using chatkit API
 const ChatSession = props => {
   const { messages } = props;
   return messages.map(message => {

@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config.json'
 
-
-
 //Nav component: render this nav if the user isn't login
 export const UnauthNav = class UnauthNav extends Component {
     constructor(props){

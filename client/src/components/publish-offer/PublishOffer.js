@@ -3,8 +3,8 @@ import axios from 'axios'
 import config from '../../config.json'
 
 //private router
+//in this component you can publish a new offer
 class PublishOffer extends Component {
-
     constructor(props){
         super(props)
         this.state = { 

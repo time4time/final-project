@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Render footer
 class Footer extends Component {
     state = {  }
     render() { 

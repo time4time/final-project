@@ -3,6 +3,7 @@ import axios from 'axios';
 import Moment from 'react-moment'
 import config from '../../config.json'
 
+//render my profile with my time wallet and basic personal settings
 class MyProfile extends Component {
     state = { 
         profileInfo: {}
@@ -11,7 +12,8 @@ class MyProfile extends Component {
     getProfileInfo = () =>{
         axios({
           method: "get",
-          url: `${config.REACT_APP_api}/my-profile`,
+          url: `${config.api}/my-profile`,
+        //   url: `${config.REACT_APP_api}/my-profile`,
           withCredentials: true
         })
         .then(responseFromApi => {
@@ -33,7 +35,8 @@ class MyProfile extends Component {
             <div className="card">
                 <div className="card-image">
                     <figure className="image is-128x128">
-                    <img src={`${config.REACT_APP_api}/${this.state.profileInfo.profileImage}`} alt="Profile"/>
+                    {/* <img src={`${config.REACT_APP_api}/${this.state.profileInfo.profileImage}`} alt="Profile"/> */}
+                    <img src={`${config.api}/${this.state.profileInfo.profileImage}`} alt="Profile"/>
                     </figure>
                 </div>
                 <div className="card-content">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OneRequest from './OneRequest'
 
-
+//this component render my own offer's request
 class AllRequests extends Component {
     render() { 
         return (

@@ -11,10 +11,9 @@ import RoomList from './RoomList';
 import ChatSession from './ChatSession';
 import RoomUsers from './RoomUsers';
 
-// import 'skeleton-css/css/normalize.css';
-// import 'skeleton-css/css/skeleton.css';
-import '../../../DirectMessages.css'
 
+import '../../../DirectMessages.css'
+//this component it's for render and send private messages between time4time user's
 class DirectMessages extends Component {
     constructor(props) {
         super(props)

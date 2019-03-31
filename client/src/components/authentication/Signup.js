@@ -3,6 +3,7 @@ import axios  from 'axios';
 import { Link } from 'react-router-dom'
 import config from '../../config.json'
 class SignUp extends Component {
+    
     //set a values for signup form
     state = { 
         username: '',
@@ -27,7 +28,8 @@ class SignUp extends Component {
         let newUser = this.state
         axios({
             method: 'post',
-            url: `${config.REACT_APP_api}/signup`,
+            url: `${config.api}/signup`,
+            // url: `${config.REACT_APP_api}/signup`,
             data: newUser,
             withCredentials: true,
         }).then(databaseResponse => {
