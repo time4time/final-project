@@ -16,7 +16,7 @@ router.post('/send-mail', (req,res,next) => {
                 service: 'gmail',
                 auth: {
                     user: 'iyanezm@gmail.com',
-                    pass: 'Sputnik2327'
+                    pass: 'asdf'
                 }
             });
             transporter.sendMail({
