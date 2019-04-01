@@ -63,10 +63,5 @@ router.post('/reviewer', function(req, res, next) {
         })
 })
 
-// Tank.create({ size: 'small' }, function (err, small) {
-//     if (err) return handleError(err);
-//     // saved!
-// });
-
 
 module.exports = router;

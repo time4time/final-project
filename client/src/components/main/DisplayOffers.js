@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 // const config = process.env
 import config from '../../config.json'
 
-//this component display all offers in the main page with OPEN status
-//pending and close offers, don't show in main page
+//this component displays all offers in the main page with OPEN status
+//pending and closed offers don't show in main page
 
 class DisplayOffers extends Component {
 

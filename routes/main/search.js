@@ -5,7 +5,6 @@ var User = require('../../models/User')
 
 router.post('/search', function(req, res) {
 
-    //const postalcode = req.body.postalcode
     const house   = req.body.house
     const technology = req.body.technology
     const music = req.body.music

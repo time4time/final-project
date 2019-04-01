@@ -5,9 +5,6 @@ import 'bulma/css/bulma.css'
 import './index.scss';
 import './custom.scss'
 import 'font-awesome/css/font-awesome.min.css';
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import '@fortawesome/fontawesome-free-webfonts/css/fontawesome.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from "react-router-dom";
 

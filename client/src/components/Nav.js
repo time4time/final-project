@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import config from '../config.json'
 
-//Nav component: render this nav if the user isn't login
+//Nav component: render this nav if the user isn't logged in
 export const UnauthNav = class UnauthNav extends Component {
     constructor(props){
         super(props)
@@ -14,7 +14,8 @@ export const UnauthNav = class UnauthNav extends Component {
     logMeOut = ()=> {
         axios({
             method: "post",
-            url: `${config.REACT_APP_api}/logout`,
+            url: `${config.api}/logout`,
+            // url: `${config.REACT_APP_api}/logout`,
             withCredentials: true,
         })
         .then((response)=> {
@@ -78,7 +79,7 @@ export const UnauthNav = class UnauthNav extends Component {
     }
 }
 
-//Auth nav
+//Auth nav for when the user is logged in
 export const AuthNav = class AuthNav extends Component {
     constructor(props){
         super(props)
@@ -89,7 +90,8 @@ export const AuthNav = class AuthNav extends Component {
     logMeOut = ()=> {
         axios({
             method: "post",
-            url: `${config.REACT_APP_api}/logout`,
+            url: `${config.api}/logout`,
+            // url: `${config.REACT_APP_api}/logout`,
             withCredentials: true,
         })
         .then((response)=> {

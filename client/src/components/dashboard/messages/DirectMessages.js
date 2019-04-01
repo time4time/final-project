@@ -13,7 +13,7 @@ import RoomUsers from './RoomUsers';
 
 
 import '../../../DirectMessages.css'
-//this component it's for render and send private messages between time4time user's
+//this component is for render and send private messages between time4time user's
 class DirectMessages extends Component {
     constructor(props) {
         super(props)

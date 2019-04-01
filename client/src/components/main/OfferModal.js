@@ -43,6 +43,7 @@ class OfferModal extends Component {
           withCredentials: true,
         })
         .then(responseFromApi => {
+            //validation to make sure you have enough hours in your time wallet to apply to an activity
             if( responseFromApi.data.message === "Not enough time in the wallet to apply" ) this.setState({errorTimeWallet: "You don't have enough time in your wallet to apply to this offer"})
             else this.props.history.push('/dashboard')
         })
@@ -92,7 +93,6 @@ class OfferModal extends Component {
                             <div className='media columns'>
                                 <div className="content column">
                                     <p className="modal-card-title">Username: {this.props.authorUsername}</p>
-                                    {/* <p className="modal-card-title">Ratings</p> */}
                                     <div className="level">
                                         <div className="level-left">
                                             <Link>
