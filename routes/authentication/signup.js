@@ -7,6 +7,7 @@ const User = require('../../models/User');
 
 //check if either username or email are already taken
 router.post("/signup", (req, res) => {
+    debugger
   const username = req.body.username;
   const email = req.body.email;
   User.findOne({$or:[
@@ -36,7 +37,7 @@ router.post("/signup", (req, res) => {
             }
             else {
               res.cookie("username", req.body.username);
-              req.session.current = userCreated._doc
+              req.session.user = userCreated._doc
               res.json('user created');
             }
           })
