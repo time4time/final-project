@@ -102,14 +102,26 @@ class UserDashboard extends Component {
             <div className='columns'>
                 <aside className="menu column is-3">
                     <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[0] ? "is-active" : "inactive"} onClick={()=> {this.openSection('all requests')}}>My offers &nbsp;  
-                        { this.state.myOffers ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link>
+                        {this.state.myOffers ?
+                            <Link className="has-notification" onClick={()=> {this.openSection('all requests')}}>
+                                My offers &nbsp;<i className="fas fa-bell"></i>
+                            </Link>
+                            :
+                            <Link className={this.state.activeMenuItems[0] ? "is-active" : "inactive"} onClick={()=> {this.openSection('all requests')}}>
+                                My offers &nbsp;<i className="fas fa-bell-slash"></i>
+                            </Link>
+                        }
                     </ul>
                     <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[1] ? "is-active" : "inactive"} onClick={()=> {this.openSection('my petitions')}}>My petitions &nbsp;  
-                        { this.state.petitionsNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link>
+                        {this.state.petitionsNotification ?
+                            <Link className="has-notification" onClick={()=> {this.openSection('my petitions')}}>
+                                My petitions &nbsp;<i className="fas fa-bell"></i>
+                            </Link>
+                            :
+                            <Link className={this.state.activeMenuItems[1] ? "is-active" : "inactive"} onClick={()=> {this.openSection('my petitions')}}>
+                                My petitions &nbsp;<i className="fas fa-bell-slash"></i>
+                            </Link>
+                        }
                     </ul>
                     <ul className="menu-list">
                         <Link className={this.state.activeMenuItems[2] ? "is-active" : "inactive"} onClick={()=> {this.openSection('messages')}}>

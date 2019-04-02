@@ -115,6 +115,10 @@ $button-background-color: $coral;
     background-color: transparent;
 }
 
+.has-notification {
+    background-color: hsl(48, 100%, 67%);
+}
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
