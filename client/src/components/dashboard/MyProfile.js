@@ -10,7 +10,6 @@ class MyProfile extends Component {
      }
     
     getProfileInfo = () =>{
-        debugger
         axios({
           method: "get",
           url: `${config.api}/my-profile`,
@@ -18,13 +17,11 @@ class MyProfile extends Component {
           withCredentials: true
         })
         .then(responseFromApi => {
-            debugger
           this.setState({
             profileInfo: responseFromApi.data
           })
         })
         .catch(err => {
-            debugger
             console.log(err)
         })
       }

@@ -2,8 +2,8 @@
   "short_name": "Time4Time",
   "name": "Time 4 Time",
     "permissions": [
-   "http://time4time.org/*",
-   "http://www.time4time.org/*"
+   "https://time4time.org/*",
+   "https://www.time4time.org/*"
 ],
   "icons": [
     {

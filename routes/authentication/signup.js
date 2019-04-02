@@ -7,7 +7,6 @@ const User = require('../../models/User');
 
 //check if either username or email are already taken
 router.post("/signup", (req, res) => {
-    debugger
   const username = req.body.username;
   const email = req.body.email;
   User.findOne({$or:[
