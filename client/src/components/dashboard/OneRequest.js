@@ -65,7 +65,7 @@ class OneRequest extends Component {
                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                     </div>
                 </div>
-                <footer className="card-footer">
+                <footer className="card-footer is-vertical-center">
                     {this.state.offerApproved ?
                         <h1 className="card-footer-item"> Offer status: &nbsp; {this.state.offerApproved.status}</h1> :
                         <h1 className="card-footer-item"> Offer status: &nbsp; {this.props.status}</h1>
@@ -77,7 +77,7 @@ class OneRequest extends Component {
                         null :
                         <>
                             {this.props.status === 'Approved'? 
-                            <Link className="card-footer-item button is-success">Approved!</Link> :
+                            <Link className="card-footer-item button is-success is-static">Approved!</Link> :
                             <Link onClick={this.approveOffer} className="card-footer-item button is-warning">Approve</Link>
                             }
                         </>

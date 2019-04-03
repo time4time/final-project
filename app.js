@@ -16,7 +16,7 @@ app.use(function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors({
-  origin: 'http://www.time4time.org',
+  origin: 'https://www.time4time.org',
   credentials: true
 }))
 

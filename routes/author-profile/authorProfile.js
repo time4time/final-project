@@ -43,8 +43,8 @@ router.post('/user-reviewed-id', function(req, res, next) {
         })
 })
 
-router.get('/get-reviews', function(req, res, next){
-    Review.find({})
+router.post('/get-reviews', function(req, res, next){
+    Review.find({userReviewed: req.body.userReviewedId})
         .then((allReviews) => {
             res.status(200).json(allReviews)
         })
