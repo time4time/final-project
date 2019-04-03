@@ -84,7 +84,6 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-
 }
 
 // root element styles are in index scss file
@@ -99,6 +98,7 @@ html, body {
     padding-top: 30px;
     bottom: 0px;
     position: relative;
+    flex-shrink: 0;
 }
 
 .footer-img {

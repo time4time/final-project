@@ -89,14 +89,18 @@ class AuthorProfile extends Component {
     }
     //render author's reviews
     getReviews = () => {
+        debugger
         axios({
-            method: 'get',
+            method: 'post',
             url: `${config.api}/get-reviews`,
+            data: {userReviewedId: this.props.match.params.id},
             // url: `${config.REACT_APP_api}/get-reviews`,
             withCredentials : true,
         }).then(databaseResponse => {
+            debugger
             this.setState({listOfReviews: databaseResponse.data})
         }).catch(err => {
+            debugger
         })
     }
 
