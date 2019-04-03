@@ -89,14 +89,18 @@ class AuthorProfile extends Component {
     }
     //render author's reviews
     getReviews = () => {
+        debugger
         axios({
-            method: 'get',
+            method: 'post',
             url: `${config.api}/get-reviews`,
+            data: {userReviewedId: this.props.match.params.id},
             // url: `${config.REACT_APP_api}/get-reviews`,
             withCredentials : true,
         }).then(databaseResponse => {
+            debugger
             this.setState({listOfReviews: databaseResponse.data})
         }).catch(err => {
+            debugger
         })
     }
 
@@ -216,9 +220,11 @@ class AuthorProfile extends Component {
                     <h1 className="title">List of reviews</h1>
                     <div className="column">
                         { renderReviews }
-                        <ul id="page-numbers">
-                            { renderPageNumbers }
-                        </ul>
+                        <div className="columns page-numbers-column">
+                            <ul className="level column is-half is-offset-one-quarter columns">
+                                { renderPageNumbers }
+                            </ul>
+                        </div>
                     </div>
                 </div>
           </div>

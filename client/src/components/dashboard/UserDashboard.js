@@ -19,7 +19,8 @@ class UserDashboard extends Component {
             listOfPetitions: [],
             myOffers: false,
             listOfMyOffers: [],
-            activeMenuItems: [true, false, false, false, false]
+            activeMenuItems: [true, false, false, false, false],
+            test: true
         }
         this.openSection = this.openSection.bind(this)
     }
@@ -47,16 +48,19 @@ class UserDashboard extends Component {
         }
     }
     notificationControl = (dataFromRequest, statusControl) => {
-        let checkPending = []
-        for(var i = 0; i < dataFromRequest.length; i++) {
-            if(dataFromRequest[i].status === 'Pending') checkPending.push('new offer')
-        }
+        let checkOffers = []
         switch(statusControl) {
             case 'offers':
-                if(checkPending.length > 0) return this.setState({myOffers: true})
+                for(var i = 0; i < dataFromRequest.length; i++) {
+                    if(dataFromRequest[i].status === 'Pending') checkOffers.push('new offer')
+                }
+                if(checkOffers.length > 0) return this.setState({myOffers: true})
                 else return this.setState({myOffers: false})
             case 'petitions':
-                if(checkPending.length > 0) return this.setState({petitionsNotification: true})
+                for(var j = 0; j < dataFromRequest.length; j++) {
+                    if(dataFromRequest[j].status === 'Approved') checkOffers.push('new offer')
+                }
+                if(checkOffers.length > 0) return this.setState({petitionsNotification: true})
                 else return this.setState({petitionsNotification: false})
             default:
             return null
@@ -89,7 +93,11 @@ class UserDashboard extends Component {
           })
           this.notificationControl(responseFromApi.data, 'petitions')
         })
-    }   
+    }
+    test = () => {
+        //buscar una forma PERMANENTE de que esto no vuelva a true cuando vuelves de otra ruta
+        this.setState({petitionsNotification: false})
+    }
     componentDidMount(){
         this.getMyPetitions()
         this.getMyOffers()
@@ -97,54 +105,68 @@ class UserDashboard extends Component {
     render() { 
 
         return (
-            <div className='section'>
-            <div className='container'>
-            <div className='columns'>
-                <aside className="menu column is-3">
-                    <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[0] ? "is-active" : "inactive"} onClick={()=> {this.openSection('all requests')}}>My offers &nbsp;  
-                        { this.state.myOffers ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link>
-                    </ul>
-                    <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[1] ? "is-active" : "inactive"} onClick={()=> {this.openSection('my petitions')}}>My petitions &nbsp;  
-                        { this.state.petitionsNotification ? <i className="fas fa-bolt"></i> : <i className="fas fa-times"></i> }
-                        </Link>
-                    </ul>
-                    <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[2] ? "is-active" : "inactive"} onClick={()=> {this.openSection('messages')}}>
-                        Direct messages
-                        </Link></ul>
-                    <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[3] ? "is-active" : "inactive"} onClick={()=> {this.openSection('profile')}}>
-                            Profile
-                        </Link></ul>
-                    <ul className="menu-list">
-                        <Link className={this.state.activeMenuItems[4] ? "is-active" : "inactive"} onClick={()=> {this.openSection('settings')}}>
-                        Settings
-                        </Link></ul>
-                </aside>
-                <div className="column">
-                {(() => {
-                    //this switch case is used to open the selected section when you click the menu item
-                    switch(this.state.activeSection) {
-                        case 'all requests':
-                            return <AllRequests {...this.props} {...this.state} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;
-                        case 'my petitions':
-                            return <MyPetitions {...this.props} {...this.state} listOfPetitions={this.state.listOfPetitions} />;
-                        case 'messages':
-                            return <DirectMessages/>
-                        case 'profile':
-                            return <MyProfile />
-                        case 'settings':
-                            return <UserSettings {...this.props}/>
-                        default:
-                            return <AllRequests {...this.props} {...this.state} listOfMyOffers={this.state.listOfMyOffers}/>
-                    }
-                })()}
+            <div className='content'>
+                <div className='section'>
+                    <div className='container'>
+                        <div className='columns'>
+                            <aside className="menu column is-3">
+                                <ul className="menu-list">
+                                    {this.state.myOffers ?
+                                        <Link className={this.state.activeMenuItems[0] ? "is-active" : "has-notification"} onClick={()=> {this.openSection('all requests')}}>
+                                            My offers &nbsp;<i className="fas fa-bell"></i>
+                                        </Link>
+                                        :
+                                        <Link className={this.state.activeMenuItems[0] ? "is-active" : "inactive"} onClick={()=> {this.openSection('all requests')}}>
+                                            My offers &nbsp;<i className="fas fa-bell-slash"></i>
+                                        </Link>
+                                    }
+                                </ul>
+                                <ul className="menu-list">
+                                    {this.state.petitionsNotification ?
+                                        <Link className={this.state.activeMenuItems[1] ? "is-active" : "has-notification"} onClick={()=> {this.openSection('my petitions')}}>
+                                            My petitions &nbsp;<i className="fas fa-bell"></i>
+                                        </Link>
+                                        :
+                                        <Link className={this.state.activeMenuItems[1] ? "is-active" : "inactive"} onClick={()=> {this.openSection('my petitions')}}>
+                                            My petitions &nbsp;<i className="fas fa-bell-slash"></i>
+                                        </Link>
+                                    }
+                                </ul>
+                                <ul className="menu-list">
+                                    <Link className={this.state.activeMenuItems[2] ? "is-active" : "inactive"} onClick={()=> {this.openSection('messages')}}>
+                                        Direct messages
+                                    </Link></ul>
+                                <ul className="menu-list">
+                                    <Link className={this.state.activeMenuItems[3] ? "is-active" : "inactive"} onClick={()=> {this.openSection('profile')}}>
+                                        Profile
+                                    </Link></ul>
+                                <ul className="menu-list">
+                                    <Link className={this.state.activeMenuItems[4] ? "is-active" : "inactive"} onClick={()=> {this.openSection('settings')}}>
+                                        Settings
+                                    </Link></ul>
+                            </aside>
+                            <div className="column">
+                            {(() => {
+                                //this switch case is used to open the selected section when you click the menu item
+                                switch(this.state.activeSection) {
+                                    case 'all requests':
+                                        return <AllRequests {...this.props} {...this.state} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;
+                                    case 'my petitions':
+                                        return <MyPetitions {...this.props} {...this.state} test={this.test} listOfPetitions={this.state.listOfPetitions} />;
+                                    case 'messages':
+                                        return <DirectMessages/>
+                                    case 'profile':
+                                        return <MyProfile />
+                                    case 'settings':
+                                        return <UserSettings {...this.props} openSection={this.openSection}/>
+                                    default:
+                                        return <AllRequests {...this.props} {...this.state} listOfMyOffers={this.state.listOfMyOffers}/>
+                                }
+                            })()}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
             </div>
         );
     }

@@ -36,7 +36,7 @@ router.post("/signup", (req, res) => {
             }
             else {
               res.cookie("username", req.body.username);
-              req.session.current = userCreated._doc
+              req.session.user = userCreated._doc
               res.json('user created');
             }
           })

@@ -173,7 +173,7 @@ class DisplayOffers extends Component {
                     <div className="list is-hoverable">
                             { renderFilteredOffers }
                             <div className="columns page-numbers-column">
-                                <ul id="page-numbers" className="level column is-half is-offset-one-quarter columns">
+                                <ul className="level column is-half is-offset-one-quarter columns">
                                     { renderFilteredPageNumbers }
                                 </ul>
                             </div>
@@ -186,7 +186,7 @@ class DisplayOffers extends Component {
                     <div className="list is-hoverable">
                             { renderOffers }
                             <div className="columns page-numbers-column">
-                                <ul id="page-numbers" className="level column is-half is-offset-one-quarter columns">
+                                <ul className="level column is-half is-offset-one-quarter columns">
                                     { renderPageNumbers }
                                 </ul>
                             </div>

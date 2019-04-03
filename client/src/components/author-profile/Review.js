@@ -34,13 +34,18 @@ class Review extends Component {
         return (
             <div className="card">
                 <div className="card-content">
-                    <p className="title">
-                        {this.props.opinion}
-                    </p>
-                    <p>Date <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
-                    <p className="subtitle">
-                        Username: {this.state.reviewer.username}
-                    </p>
+                        <p className="is-size-5 column has-text-weight-semibold has-text-left">
+                            Username: {this.state.reviewer.username}
+                        </p>
+                        <p className="subtitle column has-text-left">Date <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
+                    <div className="columns">
+                        <figure className="image column">
+                            <img src={`${config.api}/${this.props.pictureUrl}`} alt="Review"/>
+                        </figure>
+                        <p className="is-size-6 column has-text-left">
+                            {this.props.opinion}
+                        </p>
+                    </div>
                 </div>
                 </div>
         );
