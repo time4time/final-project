@@ -4,6 +4,7 @@
     "permissions": [
    "https://time4time.org/*",
    "https://www.time4time.org/*"
+   
 ],
   "icons": [
     {

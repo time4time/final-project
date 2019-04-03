@@ -3,39 +3,34 @@ var express = require('express');
 var router = express.Router();
 const nodemailer = require('nodemailer')
 const Offer = require('../../models/Offer')
-const config = require('../../config.json')
+
 
 router.post('/send-mail', (req,res,next) => {
     //step 1
     // take data from offer
-    debugger
     let offerId = req.body.offerId;
     Offer.findById(offerId)
-        .then((mailOffer) =>{ 
+        .then((mailOffer) =>{
             //step 2 set transport
-            debugger
             let transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user:`${config.user}`,
-                    pass:`${config.pass}`,
-                }
-            });
-            debugger
+		    host: 'localhost',
+		    port: 25,
+		    logger: true,
+		    ignoreTLS: true,
+		    debug: true
+	    });
             transporter.sendMail({
-                from:       '"Time for time" <iyanezm@gmail.com>',
+                from:       '"Time for time" <tictac@time4time.org>',
                 to:         mailOffer.authorMail,
                 subject:    'You have a new request from time for time',
-                text: 
-                    `Somebody has sent an application for your offer, you can check this petition in our site.
-                    Best regards, 
+                text:
+                    `Somebody has sent an application for your offer, you can check this petition in our site. Best regards,
                     Time for Time team <3 `
             })
             return mailOffer;
-            debugger
             }).then((mailOffer) => {
                 res.status(200).json(mailOffer)
-            }).catch(error =>{ 
+            }).catch(error =>{
                  res.status(500).json(error)
                 });
 });
