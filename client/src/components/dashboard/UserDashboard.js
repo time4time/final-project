@@ -105,6 +105,7 @@ class UserDashboard extends Component {
     render() { 
 
         return (
+            <div className='content'>
             <div className='section'>
             <div className='container'>
             <div className='columns'>
@@ -163,6 +164,7 @@ class UserDashboard extends Component {
                     }
                 })()}
                 </div>
+            </div>
             </div>
             </div>
             </div>

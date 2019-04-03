@@ -75,6 +75,30 @@ $button-background-color: $coral;
     margin: -12px 0;
 }
 
+// Sticky footer
+html, body {
+    height: 100%;
+}
+
+
+// body {
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.App {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+// root element styles are in index scss file
+
+.content {
+    flex: 1 0 auto;
+}
+
 .footer {
     background-color: lightgrey;
     padding-bottom: 30px;
