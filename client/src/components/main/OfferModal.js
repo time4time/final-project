@@ -75,7 +75,8 @@ class OfferModal extends Component {
 
 
     redirectToAuthorProfile = () =>{
-        this.props.history.push(`/profile/${this.props.author}`)
+        if(this.props.authorUsername === this.props.username) this.props.history.push('/dashboard')
+        else this.props.history.push(`/profile/${this.props.author}`)
     }  
 
     render() { 
@@ -96,7 +97,7 @@ class OfferModal extends Component {
                                     <div className="level">
                                         <div className="level-left">
                                             <Link>
-                                                <button onClick={this.redirectToAuthorProfile}className="button is-success">See more</button>
+                                                <button onClick={this.redirectToAuthorProfile}className="button is-success">Visit profile</button>
                                             </Link>
                                         </div>
                                     </div>
@@ -143,20 +144,28 @@ class OfferModal extends Component {
                             </div>
                         </section>
                         <footer className="modal-card-foot">
-                      
                             <Link>
                             {this.props.loggedIn ?
-                                <button onClick={(e) => {
-                                this.handleApply(e);
-                                this.sendEmail(e)}
-                                } className="button is-success">Apply </button>:
+                                <>
+                                {this.props.authorUsername === this.props.username ?
+                                    <button className="button is-success" disabled>Apply </button> :
+                                    <button onClick={(e) => {
+                                        this.handleApply(e);
+                                        this.sendEmail(e)}
+                                        } className="button is-success">Apply </button>
+                                }
+                                </>
+                                :
                                 <button onClick={this.redirectToLogin} className="button is-dark">Apply </button>
                             }
                             </Link>
                             {this.state.errorTimeWallet?
-                            <p style={{color: 'red'}}>{this.state.errorTimeWallet}</p>:
+                            <p style={{color: 'red'}}>&nbsp;{this.state.errorTimeWallet}</p>:
                             <p></p>
                             }
+                            {this.props.authorUsername === this.props.username ?
+                            <p style={{color: 'red'}}>&nbsp;You can't apply to your own offer</p> :
+                            <p></p>}
                         </footer>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ class UserSettings extends Component {
         bio: '',
         user: [],
         error: '',
-        success: '',
+        // success: '',
         
     }
     handleInput = (event)=> {
@@ -32,8 +32,8 @@ class UserSettings extends Component {
             data: formData,
             withCredentials : true,
         }).then(databaseResponse => {
-            
-            this.setState({success: 'You updated your personal information successfully'})
+            // this.setState({success: 'You updated your personal information successfully'})
+            this.props.openSection('profile')
             this.props.history.push('/dashboard')
         }).catch(err => {
             this.setState({error: 'Could not edit personal information'})
@@ -49,7 +49,8 @@ class UserSettings extends Component {
             data: editUser,
             withCredentials : true,
         }).then(databaseResponse => {
-            this.setState({success: 'You updated your personal information successfully'})
+            // this.setState({success: 'You updated your personal information successfully'})
+            this.props.openSection('profile')
             this.props.history.push('/dashboard')
         }).catch(err => {
             this.setState({error: 'Could not edit personal information'})
@@ -60,7 +61,7 @@ class UserSettings extends Component {
         return (
                 <section>
                             <div className="column">
-                            <p style={{color: 'green'}}>{this.state.success? this.state.success:''}</p>
+                            {/* <p style={{color: 'green'}}>{this.state.success? this.state.success:''}</p> */}
                                 <h3 className="title has-text-grey">User's settings</h3>
                                 <div className="box">
                                     <form ref={this.form} onSubmit={this.handleSubmitProfileImage}>

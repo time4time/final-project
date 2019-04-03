@@ -216,9 +216,11 @@ class AuthorProfile extends Component {
                     <h1 className="title">List of reviews</h1>
                     <div className="column">
                         { renderReviews }
-                        <ul id="page-numbers">
-                            { renderPageNumbers }
-                        </ul>
+                        <div className="columns page-numbers-column">
+                            <ul className="level column is-half is-offset-one-quarter columns">
+                                { renderPageNumbers }
+                            </ul>
+                        </div>
                     </div>
                 </div>
           </div>

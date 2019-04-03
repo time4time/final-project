@@ -120,6 +120,11 @@ $button-background-color: $coral;
     background-color: hsl(48, 100%, 67%);
 }
 
+.is-vertical-center {
+    display: flex !important;
+    align-items: center !important;
+}
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";

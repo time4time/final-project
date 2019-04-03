@@ -111,7 +111,6 @@ class UserDashboard extends Component {
                 <aside className="menu column is-3">
                     <ul className="menu-list">
                         {this.state.myOffers ?
-                            //tal vez meterle otra función aparte para cuando hagas click si tiene la notificacion, pero que no me actualice lo de notificación en este momento
                             <Link className={this.state.activeMenuItems[0] ? "is-active" : "has-notification"} onClick={()=> {this.openSection('all requests')}}>
                                 My offers &nbsp;<i className="fas fa-bell"></i>
                             </Link>
@@ -158,7 +157,7 @@ class UserDashboard extends Component {
                         case 'profile':
                             return <MyProfile />
                         case 'settings':
-                            return <UserSettings {...this.props}/>
+                            return <UserSettings {...this.props} openSection={this.openSection}/>
                         default:
                             return <AllRequests {...this.props} {...this.state} listOfMyOffers={this.state.listOfMyOffers}/>
                     }
