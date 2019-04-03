@@ -3,10 +3,12 @@ import axios from 'axios';
 import Moment from 'react-moment'
 import config from '../../config.json'
 
+
 //render my profile with my time wallet and basic personal settings
 class MyProfile extends Component {
     state = { 
-        profileInfo: {}
+        profileInfo: {},
+        reviewer:{},
      }
     
     getProfileInfo = () =>{
@@ -42,14 +44,18 @@ class MyProfile extends Component {
                 <div className="card-content">
                     <div className="media">
                     <div className="media-content">
-                        <p className="title is-4">{this.state.profileInfo.firstname} {this.state.profileInfo.lastname}</p>
-                        <p className="subtitle is-6">Username: &nbsp; {this.state.profileInfo.username}</p>
+                        <p className="title">{this.state.profileInfo.firstname} {this.state.profileInfo.lastname}</p>
+                        <p>Username: &nbsp; {this.state.profileInfo.username}</p>
+                        <p>e-mail: &nbsp; {this.state.profileInfo.email}</p>
+                        <p>Bio: &nbsp; {this.state.profileInfo.bio}</p>
                     </div>
                     </div>
                     <div className="content">
 
                         <p className="subtitle is-6">Time wallet: {this.state.profileInfo.timeWallet} hour(s)</p>
                         <p>Registration Date: &nbsp;<Moment format="D MMM YYYY" withTitle>{this.state.profileInfo.registrationDate}</Moment></p>
+                        
+                        
 
                     </div>
                 </div>

@@ -19,6 +19,7 @@ class UserDashboard extends Component {
             listOfPetitions: [],
             myOffers: false,
             listOfMyOffers: [],
+            messages: [],
             activeMenuItems: [true, false, false, false, false]
         }
         this.openSection = this.openSection.bind(this)

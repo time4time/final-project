@@ -14,7 +14,7 @@ class Search extends Component {
         repair:     '',
         languages:  '',
         cooking:    '',
-        filteredOffers: []
+        filteredOffers: [],
      }
     }
 
@@ -25,7 +25,6 @@ class Search extends Component {
         this.setState(generalSearch)
         
     }
-
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
@@ -37,7 +36,8 @@ class Search extends Component {
           data: newSearch,
           withCredentials : true,
           }).then(databaseResponse => {
-            this.setState({filteredOffers: databaseResponse.data})
+            this.setState({
+            filteredOffers: databaseResponse.data})
           }).catch(err => {
               this.setState({error: 'Something went wrong! We could not do the search'})
           })
@@ -52,7 +52,7 @@ class Search extends Component {
             <form onSubmit={this.handleSubmit} className="section">
                 
                 <label className="checkbox level">
-                    <input onChange={this.handleCheck} name='house' type="checkbox" />
+                    <input onChange={this.handleCheck} name='house' type="checkbox"/>
                     &nbsp;House &nbsp;
                 </label>
 

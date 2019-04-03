@@ -119,7 +119,7 @@ class OfferModal extends Component {
                                                 <TwitterShareButton url={'https://www.twitter.com'}>
                                                     <TwitterIcon size={32} round={true}/>
                                                 </TwitterShareButton>
-                                                <PinterestShareButton url={'https://www.pinterest.com/'}>
+                                                <PinterestShareButton url={'http://www.pinterest.com/'} media={`${config.api}`}>
                                                     <PinterestIcon size={32} round={true}/>
                                                 </PinterestShareButton>
                                             </div>

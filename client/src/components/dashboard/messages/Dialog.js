@@ -1,8 +1,7 @@
 import React from 'react';
     import Proptypes from 'prop-types';
-
     const Dialog = props => {
-      const { userId, handleInput, connectToChatkit } = props;
+      const { userId, handleInput, connectToChatkit} = props;
 
       return (
         <div className="dialog-container">

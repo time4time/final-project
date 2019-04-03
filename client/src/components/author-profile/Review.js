@@ -41,6 +41,7 @@ class Review extends Component {
                     <p className="subtitle">
                         Username: {this.state.reviewer.username}
                     </p>
+                    
                 </div>
                 </div>
         );
