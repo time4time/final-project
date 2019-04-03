@@ -3,22 +3,25 @@ var express = require('express');
 var router = express.Router();
 const nodemailer = require('nodemailer')
 const Offer = require('../../models/Offer')
-
+const config = require('../../config.json')
 
 router.post('/send-mail', (req,res,next) => {
     //step 1
     // take data from offer
+    debugger
     let offerId = req.body.offerId;
     Offer.findById(offerId)
         .then((mailOffer) =>{ 
             //step 2 set transport
+            debugger
             let transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'iyanezm@gmail.com',
-                    pass: 'asdf'
+                    user:`${config.user}`,
+                    pass:`${config.pass}`,
                 }
             });
+            debugger
             transporter.sendMail({
                 from:       '"Time for time" <iyanezm@gmail.com>',
                 to:         mailOffer.authorMail,
@@ -29,6 +32,7 @@ router.post('/send-mail', (req,res,next) => {
                     Time for Time team <3 `
             })
             return mailOffer;
+            debugger
             }).then((mailOffer) => {
                 res.status(200).json(mailOffer)
             }).catch(error =>{ 

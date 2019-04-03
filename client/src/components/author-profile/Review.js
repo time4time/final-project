@@ -34,6 +34,7 @@ class Review extends Component {
         return (
             <div className="card">
                 <div className="card-content">
+
                         <p className="is-size-5 column has-text-weight-semibold has-text-left">
                             Username: {this.state.reviewer.username}
                         </p>
@@ -46,6 +47,7 @@ class Review extends Component {
                             {this.props.opinion}
                         </p>
                     </div>
+
                 </div>
                 </div>
         );

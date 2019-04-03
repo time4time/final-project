@@ -179,11 +179,12 @@ html {
      ========================================================================== */
 
   .dialog-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    position: fixed;
+    width: 50%;
+    top: 0px;
+    bottom: 50px;
+    left: 35%;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content:center;
@@ -210,6 +211,7 @@ html {
   .username-label {
     text-align: left;
     font-size: 16px;
+    justify-content: center;
   }
 
   .username-input {
@@ -221,12 +223,14 @@ html {
   }
 
   .submit-btn {
-    color: #5C8436;
-    background-color: #181919;
+    color: white;
+    background-color: #f45b69;
     width: 100%;
+    cursor: pointer;
+    border: 2px solid #f45b69;
   }
 
-  .submit-btn:hover {
+  /* .submit-btn:hover {
     color: #5C8436;
     background-color: #222;
-  }
+  } */

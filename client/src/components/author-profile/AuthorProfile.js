@@ -168,6 +168,7 @@ class AuthorProfile extends Component {
                         </div>
                         <div className="content">
                             <p>{this.state.authorProfile.bio}</p>
+                            
                         </div>
                     </div>
                 </div>

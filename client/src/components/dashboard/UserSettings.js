@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios  from 'axios';
 import config from '../../config.json'
+import DirectMessages from './messages/DirectMessages.js';
+import MyProfile from './MyProfile.js';
 
 class UserSettings extends Component {
     constructor(props) {
@@ -35,6 +37,7 @@ class UserSettings extends Component {
             // this.setState({success: 'You updated your personal information successfully'})
             this.props.openSection('profile')
             this.props.history.push('/dashboard')
+
         }).catch(err => {
             this.setState({error: 'Could not edit personal information'})
         })
