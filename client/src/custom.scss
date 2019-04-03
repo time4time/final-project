@@ -125,6 +125,10 @@ html, body {
 
 .page-numbers { cursor: pointer; }
 
+.menu-list {
+    margin: 0 !important;
+}
+
 .menu-list a.is-active {
     background-color: $coral;
     font-weight: bold;

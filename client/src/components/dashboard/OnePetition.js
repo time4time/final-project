@@ -22,11 +22,11 @@ class OnePetition extends Component {
                 {(() => {
                     switch(this.props.status) {
                         case 'Open':
-                            return <h1 className="card-footer-item">{this.props.status}</h1>;
+                            return <p className="card-footer-item">{this.props.status}</p>;
                         case 'Pending':
-                            return <h1 className="card-footer-item has-background-warning">{this.props.status}</h1>;
+                            return <p className="card-footer-item has-background-warning">{this.props.status}</p>;
                         case 'Approved':
-                            return <h1 className="card-footer-item has-background-success">{this.props.status}</h1>;
+                            return <p className="card-footer-item has-background-success">{this.props.status}</p>;
                         default:
                             return null;
                     }
