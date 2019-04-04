@@ -130,8 +130,6 @@ class OfferModal extends Component {
                                         <div className="column">
                                             <h1 className="modal-card-title">Category</h1>
                                                 <p>{this.props.category}</p>
-                                            <h1 className="modal-card-title">Postal Code</h1>
-                                                <p>{this.props.postalCode}</p>
                                         </div>
                                         <div className="column">                 
                                             <h1 className="modal-card-title">Date</h1>

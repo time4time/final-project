@@ -218,15 +218,20 @@ class AuthorProfile extends Component {
                         </div>
                         </form>
                     </div>
-                    <h1 className="title">List of reviews</h1>
-                    <div className="column">
-                        { renderReviews }
-                        <div className="columns page-numbers-column">
-                            <ul className="level column is-half is-offset-one-quarter columns">
-                                { renderPageNumbers }
-                            </ul>
-                        </div>
-                    </div>
+                    {this.state.listOfReviews.length > 0 ?
+                        <>
+                            <h1 className="title">List of reviews</h1>
+                            <div className="column">
+                                { renderReviews }
+                                <div className="columns page-numbers-column">
+                                    <ul className="level column is-half is-offset-one-quarter columns">
+                                        { renderPageNumbers }
+                                    </ul>
+                                </div>
+                            </div>
+                        </> :
+                        <></>
+                    }
                 </div>
           </div>
         );

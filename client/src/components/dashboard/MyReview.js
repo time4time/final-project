@@ -3,18 +3,17 @@ import axios from 'axios';
 import Moment from 'react-moment'
 import config from '../../config.json'
 
-class Review extends Component {
-    constructor(props) {
+class MyReview extends Component {
+    constructor(props){
         super(props)
         this.state = {
             reviewer: {}
         }
     }
-    //call to database and take username's reviewer
+    //call to database and get username's reviewer
     getReviewerUsername = () => {
         axios({
             method: 'post',
-            // url: `${config.REACT_APP_api}/reviewer`,
             url: `${config.api}/reviewer`,
             data: {reviewerId: this.props.reviewer},
             withCredentials : true,
@@ -51,4 +50,4 @@ class Review extends Component {
     }
 }
  
-export default Review;
+export default MyReview;

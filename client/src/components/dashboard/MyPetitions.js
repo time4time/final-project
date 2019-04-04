@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 //render my applications for another offers
 class MyPetitions extends Component {
     componentWillUnmount(){
-        this.props.test()
+        this.props.cleanNotif('petitions')
     }
     render() { 
         return (

@@ -25,6 +25,7 @@ class Search extends Component {
         this.setState(generalSearch)
         
     }
+
     //submit button
     handleSubmit = (event) =>{
         event.preventDefault();
@@ -49,7 +50,8 @@ class Search extends Component {
             <div className="container is-fluid">
             <div className="columns">
             <div className="search-column column is-2">
-            <form onSubmit={this.handleSubmit} className="section">
+            <h6 className="title is-4 title-search">Pick a category</h6>
+            <form onSubmit={this.handleSubmit} className="section search">
                 
                 <label className="checkbox level">
                     <input onChange={this.handleCheck} name='house' type="checkbox"/>

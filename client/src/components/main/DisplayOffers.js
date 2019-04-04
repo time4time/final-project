@@ -65,7 +65,6 @@ class DisplayOffers extends Component {
                         <div className="tile is-child box">
                                 <h3 className="title">{offer.title}</h3>
                                 <h4><strong>User</strong>: {offer.authorUsername}</h4>
-                                <p>{offer.postalCode}</p>
                                 <p>{offer.description}</p>
                                 <p><strong>Category</strong>: {offer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(offer._id)}}>Open offer</Link>
@@ -79,7 +78,6 @@ class DisplayOffers extends Component {
                         author={offer.author}
                         authorUsername={offer.authorUsername} 
                         authorProfileImage={offer.authorProfileImage}
-                        postalCode={offer.postalCode}
                         description={offer.description} 
                         category={offer.category}
                         dateOffer={offer.date}
@@ -120,7 +118,6 @@ class DisplayOffers extends Component {
                                 {/* <img src={`${config.REACT_APP_api}/${filteredOffer.authorProfileImage}`} alt=""/> */}
                                 <img src={`${config.api}/${filteredOffer.authorProfileImage}`} alt=""/>
                                 <h4><strong>User</strong>: {filteredOffer.authorUsername}</h4>
-                                <p>{filteredOffer.postalCode}</p>
                                 <p>{filteredOffer.description}</p>
                                 <p><strong>Category</strong>: {filteredOffer.category}</p>
                             <Link className='btn' onClick={()=> {this.toggle(filteredOffer._id)}}> Open offer</Link>
@@ -134,7 +131,6 @@ class DisplayOffers extends Component {
                         author={filteredOffer.author}
                         authorUsername={filteredOffer.authorUsername}
                         authorProfileImage={filteredOffer.authorProfileImage}
-                        postalCode={filteredOffer.postalCode}
                         description={filteredOffer.description} 
                         category={filteredOffer.category}
                         dateOffer={filteredOffer.date}
@@ -147,7 +143,7 @@ class DisplayOffers extends Component {
         //Numbers for the list obtained after searching
         const pageFilteredNumbers = []
         for (let i = 1; i <= Math.ceil(this.props.filteredOffers.length / offersPerPage); i++) {
-            pageNumbers.push(i)
+            pageFilteredNumbers.push(i)
         }
 
         const renderFilteredPageNumbers = pageFilteredNumbers.map(number => {
@@ -162,7 +158,6 @@ class DisplayOffers extends Component {
                 </li>
             )
         })
-
 
             return ( 
                 <>

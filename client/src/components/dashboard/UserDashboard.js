@@ -20,9 +20,7 @@ class UserDashboard extends Component {
             myOffers: false,
             listOfMyOffers: [],
             messages: [],
-            activeMenuItems: [true, false, false, false, false],
-            test: true
-
+            activeMenuItems: [true, false, false, false, false]
         }
         this.openSection = this.openSection.bind(this)
     }
@@ -96,9 +94,9 @@ class UserDashboard extends Component {
           this.notificationControl(responseFromApi.data, 'petitions')
         })
     }
-    test = () => {
-        //buscar una forma PERMANENTE de que esto no vuelva a true cuando vuelves de otra ruta
-        this.setState({petitionsNotification: false})
+    cleanNotif = (sectionNotif) => {
+        if(sectionNotif === 'offers') this.setState({myOffers: false})
+        else if(sectionNotif === 'petitions') this.setState({petitionsNotification: false})
     }
     componentDidMount(){
         this.getMyPetitions()
@@ -107,7 +105,7 @@ class UserDashboard extends Component {
     render() { 
 
         return (
-            <div className='content'>
+            <div className='content-sticky'>
                 <div className='section'>
                     <div className='container'>
                         <div className='columns'>
@@ -136,7 +134,7 @@ class UserDashboard extends Component {
                                 </ul>
                                 <ul className="menu-list">
                                     <Link className={this.state.activeMenuItems[2] ? "is-active" : "inactive"} onClick={()=> {this.openSection('messages')}}>
-                                        Direct messages
+                                        Chat
                                     </Link></ul>
                                 <ul className="menu-list">
                                     <Link className={this.state.activeMenuItems[3] ? "is-active" : "inactive"} onClick={()=> {this.openSection('profile')}}>
@@ -152,9 +150,9 @@ class UserDashboard extends Component {
                                 //this switch case is used to open the selected section when you click the menu item
                                 switch(this.state.activeSection) {
                                     case 'all requests':
-                                        return <AllRequests {...this.props} {...this.state} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;
+                                        return <AllRequests {...this.props} {...this.state} cleanNotif={this.cleanNotif} updateOffers={this.getMyOffers} listOfMyOffers={this.state.listOfMyOffers}/>;
                                     case 'my petitions':
-                                        return <MyPetitions {...this.props} {...this.state} test={this.test} listOfPetitions={this.state.listOfPetitions} />;
+                                        return <MyPetitions {...this.props} {...this.state} cleanNotif={this.cleanNotif} listOfPetitions={this.state.listOfPetitions} />;
                                     case 'messages':
                                         return <DirectMessages/>
                                     case 'profile':
