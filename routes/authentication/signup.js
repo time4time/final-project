@@ -25,7 +25,6 @@ router.post("/signup", (req, res) => {
             username:         req.body.username,
             email:            req.body.email,
             birth:            req.body.birth,
-            postalCode:       req.body.postalcode,
             password:         hash,
             registrationDate: Date.now(),
             profileImage:     ''            

@@ -61,7 +61,12 @@ export const UnauthNav = class UnauthNav extends Component {
                         </div>
                         <div className="navbar-end">
                             <div className="navbar-item">
-                                <div className="field is-grouped">
+                                <div className="field is-grouped is-vertical-center">
+                                    <p className="control">
+                                        <NavLink to="/login" >
+                                            <button className="button is-success">Publish new offer</button>
+                                        </NavLink>
+                                    </p>
                                     <p className="control">
                                         <NavLink to="/login">Login</NavLink>
                                     </p>

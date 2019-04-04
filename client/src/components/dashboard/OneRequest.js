@@ -58,17 +58,19 @@ class OneRequest extends Component {
                 </header>
                 <div className="card-content">
                     <div className="content">
-                    <p>My username: &nbsp;{this.props.authorUsername} </p>
                     <p>Date: &nbsp; <Moment format="D MMM YYYY" withTitle>{this.props.date}</Moment></p>
                     <p>Duration: &nbsp; {this.props.duration} hour(s)</p>
+                    {this.props.userRequest ?
+                    <p>Who applied to your offer: {this.props.userRequest}</p> :
+                    <p></p>}
                     <p style={{color: 'green'}}>{this.state.offerStatus ? `You got ${this.state.offerApproved.duration} hour(s) in your Time Wallet!` : ''}</p>
                     <p style={{color: 'red'}}>{this.state.error? this.state.error:''}</p>
                     </div>
                 </div>
                 <footer className="card-footer is-vertical-center">
                     {this.state.offerApproved ?
-                        <h1 className="card-footer-item"> Offer status: &nbsp; {this.state.offerApproved.status}</h1> :
-                        <h1 className="card-footer-item"> Offer status: &nbsp; {this.props.status}</h1>
+                        <p className="card-footer-item"> Offer status: &nbsp; {this.state.offerApproved.status}</p> :
+                        <p className="card-footer-item"> Offer status: &nbsp; {this.props.status}</p>
                     }
                     {this.state.offerStatus === 'Approved' ?
                     <Link className="card-footer-item button is-success">Approved!</Link> :

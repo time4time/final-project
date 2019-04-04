@@ -3,6 +3,9 @@ import OneRequest from './OneRequest'
 
 //this component render my own offer's request
 class AllRequests extends Component {
+    componentWillUnmount(){
+        this.props.cleanNotif('offers')
+    }
     render() { 
         return (
             <>
@@ -18,6 +21,7 @@ class AllRequests extends Component {
                     date={myOffer.date}
                     duration={myOffer.duration}
                     status={myOffer.status}
+                    userRequest={myOffer.userRequest}
                     />
                   )
                 })
