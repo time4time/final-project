@@ -20,11 +20,11 @@ router.post('/send-mail', (req,res,next) => {
 		    debug: true
 	    });
             transporter.sendMail({
-                from:       '"Time for time" <tictac@time4time.org>',
+                from:       '"Time for time team" <tictac@time4time.org>',
                 to:         mailOffer.authorMail,
                 subject:    'You have a new request from time for time',
                 text:
-                    `Somebody has sent an application for your offer, you can check this petition in our site. Best regards,
+                    `Somebody has sent an application for your offer, you can check this petition in our site https://www.time4time.org/. Best regards,
                     Time for Time team <3 `
             })
             return mailOffer;
