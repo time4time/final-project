@@ -26,7 +26,7 @@ function handleInput(event) {
   });
 }
 
-function connectToRoom(id = '19495675') {
+function connectToRoom(id = '19813420') {
   const { currentUser } = this.state;
 
   this.setState({
