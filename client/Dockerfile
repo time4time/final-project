@@ -1,4 +1,4 @@
-FROM time4time/backend:0.0.1
+FROM time4time/backend:0.0.5
 WORKDIR /app/client
 RUN npm install \
 npm install dotenv-cli \
