@@ -91,7 +91,7 @@ class Search extends Component {
             </div>
 
             <div className="column">
-            <p className="intro title is-4">We think time is priceless. Do you want to join us and share new experiences and pay with just your time?</p>
+            <p className="intro title is-4">123123123 We think time is priceless. Do you want to join us and share new experiences and pay with just your time?</p>
             <DisplayOffers {...this.props} filteredOffers={this.state.filteredOffers}
             />
             </div>
